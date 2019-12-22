@@ -103,7 +103,10 @@ export default class SessionVue extends Vue {
         // eslint-disable-next-line no-console
         console.log('socket message recieved', msg);
 
-        this.features = updateFeatures(this.features, msg);
+        if (['delete_feature', 'create_feature', 'edit_feature', 'init_features'].includes(msg.type)) {
+            this.features = updateFeatures(this.features, msg);
+        }
+
         // eslint-disable-next-line no-console
         console.log(JSON.stringify(this.features.map(f => ({ type: f.type, id: f.id }))));
     }

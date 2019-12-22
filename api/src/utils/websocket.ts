@@ -37,8 +37,8 @@ function handleMessage(sessionId: string, clientSocket: WebSocket, data: Data): 
         (message as CreateFeatureMessage).payload.id = id;
     }
 
-    if (['delete_feature', 'create_feature', 'edit_feature'].includes(message.type)) {
-        updateFeatures(session.features, message);
+    if (['delete_feature', 'create_feature', 'edit_feature', 'init_features'].includes(message.type)) {
+        session.features = updateFeatures(session.features, message);
     }
 
     // relay to all other clients
