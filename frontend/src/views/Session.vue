@@ -31,7 +31,7 @@ import MapVue from '@/components/Session/Map.vue';
 import ToolbarVue from '@/components/Session/Toolbar.vue';
 
 import Tool from '@/tools/Tool';
-import Line from '@/tools/Line';
+import LineTool from '@/tools/Line';
 import { addLine, deleteFeature } from '@/services/feature';
 
 @Component({
@@ -154,10 +154,10 @@ export default class SessionVue extends Vue {
 
         switch (this.activeTool) {
         case 'line':
-            const lineTool = new Line(this.map);
-            lineTool.onDone = coors => {
+            const lineTool = new LineTool(this.map);
+            lineTool.onDone = coords => {
                 if (!this.controller) return;
-                addLine(this.controller, coors, 'black');
+                addLine(this.controller, coords, 'black');
             };
             this.tool = lineTool;
             break;

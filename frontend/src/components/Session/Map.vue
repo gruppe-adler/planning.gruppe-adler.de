@@ -4,13 +4,16 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer } from 'leaflet';
+import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer, LeafletEvent } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
 import { Feature, Line } from '@/services/shared';
 import { LineString } from 'geojson';
 
+import LineFeature from '@/services/features/Line';
+
+import deepEqual from 'deep-equal';
 @Component
 export default class MapVue extends Vue {
     @Prop({ default: null }) private value!: LeafletMap|null;
@@ -19,7 +22,7 @@ export default class MapVue extends Vue {
     @Prop({ default: [] }) private features!: Feature[];
     @Prop({ required: true }) private mapId!: string;
 
-    private featureLayers: Map<string, Layer> = new Map<string, Layer>();
+    private featureLayers: Map<string, { feature: Feature, layer: Layer}> = new Map();
 
     // helper functions for v-model
     // just use this.map to access it
@@ -58,60 +61,57 @@ export default class MapVue extends Vue {
     private drawFeatures() {
         if (!this.map) return;
 
-        this.featureLayers.forEach((layer, id) => {
-            layer.remove();
-        });
+        const featuresToRedraw: Feature[] = [];
+        const oldFeatureIds = Array.from(this.featureLayers.keys());
 
-        this.featureLayers.clear();
+        for (const f of this.features) {
+            const id = f.id;
 
-        this.features.forEach(f => {
+            if (!this.featureLayers.has(id)) {
+                // completely new feature
+                featuresToRedraw.push(f);
+                continue;
+            }
+
+            const oldFeature = this.featureLayers.get(id)!;
+            if (!deepEqual(f, oldFeature.feature)) {
+                // feature changed
+                oldFeature.layer.remove();
+                featuresToRedraw.push(f);
+            }
+
+            // remove id from array
+            oldFeatureIds.splice(oldFeatureIds.indexOf(id), 1);
+        }
+
+        // remove every feature which wasn't included in new features
+        for (const id of oldFeatureIds) {
+            this.featureLayers.get(id)!.layer.remove();
+        }
+
+        featuresToRedraw.forEach(f => {
             let layer: Layer|null = null;
 
             switch (f.type) {
             case 'line':
-                layer = this.createLine(f as Line).addTo(this.map!);
+                layer = new LineFeature(f as Line).addTo(this.map!);
                 break;
 
             default:
                 break;
             }
 
-            if (layer) this.featureLayers.set(f.id, layer);
+            if (layer) {
+                layer.on('mouseover', () => this.selectFeature(f));
+                layer.on('mouseout', () => this.selectFeature(null));
+
+                this.featureLayers.set(f.id, { feature: f, layer });
+            };
         });
     }
 
     private selectFeature(feature: Feature|null) {
         this.$emit('select-feature', feature);
-    }
-
-    private createLine(line: Line): GeoJSON {
-        const style = {
-            color: line.color,
-            weight: 2,
-            opacity: 0.5
-        };
-
-        const geoJson = new GeoJSON({
-            type: 'LineString',
-            coordinates: line.positions
-        } as LineString, {
-            style
-        });
-
-        geoJson.on('mouseover', (ev) => {
-            geoJson.setStyle({
-                ...style,
-                color: 'red'
-            });
-            this.selectFeature(line);
-        });
-
-        geoJson.on('mouseout', () => {
-            geoJson.setStyle(style);
-            this.selectFeature(null);
-        });
-
-        return geoJson;
     }
 }
 </script>

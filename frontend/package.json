@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@caohenghu/vue-colorpicker": "^1.2.2",
+    "@types/deep-equal": "^1.0.1",
+    "deep-equal": "^2.0.1",
     "leaflet": "^1.6.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",

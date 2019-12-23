@@ -45,11 +45,7 @@ export const fetchMaps = async (): Promise<Map[]> => {
         { displayName: 'Zargabad', worldName: 'zargabad' }
     ];
     // const maps = await makeJSONRequest<returnType[]>(`${MAPS_URL}/maps`);
-    // return maps.map(m => ({ displayName: m.displayName, id: m.worldName }));
-
-    return new Promise((resolve) => {
-        window.setTimeout(() => resolve(maps.map(m => ({ displayName: m.displayName, id: m.worldName }))), 2000);
-    });
+    return maps.map(m => ({ displayName: m.displayName, id: m.worldName }));
 };
 
 /**
