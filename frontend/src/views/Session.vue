@@ -12,7 +12,9 @@
             :features="features"
             mapId="stratis"
             v-model="map"
-            @select-feature="selectedFeature = $event;"
+            @highlight-feature="highlightedFeature = $event;"
+            @edit-feature="editFeature($event);"
+            @delete-feature="deleteFeature($event);"
         />
         <Toolbar v-model="activeTool" />
     </template>
@@ -58,7 +60,7 @@ export default class SessionVue extends Vue {
 
     private tool: Tool|null = null;
 
-    private selectedFeature: Feature|null = null;
+    private highlightedFeature: Feature|null = null;
 
     private created() {
         if (this.id === '') this.$router.push('/');
@@ -117,15 +119,19 @@ export default class SessionVue extends Vue {
             this.tempSwitchTool('line', event.code);
             break;
         case 'Delete':
-            this.deleteFeature();
+            if (this.highlightedFeature) this.deleteFeature(this.highlightedFeature);
             break;
         }
     }
 
-    private deleteFeature() {
-        if (!this.selectedFeature || !this.controller) return;
+    private deleteFeature(feature: Feature) {
+        if (!this.controller) return;
 
-        deleteFeature(this.controller, this.selectedFeature.id);
+        deleteFeature(this.controller, feature.id);
+    }
+
+    private editFeature(feature: Feature) {
+        console.log('edit feature', feature);
     }
 
     private tempSwitchTool(tool: string, keyCode: string) {

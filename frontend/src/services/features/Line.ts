@@ -6,7 +6,7 @@ export default class LineFeature extends FeatureGroup {
     private mainFeature: GeoJSON;
     private hoverFeature: GeoJSON;
 
-    constructor(options: Line, elem: HTMLElement) {
+    constructor(options: Line) {
         super();
 
         this.mainFeature = new GeoJSON(
@@ -42,8 +42,6 @@ export default class LineFeature extends FeatureGroup {
 
         this.addLayer(this.mainFeature);
         this.addLayer(this.hoverFeature);
-
-        this.bindPopup(elem);
     }
 
     private onMouseOver(ev: LeafletEvent) {
