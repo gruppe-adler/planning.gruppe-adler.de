@@ -131,6 +131,7 @@ export default class SessionVue extends Vue {
     }
 
     private editFeature(feature: Feature) {
+        // eslint-disable-next-line no-console
         console.log('edit feature', feature);
     }
 
