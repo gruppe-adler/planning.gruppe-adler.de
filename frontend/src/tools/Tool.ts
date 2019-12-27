@@ -11,5 +11,5 @@ export default abstract class Tool {
     abstract setup(): void;
     public abstract destroy(): void;
 
-    public abstract onDone?: (payload: any) => void;
+    public abstract onCreate?: (payload: any) => void;
 }

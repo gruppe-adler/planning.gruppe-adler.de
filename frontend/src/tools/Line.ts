@@ -3,7 +3,7 @@ import { LatLng, LeafletMouseEvent, GeoJSON } from 'leaflet';
 import { LineString } from 'geojson';
 
 export default class LineTool extends Tool {
-    public onDone?: (payload: Array<[number, number]>) => void;
+    public onCreate?: (payload: Array<[number, number]>) => void;
 
     private points: LatLng[] = [];
     private lastPoint: LatLng|null = null;
@@ -72,8 +72,8 @@ export default class LineTool extends Tool {
     }
 
     private commit() {
-        if (this.onDone) {
-            this.onDone(this.previewGeoJSON.coordinates as Array<[number, number]>);
+        if (this.onCreate) {
+            this.onCreate(this.previewGeoJSON.coordinates as Array<[number, number]>);
         }
         if (this.previewLayer) this.previewLayer.remove();
         this.points = [];

@@ -161,7 +161,7 @@ export default class SessionVue extends Vue {
         switch (this.activeTool) {
         case 'line':
             const lineTool = new LineTool(this.map);
-            lineTool.onDone = coords => {
+            lineTool.onCreate = coords => {
                 if (!this.controller) return;
                 addLine(this.controller, coords, 'black');
             };
