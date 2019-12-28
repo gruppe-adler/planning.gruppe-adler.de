@@ -17,6 +17,7 @@
             @delete-feature="deleteFeature($event);"
         />
         <Toolbar v-model="activeTool" />
+        <ConnectionIndicator :controller="controller" />
     </template>
 </div>
 </template>
@@ -31,6 +32,7 @@ import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFe
 import { WebSocketController } from '@/services/websocket';
 import MapVue from '@/components/Session/Map.vue';
 import ToolbarVue from '@/components/Session/Toolbar.vue';
+import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue';
 
 import Tool from '@/tools/Tool';
 import LineTool from '@/tools/Line';
@@ -39,7 +41,8 @@ import { addLine, deleteFeature } from '@/services/feature';
 @Component({
     components: {
         Map: MapVue,
-        Toolbar: ToolbarVue
+        Toolbar: ToolbarVue,
+        ConnectionIndicator: ConnectionIndicatorVue
     }
 })
 export default class SessionVue extends Vue {
