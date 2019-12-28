@@ -17,6 +17,7 @@
             @delete-feature="deleteFeature($event);"
         />
         <Toolbar v-model="activeTool" />
+        <Settingsbar :id="id" />
         <ConnectionIndicator :controller="controller" />
     </template>
 </div>
@@ -32,6 +33,7 @@ import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFe
 import { WebSocketController } from '@/services/websocket';
 import MapVue from '@/components/Session/Map.vue';
 import ToolbarVue from '@/components/Session/Toolbar.vue';
+import SettingsbarVue from '@/components/Session/Settingsbar.vue';
 import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue';
 
 import Tool from '@/tools/Tool';
@@ -42,7 +44,8 @@ import { addLine, deleteFeature } from '@/services/feature';
     components: {
         Map: MapVue,
         Toolbar: ToolbarVue,
-        ConnectionIndicator: ConnectionIndicatorVue
+        ConnectionIndicator: ConnectionIndicatorVue,
+        Settingsbar: SettingsbarVue
     }
 })
 export default class SessionVue extends Vue {
@@ -187,7 +190,6 @@ export default class SessionVue extends Vue {
 }
 
 .grad-icon-button {
-    padding: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,8 +208,18 @@ export default class SessionVue extends Vue {
         background-color: #D5D5D5;
     }
 
-    &--no-seperator::before {
-        background-color: transparent !important;
+    > i {
+        color: inherit;
+        user-select: none;
+        padding: 0.75rem;
+
+        &:hover {
+            background-color: rgba(black, 0.05);
+
+            ~ .grad-icon-button__tooltip {
+                display: initial;
+            }
+        }
     }
 
     &__tooltip {
@@ -227,12 +239,8 @@ export default class SessionVue extends Vue {
         user-select: none;
     }
 
-    &:hover {
-        background-color: rgba(black, 0.05);
-
-        > .grad-icon-button__tooltip {
-            display: initial;
-        }
+    &--no-seperator::before {
+        background-color: transparent !important;
     }
 
     &--tooltip-top > #{&}__tooltip {
@@ -246,7 +254,7 @@ export default class SessionVue extends Vue {
         transform: translateX(calc(-100% - 4px));
     }
 
-    &--dense {
+    &--dense > i {
         padding: .5rem;
     }
 
@@ -259,12 +267,7 @@ export default class SessionVue extends Vue {
         }
     }
 
-    > i {
-        color: inherit;
-        user-select: none;
-    }
-
-    &.grad-icon-button--active {
+    &--active {
         color: #66AA66;
     }
 }
