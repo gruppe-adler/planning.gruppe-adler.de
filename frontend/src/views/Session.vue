@@ -184,5 +184,6 @@ export default class SessionVue extends Vue {
     background-color: white;
     box-shadow: 0px 0.25rem .5rem rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
+    color: rgba(black,0.5);
 }
 </style>

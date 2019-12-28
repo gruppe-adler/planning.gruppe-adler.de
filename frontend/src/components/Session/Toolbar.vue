@@ -79,7 +79,6 @@ export default class ToolbarVue extends Vue {
         justify-content: center;
         position: relative;
         cursor: pointer;
-        color: rgba(black,0.5);
         transition: all 0.1s ease-in-out;
 
         &:not(:last-child)::before {
