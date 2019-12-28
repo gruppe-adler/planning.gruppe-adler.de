@@ -3,7 +3,7 @@
     <div
         v-for="t in tools"
         :key="t.id"
-        :class="['grad-icon-button', t.id === tool ? 'grad-icon-button--active' : '']"
+        :class="['grad-icon-button', t.id === tool ? 'grad-icon-button--active' : '', t.disabled ? 'grad-icon-button--disabled' : '']"
         @click="tool = t.id"
     >
         <i class="material-icons">{{t.icon}}</i>
@@ -19,6 +19,7 @@ interface Tool {
     id: string;
     displayName: string;
     icon: string;
+    disabled?: boolean;
 }
 
 @Component
@@ -34,12 +35,14 @@ export default class ToolbarVue extends Vue {
         {
             id: 'point',
             displayName: 'Pointing',
-            icon: 'touch_app'
+            icon: 'touch_app',
+            disabled: true
         },
         {
             id: 'marker',
             displayName: 'Marker',
-            icon: 'location_on'
+            icon: 'location_on',
+            disabled: true
         },
         {
             id: 'line',
@@ -49,12 +52,14 @@ export default class ToolbarVue extends Vue {
         {
             id: 'comment',
             displayName: 'Comment',
-            icon: 'mode_comment'
+            icon: 'mode_comment',
+            disabled: true
         },
         {
             id: 'image',
             displayName: 'Image',
-            icon: 'photo'
+            icon: 'photo',
+            disabled: true
         }
     ];
 

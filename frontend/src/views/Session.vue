@@ -235,6 +235,15 @@ export default class SessionVue extends Vue {
         }
     }
 
+    &--disabled {
+        cursor: default;
+        color: rgba(black, 0.25);
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
     > i {
         color: inherit;
         user-select: none;
