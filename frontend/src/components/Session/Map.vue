@@ -1,10 +1,17 @@
 <template>
-<div style="position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px;" ref="map"></div>
+<div>
+    <div style="position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px;" ref="map"></div>
+    <Popup
+        @popup-loaded="onPopupLoaded"
+        @edit="onPopupEdit"
+        @delete="onPopupDelete"
+    />
+</div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer, LeafletEvent } from 'leaflet';
+import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer, LeafletEvent, Popup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
@@ -12,11 +19,15 @@ import { Feature, Line } from '@/services/shared';
 import { LineString } from 'geojson';
 
 import LineFeature from '@/services/features/Line';
-import Popup from '@/utils/Popup';
 
 import deepEqual from 'deep-equal';
+import PopupVue from './Popup.vue';
 
-@Component
+@Component({
+    components: {
+        Popup: PopupVue
+    }
+})
 export default class MapVue extends Vue {
     @Prop({ default: null }) private value!: LeafletMap|null;
 
@@ -59,15 +70,16 @@ export default class MapVue extends Vue {
         this.map.on('dblclick', (ev: LeafletMouseEvent) => {
             this.$emit('dblckick', ev.latlng);
         });
-
-        this.popup = new Popup();
-        this.popup.onEdit = () => this.onPopupEdit();
-        this.popup.onDelete = () => this.onPopupDelete();
     }
 
+    private onPopupLoaded(popup: Popup) {
+        this.popup = popup;
+    }
+
+    @Watch('popup')
     @Watch('features')
     private drawFeatures() {
-        if (!this.map) return;
+        if (!this.map || !this.popup) return;
 
         const featuresToRedraw: Feature[] = [];
         const oldFeatureIds = Array.from(this.featureLayers.keys());
@@ -135,74 +147,3 @@ export default class MapVue extends Vue {
     }
 }
 </script>
-
-<!-- Popup Styles -->
-<style lang="scss">
-.grad-popup {
-    display: flex;
-    align-items: center;
-
-    &__wrapper {
-        .leaflet-popup-content {
-            margin: 0px;
-        }
-
-        .leaflet-popup-content-wrapper {
-            padding: 0px;
-            border-radius: 0.25rem;
-        }
-    }
-
-    &__tool {
-        padding: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        cursor: pointer;
-        color: rgba(black,0.5);
-        transition: all 0.1s ease-in-out;
-        z-index: 0;
-
-        &:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            width: 1px;
-            right: 0px;
-            bottom: .5rem;
-            top: .5rem;
-            background-color: #D5D5D5;
-        }
-
-        &-tooltip {
-            display: none;
-            color: white;
-            white-space: nowrap;
-            background-color: rgba(black, 0.6);
-            padding: 8px;
-            border-radius: 4px;
-            position: absolute;
-            font-size: 14px;
-            font-weight: bold;
-            top: -100%;
-            letter-spacing: 0.08em;
-            z-index: 2;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        &:hover {
-            background-color: rgba(black, 0.05);
-
-            > .grad-popup__tool-tooltip {
-                display: initial;
-            }
-        }
-
-        > i {
-            color: inherit;
-            user-select: none;
-        }
-    }
-}
-</style>

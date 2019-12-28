@@ -1,8 +1,5 @@
 <template>
-<div class="grad-popup grad-group">
-    <svg class="grad-popup__triangle" viewBox="0 0 4 8">
-        <polygon points="0,4 4,0 4,8" style="fill:white; box-shadow: 0px 0.25rem .5rem rgba(0, 0, 0, 0.125);" />
-    </svg>
+<div class="grad-popup">
     <div
         class="grad-popup__tool"
         @click="$emit('edit')"
@@ -22,24 +19,37 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { Popup } from 'leaflet';
 
 @Component
-export default class PopupVue extends Vue {}
+export default class PopupVue extends Vue {
+    private mounted() {
+        const popup = new Popup({
+            closeButton: false,
+            className: 'grad-popup__wrapper'
+        });
+
+        popup.setContent(this.$el as HTMLDivElement);
+
+        this.$emit('popup-loaded', popup);
+    }
+}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .grad-popup {
     display: flex;
-    position: fixed;
-    top: 50vh;
-    left: 50vw;
-    z-index: 1000;
     align-items: center;
 
-    &__triangle {
-        height: 60%;
-        position: absolute;
-        transform: translateX(-100%);
+    &__wrapper {
+        .leaflet-popup-content {
+            margin: 0px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            padding: 0px;
+            border-radius: 0.25rem;
+        }
     }
 
     &__tool {
@@ -73,7 +83,7 @@ export default class PopupVue extends Vue {}
             position: absolute;
             font-size: 14px;
             font-weight: bold;
-            top: calc(100% + 4px);
+            top: -100%;
             letter-spacing: 0.08em;
             z-index: 2;
             pointer-events: none;
