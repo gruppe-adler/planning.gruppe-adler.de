@@ -1,9 +1,10 @@
 <template>
 <div class="grad-connection-idicator grad-group">
-    <div class="grad-icon-button">
+    <div class="grad-icon-button grad-icon-button--disabled grad-icon-button--tooltip-left">
         <i v-if="connected === null" class="material-icons">signal_cellular_null</i>
         <i v-else-if="connected" class="material-icons" style="color: #66AA66;">signal_cellular_4_bar</i>
         <i v-else class="material-icons" style="color: #AA6666;">signal_cellular_connected_no_internet_4_bar</i>
+        <span class="grad-icon-button__tooltip">Status ({{status}})</span>
     </div>
 </div>
 </template>
@@ -57,6 +58,12 @@ export default class ConnectionIndicatorVue extends Vue {
         }
 
         this.connected = null;
+    }
+
+    private get status(): string {
+        if (this.connected === null) return 'unknown';
+
+        return this.connected ? 'connected' : 'disconnected';
     }
 }
 </script>
