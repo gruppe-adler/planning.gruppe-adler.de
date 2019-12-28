@@ -3,11 +3,11 @@
     <div
         v-for="t in tools"
         :key="t.id"
-        :class="['grad-toolbar__tool', t.id === tool ? 'grad-toolbar--active' : '']"
+        :class="['grad-icon-button', t.id === tool ? 'grad-icon-button--active' : '']"
         @click="tool = t.id"
     >
         <i class="material-icons">{{t.icon}}</i>
-        <span class="grad-toolbar__tool-tooltip">{{t.displayName}}</span>
+        <span class="grad-icon-button__tooltip">{{t.displayName}}</span>
     </div>
 </div>
 </template>
@@ -71,59 +71,5 @@ export default class ToolbarVue extends Vue {
     position: fixed;
     top: 1rem;
     left: 1rem;
-
-    &__tool {
-        padding: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.1s ease-in-out;
-
-        &:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            width: 1px;
-            right: 0px;
-            bottom: .5rem;
-            top: .5rem;
-            background-color: #D5D5D5;
-        }
-
-        &-tooltip {
-            display: none;
-            color: white;
-            white-space: nowrap;
-            background-color: rgba(black, 0.6);
-            padding: 8px;
-            border-radius: 4px;
-            position: absolute;
-            font-size: 14px;
-            font-weight: bold;
-            top: calc(100% + 4px);
-            letter-spacing: 0.08em;
-            z-index: 2;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        &:hover {
-            background-color: rgba(black, 0.05);
-
-            > .grad-toolbar__tool-tooltip {
-                display: initial;
-            }
-        }
-
-        > i {
-            color: inherit;
-            user-select: none;
-        }
-
-        &.grad-toolbar--active {
-            color: #66AA66;
-        }
-    }
 }
 </style>

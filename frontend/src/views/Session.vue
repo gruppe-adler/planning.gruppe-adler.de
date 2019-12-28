@@ -184,6 +184,64 @@ export default class SessionVue extends Vue {
     background-color: white;
     box-shadow: 0px 0.25rem .5rem rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
+}
+
+.grad-icon-button {
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
     color: rgba(black,0.5);
+
+    &:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        right: 0px;
+        bottom: .5rem;
+        top: .5rem;
+        background-color: #D5D5D5;
+    }
+
+    &--no-seperator::before {
+        background-color: transparent !important;
+    }
+
+    &__tooltip {
+        display: none;
+        color: white;
+        white-space: nowrap;
+        background-color: rgba(black, 0.6);
+        padding: 8px;
+        border-radius: 4px;
+        position: absolute;
+        font-size: 14px;
+        font-weight: bold;
+        top: calc(100% + 4px);
+        letter-spacing: 0.08em;
+        z-index: 2;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &:hover {
+        background-color: rgba(black, 0.05);
+
+        > .grad-icon-button__tooltip {
+            display: initial;
+        }
+    }
+
+    > i {
+        color: inherit;
+        user-select: none;
+    }
+
+    &.grad-icon-button--active {
+        color: #66AA66;
+    }
 }
 </style>

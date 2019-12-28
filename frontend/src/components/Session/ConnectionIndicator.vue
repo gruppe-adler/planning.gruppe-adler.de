@@ -1,9 +1,10 @@
 <template>
 <div class="grad-connection-idicator grad-group">
-    <i v-if="connected === null" class="material-icons">signal_cellular_null</i>
-    <i v-else-if="connected" class="material-icons" style="color: #66AA66;">signal_cellular_4_bar</i>
-    <i v-else class="material-icons" style="color: #AA6666;">signal_cellular_connected_no_internet_4_bar</i>
-
+    <div class="grad-icon-button">
+        <i v-if="connected === null" class="material-icons">signal_cellular_null</i>
+        <i v-else-if="connected" class="material-icons" style="color: #66AA66;">signal_cellular_4_bar</i>
+        <i v-else class="material-icons" style="color: #AA6666;">signal_cellular_connected_no_internet_4_bar</i>
+    </div>
 </div>
 </template>
 
@@ -66,6 +67,5 @@ export default class ConnectionIndicatorVue extends Vue {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    padding: 0.75rem;
 }
 </style>
