@@ -236,13 +236,18 @@ export default class SessionVue extends Vue {
     }
 
     &--tooltip-top > #{&}__tooltip {
-        top: -100%;
+        top: 0px;
+        transform: translateY(calc(-100% - 4px));
     }
 
     &--tooltip-left > #{&}__tooltip {
         top: initial;
         left: 0px;
         transform: translateX(calc(-100% - 4px));
+    }
+
+    &--dense {
+        padding: .5rem;
     }
 
     &--disabled {
