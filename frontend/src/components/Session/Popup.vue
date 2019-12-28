@@ -1,18 +1,13 @@
 <template>
 <div class="grad-popup">
     <div
-        class="grad-icon-button grad-icon-button--tooltip-top grad-icon-button--dense"
-        @click="$emit('edit')"
+        v-for="t in tools"
+        :key="t.id"
+        :class="['grad-icon-button grad-icon-button--tooltip-top grad-icon-button--dense', t.disabled ? 'grad-icon-button--disabled' : '']"
+        @click="$emit(t.id)"
     >
-        <i class="material-icons">edit</i>
-        <span class="grad-icon-button__tooltip">Edit</span>
-    </div>
-    <div
-        class="grad-icon-button grad-icon-button--tooltip-top grad-icon-button--dense"
-        @click="$emit('delete')"
-    >
-        <i class="material-icons">delete</i>
-        <span class="grad-icon-button__tooltip">Delete</span>
+        <i class="material-icons">{{t.icon}}</i>
+        <span class="grad-icon-button__tooltip">{{t.displayName}}</span>
     </div>
 </div>
 </template>
@@ -21,8 +16,29 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Popup } from 'leaflet';
 
+interface Tool {
+    id: string;
+    displayName: string;
+    icon: string;
+    disabled?: boolean;
+}
+
 @Component
 export default class PopupVue extends Vue {
+    private tools: Tool[] = [
+        {
+            id: 'edit',
+            displayName: 'Edit',
+            icon: 'edit',
+            disabled: true
+        },
+        {
+            id: 'delete',
+            displayName: 'Delete',
+            icon: 'delete'
+        }
+    ];
+
     private mounted() {
         const popup = new Popup({
             closeButton: false,
