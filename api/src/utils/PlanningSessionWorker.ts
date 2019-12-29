@@ -34,6 +34,8 @@ export default class PlanningSessionWorker {
                 this.sessions.delete(id);
 
                 console.log(`deleting empty planning session ${id}`);
+            } else {
+                console.log(`skipping planning session ${id}`, session.wss.clients.size);
             }
         });
     }
