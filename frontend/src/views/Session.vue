@@ -38,7 +38,8 @@ import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue
 
 import Tool from '@/tools/Tool';
 import LineTool from '@/tools/Line';
-import { addLine, deleteFeature } from '@/services/feature';
+import CommentTool from '@/tools/Comment';
+import { addLine, deleteFeature, addComment } from '@/services/feature';
 
 @Component({
     components: {
@@ -185,6 +186,14 @@ export default class SessionVue extends Vue {
             };
             this.tool = lineTool;
             break;
+        case 'comment':
+            const commentTool = new CommentTool(this.map);
+            commentTool.onCreate = payload => {
+                if (!this.controller) return;
+                addComment(this.controller, payload.pos, payload.text, this.$store.state.user.nickname);
+            };
+            this.tool = commentTool;
+            break;
 
         default:
             break;
@@ -280,6 +289,50 @@ export default class SessionVue extends Vue {
 
     &--active {
         color: #66AA66;
+    }
+}
+</style>
+
+<style lang="scss">
+.grad-comment-popup {
+    .leaflet-popup-content {
+        margin: 0px;
+    }
+
+    .leaflet-popup-content-wrapper {
+        padding: 0px;
+        border-radius: 0.25rem;
+    }
+
+    &.leaflet-tooltip {
+        border-width: 0px;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    &__wrapper {
+        display: flex;
+        padding: 0.25rem 0;
+
+        > div:first-child {
+            margin-right: 1rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    &__text-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-width: 60px;
+    }
+
+    &__text {
+        font-size: 1rem;
+    }
+
+    &__author {
+        font-size: .75rem;
+        color: lighten(black, 50%);
     }
 }
 </style>

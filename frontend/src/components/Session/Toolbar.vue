@@ -52,8 +52,7 @@ export default class ToolbarVue extends Vue {
         {
             id: 'comment',
             displayName: 'Comment',
-            icon: 'mode_comment',
-            disabled: true
+            icon: 'mode_comment'
         },
         {
             id: 'image',

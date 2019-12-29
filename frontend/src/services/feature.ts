@@ -13,11 +13,12 @@ function createFeature(controller: WebSocketController, feature: Feature): void 
     controller.send(msg);
 }
 
-export function addComment(controller: WebSocketController, pos: [number, number], text: string): void {
+export function addComment(controller: WebSocketController, pos: [number, number], text: string, author: string): void {
     const comment: Comment = {
         type: 'comment',
         pos,
         text,
+        author,
         id: 'temp'
     };
 

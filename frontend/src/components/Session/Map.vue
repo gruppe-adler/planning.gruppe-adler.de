@@ -15,10 +15,11 @@ import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer, Leafle
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
-import { Feature, Line } from '@/services/shared';
+import { Feature, Line, Comment } from '@/services/shared';
 import { LineString } from 'geojson';
 
 import LineFeature from '@/services/features/Line';
+import CommentFeature from '@/services/features/Comment';
 
 import deepEqual from 'deep-equal';
 import PopupVue from './Popup.vue';
@@ -53,7 +54,8 @@ export default class MapVue extends Vue {
     private mounted() {
         this.map = new LeafletMap(this.$refs.map as HTMLDivElement, {
             attributionControl: false,
-            zoomControl: false
+            zoomControl: false,
+            doubleClickZoom: false
         });
     }
 
@@ -122,7 +124,11 @@ export default class MapVue extends Vue {
             case 'line':
                 layer = new LineFeature(f as Line).addTo(this.map!);
                 break;
-
+            case 'comment':
+                layer = new CommentFeature(f as Comment).addTo(this.map!);
+                layer.on('delete', () => this.$emit('delete-feature', f));
+                layer.on('edit', () => this.$emit('edit-feature', f));
+                break;
             default:
                 break;
             }
@@ -130,7 +136,7 @@ export default class MapVue extends Vue {
             if (layer) {
                 layer.on('mouseover', () => this.highlightFeature(f));
                 layer.on('mouseout', () => this.highlightFeature(null));
-                layer.bindPopup(this.popup!);
+                if (layer.getPopup() === undefined) layer.bindPopup(this.popup!);
                 layer.on('popupopen', () => { this.popupFeature = f; });
 
                 this.featureLayers.set(f.id, { feature: f, layer });
