@@ -4,14 +4,29 @@ import { API_DOMAIN } from '.';
 export class WebSocketController {
     private socket: WebSocket;
     private eventHandler: Map<string, Function[]> = new Map<string, Function[]>();
+    private id: string;
 
     constructor(id: string) {
-        this.socket = new WebSocket(`wss://${API_DOMAIN}/api/join/${id}`);
-
-        this.socket.onopen = () => this.emit('open');
-        this.socket.onclose = () => this.emit('close');
-        this.socket.onerror = (err) => this.emit('error', err);
-        this.socket.onmessage = (ev: MessageEvent) => this.onMessage(ev);
+        this.id = id;
+        
+        this.socket = this.setupSocket();
+    }
+    
+    private setupSocket(): WebSocket {
+        const socket = new WebSocket(`wss://${API_DOMAIN}/api/join/${this.id}`);
+        
+        socket.onopen = () => this.emit('open');
+        socket.onclose = (ev: CloseEvent) => this.onClose(ev);
+        socket.onerror = (err) => this.emit('error', err);
+        socket.onmessage = (ev: MessageEvent) => this.onMessage(ev);
+        
+        return socket;
+    }
+    
+    private onClose(ev: CloseEvent) {
+        // reconnect
+        this.emit('close');
+        this.socket = this.setupSocket();
     }
 
     private onMessage(ev: MessageEvent) {
