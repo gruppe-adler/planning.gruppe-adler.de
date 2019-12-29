@@ -262,7 +262,7 @@ export default class SessionVue extends Vue {
         cursor: default;
         color: rgba(black, 0.25);
 
-        &:hover {
+        > i:hover {
             background-color: transparent;
         }
     }
