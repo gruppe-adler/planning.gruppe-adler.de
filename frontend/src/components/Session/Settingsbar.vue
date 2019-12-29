@@ -6,11 +6,11 @@
     </div>
     <Share :id="id" />
     <div class="grad-icon-button grad-icon-button--disabled">
-        <i class="material-icons">save</i>
+        <i class="material-icons">save_alt</i>
         <span class="grad-icon-button__tooltip">Export</span>
     </div>
     <div class="grad-icon-button grad-icon-button--disabled">
-        <i class="material-icons">import_export</i>
+        <i class="material-icons">upload_file</i>
         <span class="grad-icon-button__tooltip">Import</span>
     </div>
 </div>
