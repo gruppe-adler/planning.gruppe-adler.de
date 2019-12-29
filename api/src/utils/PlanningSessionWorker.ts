@@ -29,6 +29,9 @@ export default class PlanningSessionWorker {
             // exit if session exists for less then CLEANUP_TIMER
             if (now - session.createdAt < CLEANUP_TIMER) return;
 
+            // ping all clients
+            session.wss.clients.forEach(c => c.ping());
+
             if (session.wss.clients.size === 0) {
                 session.wss.close();
                 this.sessions.delete(id);
