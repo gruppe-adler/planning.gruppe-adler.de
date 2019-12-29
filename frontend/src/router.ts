@@ -6,21 +6,21 @@ Vue.use(VueRouter);
 const routes: RouteConfig[] = [
     {
         path: '/',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+        component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
     },
     {
         path: '/join/:id',
         props: true,
-        component: () => import(/* webpackChunkName: "session" */ '../views/Join.vue')
+        component: () => import(/* webpackChunkName: "session" */ './views/Join.vue')
     },
     {
         path: '/create',
-        component: () => import(/* webpackChunkName: "create" */ '../views/Create.vue')
+        component: () => import(/* webpackChunkName: "create" */ './views/Create.vue')
     },
     {
         path: '/session/:id',
         props: true,
-        component: () => import(/* webpackChunkName: "session" */ '../views/Session.vue')
+        component: () => import(/* webpackChunkName: "session" */ './views/Session.vue')
     }
 ];
 
