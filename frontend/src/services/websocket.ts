@@ -8,21 +8,21 @@ export class WebSocketController {
 
     constructor(id: string) {
         this.id = id;
-        
+
         this.socket = this.setupSocket();
     }
-    
+
     private setupSocket(): WebSocket {
         const socket = new WebSocket(`wss://${API_DOMAIN}/api/join/${this.id}`);
-        
+
         socket.onopen = () => this.emit('open');
         socket.onclose = (ev: CloseEvent) => this.onClose(ev);
         socket.onerror = (err) => this.emit('error', err);
         socket.onmessage = (ev: MessageEvent) => this.onMessage(ev);
-        
+
         return socket;
     }
-    
+
     private onClose(ev: CloseEvent) {
         // reconnect
         this.emit('close');
