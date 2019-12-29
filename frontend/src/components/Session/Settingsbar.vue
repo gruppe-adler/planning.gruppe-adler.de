@@ -4,11 +4,8 @@
         <i class="material-icons">settings</i>
         <span class="grad-icon-button__tooltip">Settings</span>
     </div>
-    <Share />
-    <div class="grad-icon-button grad-icon-button--disabled">
-        <i class="material-icons">save_alt</i>
-        <span class="grad-icon-button__tooltip">Export</span>
-    </div>
+    <Share v-model="extended" />
+    <Export v-model="extended" />
     <div class="grad-icon-button grad-icon-button--disabled">
         <i class="material-icons">upload_file</i>
         <span class="grad-icon-button__tooltip">Import</span>
@@ -19,13 +16,17 @@
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import ShareVue from './Settingsbar/Share.vue';
+import ExportVue from './Settingsbar/Export.vue';
 
 @Component({
     components: {
-        Share: ShareVue
+        Share: ShareVue,
+        Export: ExportVue
     }
 })
-export default class SettingbarVue extends Vue {}
+export default class SettingbarVue extends Vue {
+    private extended: string = 'none';
+}
 </script>
 
 <style lang="scss" scoped>
