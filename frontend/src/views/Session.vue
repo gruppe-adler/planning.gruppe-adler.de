@@ -17,7 +17,7 @@
             @delete-feature="deleteFeature($event);"
         />
         <Toolbar v-model="activeTool" />
-        <Settingsbar :id="id" />
+        <Settingsbar />
         <ConnectionIndicator :controller="controller" />
     </template>
 </div>
@@ -70,7 +70,15 @@ export default class SessionVue extends Vue {
 
     private created() {
         if (this.id === '') this.$router.push('/');
+
+        if (this.$store.state.user === null) {
+            this.$router.push(`/join/${this.id}`);
+            return;
+        }
+
         window.addEventListener('keydown', this.onKeyDown);
+
+        this.$store.commit('setSessionId', this.id);
 
         this.setupSocket();
     }

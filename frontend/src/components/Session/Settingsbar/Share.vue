@@ -16,12 +16,10 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ShareVue extends Vue {
-    @Prop({ default: -1 }) private id!: number;
-
     private extended: boolean = false;
 
     private get link() {
-        return `${location.origin}/join/${this.id}`;
+        return `${location.origin}/join/${this.$store.state.sessionId}`;
     }
 
     private copy() {

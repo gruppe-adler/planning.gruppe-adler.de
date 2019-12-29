@@ -4,7 +4,7 @@
         <i class="material-icons">settings</i>
         <span class="grad-icon-button__tooltip">Settings</span>
     </div>
-    <Share :id="id" />
+    <Share />
     <div class="grad-icon-button grad-icon-button--disabled">
         <i class="material-icons">save_alt</i>
         <span class="grad-icon-button__tooltip">Export</span>
@@ -25,9 +25,7 @@ import ShareVue from './Settingsbar/Share.vue';
         Share: ShareVue
     }
 })
-export default class SettingbarVue extends Vue {
-    @Prop({ default: -1 }) private id!: number;
-}
+export default class SettingbarVue extends Vue {}
 </script>
 
 <style lang="scss" scoped>

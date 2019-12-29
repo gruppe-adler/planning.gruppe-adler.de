@@ -74,9 +74,13 @@ export default class JoinVue extends Vue {
         } else {
             localStorage.removeItem('grad-planning-user');
         }
-        // localStorage.getItem('grad-plannning-user');
 
-        this.$router.push({ path: `/session/${this.id}`, query: { color: this.color, nickname: this.nickname } });
+        this.$store.commit('setUser', {
+            ...values,
+            remember: this.remember
+        });
+
+        this.$router.push(`/session/${this.id}`);
     }
 }
 </script>
