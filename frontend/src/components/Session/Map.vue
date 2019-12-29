@@ -22,17 +22,23 @@ import LineFeature from '@/services/features/Line';
 
 import deepEqual from 'deep-equal';
 import PopupVue from './Popup.vue';
+import { mapState } from 'vuex';
 
 @Component({
     components: {
         Popup: PopupVue
+    },
+    computed: {
+        ...mapState({
+            features: (state: any) => state.features
+        })
     }
 })
 export default class MapVue extends Vue {
     @Prop({ default: null }) private value!: LeafletMap|null;
 
     @Prop({ required: true }) private controller!: WebSocketController;
-    @Prop({ default: [] }) private features!: Feature[];
+    private features!: Feature[];
     @Prop({ required: true }) private mapId!: string;
 
     private featureLayers: Map<string, { feature: Feature, layer: Layer}> = new Map();

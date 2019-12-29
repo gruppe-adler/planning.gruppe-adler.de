@@ -121,10 +121,8 @@ export default class SessionVue extends Vue {
 
         if (['delete_feature', 'create_feature', 'edit_feature', 'init_features'].includes(msg.type)) {
             this.features = updateFeatures(this.features, msg);
+            this.$store.commit('setFeatures', this.features);
         }
-
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(this.features.map(f => ({ type: f.type, id: f.id }))));
     }
 
     private onKeyDown(event: KeyboardEvent) {
@@ -140,6 +138,11 @@ export default class SessionVue extends Vue {
 
     private deleteFeature(feature: Feature) {
         if (!this.controller) return;
+
+        // reset highlighted feature if it is deleted
+        if (this.highlightedFeature && this.highlightedFeature.id === feature.id) {
+            this.highlightedFeature = null;
+        }
 
         deleteFeature(this.controller, feature.id);
     }
