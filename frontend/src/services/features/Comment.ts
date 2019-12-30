@@ -63,7 +63,7 @@ export default class CommentFeature extends Marker {
     constructor(options: Comment) {
         const icon = new DivIcon({
             className: 'grad-comment',
-            html: '<i class="material-icons" style="color: #d18d1f; text-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.25); font-size: 36px;">mode_comment</i>',
+            html: '<i class="material-icons" style="color: #2F80ED; text-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.25); font-size: 36px;">mode_comment</i>',
             iconSize: [36, 36]
         });
 
