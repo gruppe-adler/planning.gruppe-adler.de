@@ -11,7 +11,14 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { Map as LeafletMap, TileLayer, LeafletMouseEvent, GeoJSON, Layer, LeafletEvent, Popup } from 'leaflet';
+import {
+    Map as LeafletMap,
+    TileLayer,
+    LeafletMouseEvent,
+    Layer as LeafletLayer,
+    LeafletEvent,
+    Popup as LeafletPopup
+} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
@@ -42,8 +49,8 @@ export default class MapVue extends Vue {
     private features!: Feature[];
     @Prop({ required: true }) private mapId!: string;
 
-    private featureLayers: Map<string, { feature: Feature, layer: Layer}> = new Map();
-    private popup?: Popup;
+    private featureLayers: Map<string, { feature: Feature, layer: LeafletLayer }> = new Map();
+    private popup?: LeafletPopup;
     private popupFeature?: Feature;
 
     // helper functions for v-model
@@ -68,6 +75,8 @@ export default class MapVue extends Vue {
      */
     @Watch('map')
     private setupMap() {
+        this.$store.commit('setMap', this.map);
+
         if (!this.map) return;
 
         this.map.setView([0, 0], 0);
@@ -80,7 +89,7 @@ export default class MapVue extends Vue {
         });
     }
 
-    private onPopupLoaded(popup: Popup) {
+    private onPopupLoaded(popup: LeafletPopup) {
         this.popup = popup;
     }
 
@@ -118,7 +127,7 @@ export default class MapVue extends Vue {
         }
 
         featuresToRedraw.forEach(f => {
-            let layer: Layer|null = null;
+            let layer: LeafletLayer|null = null;
 
             switch (f.type) {
             case 'line':
@@ -126,8 +135,8 @@ export default class MapVue extends Vue {
                 break;
             case 'comment':
                 layer = new CommentFeature(f as Comment).addTo(this.map!);
-                layer.on('delete', () => this.$emit('delete-feature', f));
-                layer.on('edit', () => this.$emit('edit-feature', f));
+                layer!.on('delete', () => this.$emit('delete-feature', f));
+                layer!.on('edit', () => this.$emit('edit-feature', f));
                 break;
             default:
                 break;

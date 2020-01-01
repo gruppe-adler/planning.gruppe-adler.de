@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueX from 'vuex';
 import { Feature } from '@/services/shared';
+import { Map as LeafletMap } from 'leaflet';
 
 Vue.use(VueX);
 
@@ -13,13 +14,15 @@ interface User {
 interface RootState {
     sessionId: string|null;
     features: Feature[];
-    user: User|null
+    user: User|null;
+    map: LeafletMap|null;
 }
 
 export default new VueX.Store<RootState>({
     state: {
         sessionId: null,
         user: null,
+        map: null,
         features: []
     },
     mutations: {
@@ -31,6 +34,9 @@ export default new VueX.Store<RootState>({
         },
         setFeatures(state, features: Feature[]) {
             state.features = features;
+        },
+        setMap(state, map: LeafletMap) {
+            state.map = map;
         }
     }
 });
