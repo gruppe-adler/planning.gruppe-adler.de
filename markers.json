@@ -1,0 +1,3268 @@
+[
+    {
+        "id": "Empty",
+        "color": [
+            0.2,
+            0.1,
+            0.4,
+            1
+        ],
+        "name": "Empty",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\system\\empty_ca.paa",
+        "size": 0,
+        "scope": 1,
+        "shadow": 0,
+        "markerClass": "System",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "mil_objective",
+        "name": "Objective",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\objective_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_marker",
+        "name": "Marker",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\marker_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_flag",
+        "name": "Flag",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\flag_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_arrow",
+        "name": "Arrow",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\arrow_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_arrow2",
+        "name": "Arrow (filled)",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\arrow2_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_ambush",
+        "name": "Ambush",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\ambush_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_destroy",
+        "name": "Destroy",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\destroy_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_start",
+        "name": "Start",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\start_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_end",
+        "name": "End",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\end_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_pickup",
+        "name": "Pick Up",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\pickup_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_join",
+        "name": "Join",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\join_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_warning",
+        "name": "Warning",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\warning_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_unknown",
+        "name": "Unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\unknown_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_circle",
+        "name": "Circle",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\circle_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_dot",
+        "name": "Dot",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\dot_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_box",
+        "name": "Square",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\box_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "mil_triangle",
+        "name": "Triangle",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\military\\triangle_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 1,
+        "markerClass": "Military"
+    },
+    {
+        "id": "hd_dot",
+        "name": "Dot",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\dot_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_objective",
+        "name": "Objective",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\objective_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_flag",
+        "name": "Flag",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\flag_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_arrow",
+        "name": "Arrow",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\arrow_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_ambush",
+        "name": "Ambush",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\ambush_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_destroy",
+        "name": "Destroy",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\destroy_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_start",
+        "name": "Start",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\start_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_end",
+        "name": "End",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\end_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_pickup",
+        "name": "Pick Up",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\pickup_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_join",
+        "name": "Join",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\join_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_warning",
+        "name": "Warning",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\warning_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "hd_unknown",
+        "name": "Unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\handdrawn\\unknown_CA.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "size": 32,
+        "shadow": 1,
+        "scope": 2,
+        "markerClass": "draw"
+    },
+    {
+        "id": "b_unknown",
+        "name": "Unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_unknown.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_unknown.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_unknown.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_unknown.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "name": "Unknown",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_unknown.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_unknown.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "name": "Unknown",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_inf",
+        "name": "Infantry",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_inf.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_inf",
+        "name": "Infantry",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_inf.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_inf",
+        "name": "Infantry",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_inf.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_motor_inf",
+        "name": "Motorized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_motor_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_motor_inf.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_motor_inf",
+        "name": "Motorized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_motor_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_motor_inf.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_motor_inf",
+        "name": "Motorized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_motor_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_motor_inf.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_mech_inf",
+        "name": "Mechanized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_mech_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_mech_inf.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_mech_inf",
+        "name": "Mechanized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_mech_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_mech_inf.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_mech_inf",
+        "name": "Mechanized",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_mech_inf.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_mech_inf.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_armor",
+        "name": "Armor",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_armor.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_armor.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_armor",
+        "name": "Armor",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_armor.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_armor.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_armor",
+        "name": "Armor",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_armor.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_armor.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_recon",
+        "name": "Recon",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_recon.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_recon.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_recon",
+        "name": "Recon",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_recon.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_recon.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_recon",
+        "name": "Recon",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_recon.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_recon.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_air",
+        "name": "Helicopter",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_air.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_air.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_air",
+        "name": "Helicopter",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_air.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_air.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_air",
+        "name": "Helicopter",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_air.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_air.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_plane",
+        "name": "Plane",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_plane.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_plane.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_plane",
+        "name": "Plane",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_plane.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_plane.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_plane",
+        "name": "Plane",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_plane.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_plane.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_uav",
+        "name": "UAV",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_uav.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_uav.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_uav",
+        "name": "UAV",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_uav.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_uav.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_uav",
+        "name": "UAV",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_uav.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_uav.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_naval",
+        "name": "Naval",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_naval.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_naval.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_naval",
+        "name": "Naval",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_naval.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_naval.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_naval",
+        "name": "Naval",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_naval.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_naval.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_med",
+        "name": "Medical",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_med.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_med.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_med",
+        "name": "Medical",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_med.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_med.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_med",
+        "name": "Medical",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_med.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_med.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_art",
+        "name": "Artillery",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_art.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_art.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_art",
+        "name": "Artillery",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_art.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_art.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_art",
+        "name": "Artillery",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_art.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_art.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_mortar",
+        "name": "Mortar",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_mortar.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_mortar.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_mortar",
+        "name": "Mortar",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_mortar.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_mortar.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_mortar",
+        "name": "Mortar",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_mortar.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_mortar.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_hq",
+        "name": "HQ",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_hq.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_hq.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_hq",
+        "name": "HQ",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_hq.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_hq.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_hq",
+        "name": "HQ",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_hq.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_hq.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_support",
+        "name": "Support",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_support.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_support.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_support",
+        "name": "Support",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_support.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_support.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_support",
+        "name": "Support",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_support.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_support.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_maint",
+        "name": "Maintenance",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_maint.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_maint.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_maint",
+        "name": "Maintenance",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_maint.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_maint.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_maint",
+        "name": "Maintenance",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_maint.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_maint.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_service",
+        "name": "Service",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_service.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_service.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_service",
+        "name": "Service",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_service.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_service.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_service",
+        "name": "Service",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_service.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_service.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_installation",
+        "name": "Installation",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_installation.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_installation.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_installation",
+        "name": "Installation",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_installation.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_installation.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_installation",
+        "name": "Installation",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_installation.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_installation.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "u_installation",
+        "name": "Installation",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\u_installation.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\u_installation.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_antiair",
+        "name": "Anti-Air",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_antiair.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\b_antiair.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_antiair",
+        "name": "Anti-Air",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_antiair.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\o_antiair.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_antiair",
+        "name": "Anti-Air",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_antiair.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\n_antiair.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "c_unknown",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_unknown.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_unknown.paa",
+        "side": 1,
+        "color": [
+            "color_Civilian",
+            1
+        ],
+        "markerClass": "NATO_Civilian",
+        "name": "Unknown",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "c_car",
+        "name": "Car",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_car.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_car.paa",
+        "side": 1,
+        "color": [
+            "color_Civilian",
+            1
+        ],
+        "markerClass": "NATO_Civilian",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "c_ship",
+        "name": "Ship",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_ship.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_ship.paa",
+        "side": 1,
+        "color": [
+            "color_Civilian",
+            1
+        ],
+        "markerClass": "NATO_Civilian",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "c_air",
+        "name": "Helicopter",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_air.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_air.paa",
+        "side": 1,
+        "color": [
+            "color_Civilian",
+            1
+        ],
+        "markerClass": "NATO_Civilian",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "c_plane",
+        "name": "Plane",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_plane.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\c_plane.paa",
+        "side": 1,
+        "color": [
+            "color_Civilian",
+            1
+        ],
+        "markerClass": "NATO_Civilian",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_0",
+        "name": "Fire Team",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_0.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_0.paa",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "commander": "Corporal",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_1",
+        "name": "Squad",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_1.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_1.paa",
+        "commander": "Sergeant",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_2",
+        "name": "Section",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_2.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_2.paa",
+        "commander": "Sergeant",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_3",
+        "name": "Platoon",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_3.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_3.paa",
+        "commander": "Lieutenant",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_4",
+        "name": "Company",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_4.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_4.paa",
+        "commander": "Captain",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_5",
+        "name": "Battalion",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_5.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_5.paa",
+        "commander": "Colonel",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_6",
+        "name": "Regiment",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_6.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_6.paa",
+        "commander": "Colonel",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_7",
+        "name": "Brigade",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_7.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_7.paa",
+        "commander": "General",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_8",
+        "name": "Division",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_8.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_8.paa",
+        "commander": "General",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_9",
+        "name": "Corps",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_9.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_9.paa",
+        "commander": "General",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_10",
+        "name": "Army",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_10.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_10.paa",
+        "commander": "General",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "group_11",
+        "name": "Army Group",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_11.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\group_11.paa",
+        "commander": "General",
+        "markerClass": "NATO_Sizes",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "respawn_unknown",
+        "scope": 1,
+        "name": "Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_unknown_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_unknown_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_inf",
+        "scope": 1,
+        "name": "Infantry Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_inf_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_inf_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_motor",
+        "scope": 1,
+        "name": "Car Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_motor_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_motor_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_armor",
+        "scope": 1,
+        "name": "Armor Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_armor_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_armor_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_air",
+        "scope": 1,
+        "name": "Helicopter Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_air_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_air_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_plane",
+        "scope": 1,
+        "name": "Plane Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_plane_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_plane_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_naval",
+        "scope": 1,
+        "name": "Naval Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_naval_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_naval_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "respawn_para",
+        "scope": 1,
+        "name": "Airborne Respawn",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_para_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\nato\\respawn_para_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "markerClass": "NATO_Respawn",
+        "size": 32
+    },
+    {
+        "id": "loc_Tree",
+        "name": "Tree",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\tree_CA.paa",
+        "color": [
+            0.45,
+            0.64,
+            0.33,
+            0.4
+        ],
+        "size": 12,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "loc_SmallTree",
+        "name": "Small Tree",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\SmallTree_CA.paa",
+        "size": 12,
+        "color": [
+            0.45,
+            0.64,
+            0.33,
+            0.4
+        ],
+        "showEditorMarkerColor": 1,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Bush",
+        "name": "Bush",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Bush_CA.paa",
+        "size": 7,
+        "color": [
+            0.45,
+            0.64,
+            0.33,
+            0.4
+        ],
+        "showEditorMarkerColor": 1,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Church",
+        "name": "Church",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Church_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Chapel",
+        "name": "Chapel",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Chapel_CA.paa",
+        "size": 24,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Cross",
+        "name": "Cross",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Cross_CA.paa",
+        "size": 24,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Rock",
+        "name": "Rock",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Rock_CA.paa",
+        "size": 12,
+        "color": [
+            0.1,
+            0.1,
+            0.1,
+            0.8
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Bunker",
+        "name": "Bunker",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Bunker_CA.paa",
+        "size": 14,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Fountain",
+        "name": "Fountain",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Fountain_CA.paa",
+        "size": 11,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_ViewTower",
+        "name": "View Tower",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\ViewTower_CA.paa",
+        "size": 16,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Lighthouse",
+        "name": "Lighthouse",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Lighthouse_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Quay",
+        "name": "Pier",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Quay_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Fuelstation",
+        "name": "Fuel Station",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Fuelstation_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Hospital",
+        "name": "Hospital",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Hospital_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_BusStop",
+        "name": "Bus Stop",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\BusStop_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Transmitter",
+        "name": "Radio Tower",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Transmitter_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Stack",
+        "name": "Chimney Stack",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Stack_CA.paa",
+        "size": 20,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Ruin",
+        "name": "Ruin",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Ruin_CA.paa",
+        "size": 16,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Tourism",
+        "name": "Hotel",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Tourism_CA.paa",
+        "size": 16,
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_WaterTower",
+        "name": "Water Tower",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\WaterTower_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_Power",
+        "name": "Power Plant",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\Power_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_PowerSolar",
+        "name": "Solar Power Plant",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\PowerSolar_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_PowerWave",
+        "name": "Wave Power Plant",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\PowerWave_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "loc_PowerWind",
+        "name": "Wind Power Plant",
+        "icon": "\\A3\\ui_f\\data\\map\\mapcontrol\\PowerWind_CA.paa",
+        "size": 24,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "showEditorMarkerColor": 0,
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations"
+    },
+    {
+        "id": "flag_NATO",
+        "name": "NATO",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_CSAT",
+        "name": "CSAT",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\CSAT_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\CSAT_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_AAF",
+        "name": "Altis Armed Forces",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\AAF_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\AAF_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Altis",
+        "name": "Altis",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Altis_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Altis_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_AltisColonial",
+        "name": "Altis (Colonial)",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\AltisColonial_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\AltisColonial_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_FIA",
+        "name": "FIA",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\FIA_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\FIA_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_EU",
+        "name": "European Union",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\EU_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\EU_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_UN",
+        "name": "United Nations",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\UN_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\UN_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Belgium",
+        "name": "Belgium",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Belgium_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Belgium_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Canada",
+        "name": "Canada",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Canada_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Canada_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Croatia",
+        "name": "Croatia",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Croatia_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Croatia_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_CzechRepublic",
+        "name": "Czech Republic",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\CzechRepublic_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\CzechRepublic_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Denmark",
+        "name": "Denmark",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Denmark_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Denmark_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_France",
+        "name": "France",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\France_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\France_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Georgia",
+        "name": "Georgia",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Georgia_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Georgia_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Germany",
+        "name": "Germany",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Germany_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Germany_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Greece",
+        "name": "Greece",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Greece_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Greece_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Hungary",
+        "name": "Hungary",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Hungary_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Hungary_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Iceland",
+        "name": "Iceland",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Iceland_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Iceland_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Italy",
+        "name": "Italy",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Italy_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Italy_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Luxembourg",
+        "name": "Luxembourg",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Luxembourg_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Luxembourg_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Netherlands",
+        "name": "Netherlands",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Netherlands_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Netherlands_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Norway",
+        "name": "Norway",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Norway_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Norway_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Poland",
+        "name": "Poland",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Poland_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Poland_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Portugal",
+        "name": "Portugal",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Portugal_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Portugal_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Slovakia",
+        "name": "Slovakia",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Slovakia_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Slovakia_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Slovenia",
+        "name": "Slovenia",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Slovenia_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Slovenia_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Spain",
+        "name": "Spain",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\Spain_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\Spain_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_UK",
+        "name": "UK",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\UK_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\UK_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_USA",
+        "name": "USA",
+        "icon": "\\A3\\ui_f\\data\\map\\markers\\flags\\USA_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\USA_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "Select",
+        "name": "Select",
+        "icon": "\\A3\\ui_f\\data\\igui\\cfg\\islandmap\\iconplayer_ca.paa",
+        "color": [
+            1,
+            0,
+            0,
+            1
+        ],
+        "scope": 1,
+        "shadow": 0,
+        "markerClass": "System",
+        "size": 32
+    },
+    {
+        "id": "waypoint",
+        "name": "Waypoint",
+        "icon": "\\A3\\ui_f\\data\\map\\groupicons\\waypoint.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "selector_selectable",
+        "name": "Selector - Selectable",
+        "icon": "\\A3\\ui_f\\data\\map\\groupicons\\selector_selectable_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "selector_selectedEnemy",
+        "name": "Selector - Selected Enemy",
+        "icon": "\\A3\\ui_f\\data\\map\\groupicons\\selector_selectedEnemy_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "selector_selectedFriendly",
+        "name": "Selector - Selected Friendly",
+        "icon": "\\A3\\ui_f\\data\\map\\groupicons\\selector_selectedFriendly_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "selector_selectedMission",
+        "name": "Selector - Selected Mission",
+        "icon": "\\A3\\ui_f\\data\\map\\groupicons\\selector_selectedMission_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "KIA",
+        "name": "KIA",
+        "icon": "\\a3\\Ui_F_Curator\\Data\\CfgMarkers\\kia_ca.paa",
+        "color": [
+            0,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29
+    },
+    {
+        "id": "Minefield",
+        "name": "Minefield",
+        "icon": "\\a3\\Ui_F_Curator\\Data\\CfgMarkers\\minefield_ca.paa",
+        "color": [
+            0.9,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "MinefieldAP",
+        "name": "Minefield (AP)",
+        "icon": "\\a3\\Ui_F_Curator\\Data\\CfgMarkers\\minefieldAP_ca.paa",
+        "color": [
+            0.9,
+            0,
+            0,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "size": 29,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "flag_CTRG",
+        "name": "CTRG",
+        "icon": "\\A3\\Ui_f\\data\\Map\\Markers\\Flags\\ctrg_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Viper",
+        "name": "Viper",
+        "icon": "\\A3\\Ui_f\\data\\Map\\Markers\\Flags\\viper_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Syndicat",
+        "name": "Syndikat",
+        "icon": "\\A3\\Ui_f\\data\\Map\\Markers\\Flags\\syndicat_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Tanoa",
+        "name": "Tanoa",
+        "icon": "\\A3\\Ui_f\\data\\Map\\Markers\\Flags\\tanoa_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_TanoaGendarmerie",
+        "name": "Gendarmerie",
+        "icon": "\\A3\\Ui_f\\data\\Map\\Markers\\Flags\\tanoaGendarmerie_ca.paa",
+        "texture": "\\A3\\ui_f\\data\\map\\markers\\flags\\nato_ca.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_IDAP",
+        "name": "International Development & Aid Project",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\IDAP_ca.paa",
+        "texture": "\\A3\\ui_f_orange\\data\\cfgmarkers\\IDAP_ca.paa",
+        "shadow": 1,
+        "size": 32,
+        "scope": 1,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "RedCrystal",
+        "scope": 2,
+        "name": "Red Crystal",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\redcrystal_ca.paa",
+        "texture": "\\A3\\ui_f_orange\\data\\cfgmarkers\\redcrystal_ca.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 1,
+        "size": 32,
+        "markerClass": "Flags"
+    },
+    {
+        "id": "White",
+        "scope": 2,
+        "name": "White",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\white_ca.paa",
+        "texture": "\\A3\\ui_f_orange\\data\\cfgmarkers\\white_ca.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 1,
+        "size": 32,
+        "markerClass": "Flags"
+    },
+    {
+        "id": "loc_CivilDefense",
+        "size": 24,
+        "name": "Civil Defense",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\civildefense.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "loc_CulturalProperty",
+        "size": 24,
+        "name": "Cultural Property",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\culturalproperty_ca.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "loc_DangerousForces",
+        "size": 24,
+        "name": "Dangerous Forces",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\dangerousforces_ca.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "loc_SafetyZone",
+        "size": 24,
+        "name": "Safety Zone",
+        "icon": "\\A3\\ui_f_orange\\data\\cfgmarkers\\safetyzone_ca.paa",
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "shadow": 0,
+        "scope": 1,
+        "markerClass": "Locations",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "b_Ordnance",
+        "name": "Ordnance",
+        "icon": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\b_Ordnance_ca.paa",
+        "texture": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\b_Ordnance_ca.paa",
+        "side": 1,
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            0,
+            0.3,
+            0.6,
+            1
+        ],
+        "markerClass": "NATO_BLUFOR",
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "o_Ordnance",
+        "name": "Ordnance",
+        "icon": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\o_Ordnance_ca.paa",
+        "texture": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\o_Ordnance_ca.paa",
+        "side": 0,
+        "color": [
+            0.5,
+            0,
+            0,
+            1
+        ],
+        "markerClass": "NATO_OPFOR",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "n_Ordnance",
+        "name": "Ordnance",
+        "icon": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\n_Ordnance_ca.paa",
+        "texture": "\\a3\\UI_F_Orange\\Data\\CfgMarkers\\n_Ordnance_ca.paa",
+        "side": 1,
+        "color": [
+            0,
+            0.5,
+            0,
+            1
+        ],
+        "markerClass": "NATO_Independent",
+        "size": 29,
+        "scope": 1,
+        "shadow": 0,
+        "showEditorMarkerColor": 1
+    },
+    {
+        "id": "flag_EAF",
+        "name": "Livonian Defense Force",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\LDF_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\LDF_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Enoch",
+        "name": "Livonia",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Livonia_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Livonia_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_EnochLooters",
+        "name": "Livonian Looters",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\LivoniaLooters_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\LivoniaLooters_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Astra",
+        "name": "Astra",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Astra_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Astra_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Russia",
+        "name": "Russia",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Russia_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Russia_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    },
+    {
+        "id": "flag_Spetsnaz",
+        "name": "Spetsnaz",
+        "icon": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Spetsnaz_CA.paa",
+        "texture": "\\a3\\UI_F_Enoch\\Data\\CfgMarkers\\Spetsnaz_CA.paa",
+        "size": 32,
+        "scope": 1,
+        "shadow": 0,
+        "color": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "markerClass": "Flags"
+    }
+]
