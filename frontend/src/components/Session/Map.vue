@@ -1,12 +1,5 @@
 <template>
-<div>
-    <div style="position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px;" ref="map"></div>
-    <Popup
-        @popup-loaded="onPopupLoaded"
-        @edit="onPopupEdit"
-        @delete="onPopupDelete"
-    />
-</div>
+<div style="position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px;" ref="map"></div>
 </template>
 
 <script lang='ts'>
@@ -29,13 +22,9 @@ import LineFeature from '@/services/features/Line';
 import CommentFeature from '@/services/features/Comment';
 
 import deepEqual from 'deep-equal';
-import PopupVue from './Popup.vue';
 import { mapState } from 'vuex';
 
 @Component({
-    components: {
-        Popup: PopupVue
-    },
     computed: {
         ...mapState({
             features: (state: any) => state.features
@@ -50,8 +39,6 @@ export default class MapVue extends Vue {
     @Prop({ required: true }) private mapId!: string;
 
     private featureLayers: Map<string, { feature: Feature, layer: LeafletLayer }> = new Map();
-    private popup?: LeafletPopup;
-    private popupFeature?: Feature;
 
     // helper functions for v-model
     // just use this.map to access it
@@ -89,14 +76,10 @@ export default class MapVue extends Vue {
         });
     }
 
-    private onPopupLoaded(popup: LeafletPopup) {
-        this.popup = popup;
-    }
-
     @Watch('popup')
     @Watch('features')
     private drawFeatures() {
-        if (!this.map || !this.popup) return;
+        if (!this.map) return;
 
         const featuresToRedraw: Feature[] = [];
         const oldFeatureIds = Array.from(this.featureLayers.keys());
@@ -135,8 +118,6 @@ export default class MapVue extends Vue {
                 break;
             case 'comment':
                 layer = new CommentFeature(f as Comment).addTo(this.map!);
-                layer!.on('delete', () => this.$emit('delete-feature', f));
-                layer!.on('edit', () => this.$emit('edit-feature', f));
                 break;
             default:
                 break;
