@@ -38,6 +38,8 @@ export default class MapVue extends Vue {
     private features!: Feature[];
     @Prop({ required: true }) private mapId!: string;
 
+    private hoverFeatures: Map<string, Feature> = new Map();
+
     private featureLayers: Map<string, { feature: Feature, layer: LeafletLayer }> = new Map();
 
     // helper functions for v-model
@@ -106,7 +108,9 @@ export default class MapVue extends Vue {
 
         // remove every feature which wasn't included in new features
         for (const id of oldFeatureIds) {
-            this.featureLayers.get(id)!.layer.remove();
+            const values = this.featureLayers.get(id)!;
+            values.layer.remove();
+            this.featureLayers.delete(id);
         }
 
         featuresToRedraw.forEach(f => {
@@ -124,28 +128,31 @@ export default class MapVue extends Vue {
             }
 
             if (layer) {
-                layer.on('mouseover', () => this.highlightFeature(f));
-                layer.on('mouseout', () => this.highlightFeature(null));
-                if (layer.getPopup() === undefined) layer.bindPopup(this.popup!);
-                layer.on('popupopen', () => { this.popupFeature = f; });
+                layer.on('mouseover', () => this.onFeatureMouseOver(f));
+                layer.on('mouseout', () => this.onFeatureMouseOut(f));
+                layer.on('remove', () => this.onFeatureMouseOut(f));
 
                 this.featureLayers.set(f.id, { feature: f, layer });
             };
         });
     }
 
-    private highlightFeature(feature: Feature|null) {
-        this.$emit('highlight-feature', feature);
+    private onFeatureMouseOver(f: Feature) {
+        this.hoverFeatures.set(f.id, f);
+
+        this.updateHighlightFeature();
     }
 
-    private onPopupEdit() {
-        if (!this.popupFeature) return;
-        this.$emit('edit-feature', this.popupFeature);
+    private onFeatureMouseOut(f: Feature) {
+        if (this.hoverFeatures.has(f.id)) {
+            this.hoverFeatures.delete(f.id);
+        }
+
+        this.updateHighlightFeature();
     }
 
-    private onPopupDelete() {
-        if (!this.popupFeature) return;
-        this.$emit('delete-feature', this.popupFeature);
+    private updateHighlightFeature() {
+        this.$emit('highlight-feature', this.hoverFeatures.values().next().value || null);
     }
 }
 </script>
