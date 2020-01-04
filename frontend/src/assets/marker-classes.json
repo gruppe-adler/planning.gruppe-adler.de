@@ -1,0 +1,42 @@
+[
+    {
+        "id": "Military",
+        "displayName": "Standard Military"
+    },
+    {
+        "id": "Draw",
+        "displayName": "Standard Drawn"
+    },
+    {
+        "id": "NATO_BLUFOR",
+        "displayName": "NATO - BLUFOR"
+    },
+    {
+        "id": "NATO_OPFOR",
+        "displayName": "NATO - OPFOR"
+    },
+    {
+        "id": "NATO_Independent",
+        "displayName": "NATO - Independent"
+    },
+    {
+        "id": "NATO_Civilian",
+        "displayName": "NATO - Civilian"
+    },
+    {
+        "id": "NATO_Sizes",
+        "displayName": "NATO - Unit Sizes"
+    },
+    {
+        "id": "NATO_Respawn",
+        "displayName": "Respawn"
+    },
+    {
+        "id": "Locations",
+        "displayName": "Map Locations"
+    },
+    {
+        "id": "Flags",
+        "displayName": "Flags"
+    }
+]
