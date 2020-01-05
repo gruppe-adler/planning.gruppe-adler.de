@@ -72,6 +72,8 @@ export default class LineTool extends Tool {
     }
 
     private commit() {
+        if (this.previewGeoJSON.coordinates.length < 2) return;
+
         if (this.onCreate) {
             this.onCreate(this.previewGeoJSON.coordinates as Array<[number, number]>);
         }

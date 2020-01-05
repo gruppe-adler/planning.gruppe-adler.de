@@ -13,8 +13,19 @@
             mapId="stratis"
             v-model="map"
             @highlight-feature="highlightedFeature = $event;"
-            @edit-feature="editFeature($event);"
-            @delete-feature="deleteFeature($event);"
+            @dblclick-feature="featureToEdit = $event"
+            @dblclick="onMapDblClick"
+            @click="onMapClick"
+        />
+        <CreatePopup
+            v-model="createPos"
+            @submit="createFeature"
+        />
+        <EditPopup
+            v-model="featureToEdit"
+            @delete="deleteFeature"
+            @duplicate="duplicateFeature"
+            @submit="editFeature"
         />
         <Toolbar v-model="activeTool" />
         <Settingsbar />
@@ -26,7 +37,7 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as WebSocket from 'ws';
-import { Map } from 'leaflet';
+import { Map, LatLng } from 'leaflet';
 
 import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFeatureMessage, updateFeatures } from '@/services/shared';
 
@@ -38,15 +49,18 @@ import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue
 
 import Tool from '@/tools/Tool';
 import LineTool from '@/tools/Line';
-import CommentTool from '@/tools/Comment';
-import { addLine, deleteFeature, addComment } from '@/services/feature';
+import { addLine, deleteFeature, addComment, createFeature, updateFeature } from '@/services/feature';
+import CreatePopupVue from '@/components/Session/Popups/Create.vue';
+import EditPopupVue from '@/components/Session/Popups/Edit.vue';
 
 @Component({
     components: {
         Map: MapVue,
         Toolbar: ToolbarVue,
         ConnectionIndicator: ConnectionIndicatorVue,
-        Settingsbar: SettingsbarVue
+        Settingsbar: SettingsbarVue,
+        CreatePopup: CreatePopupVue,
+        EditPopup: EditPopupVue
     }
 })
 export default class SessionVue extends Vue {
@@ -56,7 +70,6 @@ export default class SessionVue extends Vue {
     private color: string = '#d18d1f';
     private error: Error|null = null;
     private controller: WebSocketController|null = null;
-    private connected: boolean = false;
 
     private features: Feature[] = [];
     private users: User[] = [];
@@ -66,6 +79,8 @@ export default class SessionVue extends Vue {
     private prevTool: string = '';
 
     private tool: Tool|null = null;
+    private createPos: LatLng|null = null;
+    private featureToEdit: Feature|null = null;
 
     private highlightedFeature: Feature|null = null;
 
@@ -93,8 +108,6 @@ export default class SessionVue extends Vue {
 
         this.controller = new WebSocketController(this.id);
         this.controller.on('error', err => this.onSocketError(err));
-        this.controller.on('open', () => this.onSocketOpened());
-        this.controller.on('close', () => this.onSocketClosed());
         this.controller.on('message', msg => this.onSocketMessage(msg));
     }
 
@@ -102,18 +115,6 @@ export default class SessionVue extends Vue {
         this.error = err;
         // eslint-disable-next-line no-console
         console.log('socker error', err);
-    }
-
-    private onSocketOpened() {
-        // eslint-disable-next-line no-console
-        console.log('socket opened');
-        this.connected = true;
-    }
-
-    private onSocketClosed() {
-        // eslint-disable-next-line no-console
-        console.log('socket closed');
-        this.connected = false;
     }
 
     private onSocketMessage(msg: Message) {
@@ -146,11 +147,28 @@ export default class SessionVue extends Vue {
         }
 
         deleteFeature(this.controller, feature.id);
+
+        this.featureToEdit = null;
+    }
+
+    private createFeature(feature: Feature) {
+        if (this.controller) createFeature(this.controller, feature);
+
+        this.createPos = null;
     }
 
     private editFeature(feature: Feature) {
-        // eslint-disable-next-line no-console
-        console.log('edit feature', feature);
+        if (this.controller) updateFeature(this.controller, feature);
+
+        this.featureToEdit = null;
+    }
+
+    private duplicateFeature(feature: Feature) {
+        feature.id = 'temp';
+
+        if (this.controller) createFeature(this.controller, feature);
+
+        this.featureToEdit = null;
     }
 
     private tempSwitchTool(tool: string, keyCode: string) {
@@ -162,13 +180,20 @@ export default class SessionVue extends Vue {
 
         const handler = (event2: KeyboardEvent) => {
             if (event2.code !== keyCode) return;
-            window.removeEventListener('keyup', handler);
-
             this.activeTool = this.prevTool;
             this.prevTool = '';
         };
 
-        window.addEventListener('keyup', handler);
+        window.addEventListener('keyup', handler, { once: true });
+    }
+
+    private onMapDblClick(latLng: LatLng) {
+        this.createPos = latLng;
+    }
+
+    private onMapClick(latLng: LatLng) {
+        if (this.createPos !== null) this.createPos = null;
+        if (this.featureToEdit !== null) this.featureToEdit = null;
     }
 
     @Watch('activeTool')
@@ -186,14 +211,6 @@ export default class SessionVue extends Vue {
             };
             this.tool = lineTool;
             break;
-        case 'comment':
-            const commentTool = new CommentTool(this.map);
-            commentTool.onCreate = payload => {
-                if (!this.controller) return;
-                addComment(this.controller, payload.pos, payload.text, this.$store.state.user.nickname);
-            };
-            this.tool = commentTool;
-            break;
 
         default:
             break;
@@ -203,10 +220,31 @@ export default class SessionVue extends Vue {
 </script>
 
 <style lang="scss">
+@import '~@/colors.scss';
+
 .grad-group {
-    background-color: white;
+    background-color: $color-background;
     box-shadow: 0px 0.25rem .5rem rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
+}
+
+.grad-marker {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: visible;
+
+    > img {
+        flex-shrink: 0;
+    }
+
+    > span {
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-left: .25rem;
+        pointer-events: none;
+    }
 }
 
 .grad-icon-button {
@@ -216,7 +254,7 @@ export default class SessionVue extends Vue {
     position: relative;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
-    color: rgba(black,0.5);
+    color: $color-inactive;
 
     &:not(:last-child)::before {
         content: '';
@@ -225,7 +263,7 @@ export default class SessionVue extends Vue {
         right: 0px;
         bottom: .5rem;
         top: .5rem;
-        background-color: #D5D5D5;
+        background-color: $color-divider;
     }
 
     > i {
@@ -234,7 +272,7 @@ export default class SessionVue extends Vue {
         padding: 0.75rem;
 
         &:hover {
-            background-color: rgba(black, 0.05);
+            background-color: rgba(white, 0.05);
 
             ~ .grad-icon-button__tooltip {
                 display: initial;
@@ -280,59 +318,18 @@ export default class SessionVue extends Vue {
 
     &--disabled {
         cursor: default;
-        color: rgba(black, 0.25);
 
-        > i:hover {
-            background-color: transparent;
+        > i {
+            opacity: 0.4;
+
+            &:hover {
+                background-color: transparent;
+            }
         }
     }
 
     &--active {
-        color: #66AA66;
-    }
-}
-</style>
-
-<style lang="scss">
-.grad-comment-popup {
-    .leaflet-popup-content {
-        margin: 0px;
-    }
-
-    .leaflet-popup-content-wrapper {
-        padding: 0px;
-        border-radius: 0.25rem;
-    }
-
-    &.leaflet-tooltip {
-        border-width: 0px;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-    }
-
-    &__wrapper {
-        display: flex;
-        padding: 0.25rem 0;
-
-        > div:first-child {
-            margin-right: 1rem;
-            margin-left: 0.5rem;
-        }
-    }
-
-    &__text-wrapper {
-        display: flex;
-        flex-direction: column;
-        min-width: 60px;
-    }
-
-    &__text {
-        font-size: 1rem;
-    }
-
-    &__author {
-        font-size: .75rem;
-        color: lighten(black, 50%);
+        color: $color-active;
     }
 }
 </style>

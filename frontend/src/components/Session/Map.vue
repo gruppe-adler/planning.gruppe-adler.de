@@ -15,7 +15,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
-import { Feature, Line, Comment } from '@/services/shared';
+import { Feature, Line, Comment, Marker } from '@/services/shared';
 import { LineString } from 'geojson';
 
 import LineFeature from '@/services/features/Line';
@@ -23,6 +23,7 @@ import CommentFeature from '@/services/features/Comment';
 
 import deepEqual from 'deep-equal';
 import { mapState } from 'vuex';
+import MarkerFeature from '@/services/features/Marker';
 
 @Component({
     computed: {
@@ -74,7 +75,11 @@ export default class MapVue extends Vue {
         tl.addTo(this.map!);
 
         this.map.on('dblclick', (ev: LeafletMouseEvent) => {
-            this.$emit('dblckick', ev.latlng);
+            this.$emit('dblclick', ev.latlng);
+        });
+
+        this.map.on('click', (ev: LeafletMouseEvent) => {
+            this.$emit('click', ev.latlng);
         });
     }
 
@@ -123,6 +128,9 @@ export default class MapVue extends Vue {
             case 'comment':
                 layer = new CommentFeature(f as Comment).addTo(this.map!);
                 break;
+            case 'marker':
+                layer = new MarkerFeature(f as Marker).addTo(this.map!);
+                break;
             default:
                 break;
             }
@@ -131,6 +139,7 @@ export default class MapVue extends Vue {
                 layer.on('mouseover', () => this.onFeatureMouseOver(f));
                 layer.on('mouseout', () => this.onFeatureMouseOut(f));
                 layer.on('remove', () => this.onFeatureMouseOut(f));
+                layer.on('dblclick', () => this.$emit('dblclick-feature', f));
 
                 this.featureLayers.set(f.id, { feature: f, layer });
             };

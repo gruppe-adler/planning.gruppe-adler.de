@@ -4,7 +4,7 @@
         v-for="t in tools"
         :key="t.id"
         :class="['grad-icon-button', t.id === tool ? 'grad-icon-button--active' : '', t.disabled ? 'grad-icon-button--disabled' : '']"
-        @click="tool = t.id"
+        @click="!t.disabled ? tool = t.id : null"
     >
         <i class="material-icons">{{t.icon}}</i>
         <span class="grad-icon-button__tooltip">{{t.displayName}}</span>
@@ -39,26 +39,9 @@ export default class ToolbarVue extends Vue {
             disabled: true
         },
         {
-            id: 'marker',
-            displayName: 'Marker',
-            icon: 'location_on',
-            disabled: true
-        },
-        {
             id: 'line',
             displayName: 'Line',
             icon: 'timeline'
-        },
-        {
-            id: 'comment',
-            displayName: 'Comment',
-            icon: 'mode_comment'
-        },
-        {
-            id: 'image',
-            displayName: 'Image',
-            icon: 'photo',
-            disabled: true
         }
     ];
 

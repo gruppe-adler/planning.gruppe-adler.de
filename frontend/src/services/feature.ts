@@ -3,8 +3,18 @@ import {
 } from '@/services/shared';
 
 import { WebSocketController } from './websocket';
+import { EditFeatureMessage } from './shared/messages';
 
-function createFeature(controller: WebSocketController, feature: Feature): void {
+export function updateFeature(controller: WebSocketController, feature: Partial<Feature> & Pick<Feature, 'id'>): void {
+    const msg: EditFeatureMessage = {
+        type: 'edit_feature',
+        payload: feature
+    };
+
+    controller.send(msg);
+}
+
+export function createFeature(controller: WebSocketController, feature: Feature): void {
     const msg: CreateFeatureMessage = {
         type: 'create_feature',
         payload: feature

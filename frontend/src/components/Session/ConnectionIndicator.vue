@@ -2,8 +2,8 @@
 <div class="grad-connection-idicator grad-group">
     <div class="grad-icon-button grad-icon-button--disabled grad-icon-button--tooltip-left">
         <i v-if="connected === null" class="material-icons">sync</i>
-        <i v-else-if="connected" class="material-icons" style="color: #66AA66;">link</i>
-        <i v-else class="material-icons" style="color: #AA6666;">link__off</i>
+        <i v-else-if="connected" class="material-icons" style="color: #66AA66; opacity: 1;">link</i>
+        <i v-else class="material-icons" style="color: #AA6666; opacity: 1;">link__off</i>
         <span class="grad-icon-button__tooltip">Status ({{status}})</span>
     </div>
 </div>
