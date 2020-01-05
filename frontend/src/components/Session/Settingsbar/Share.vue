@@ -37,29 +37,35 @@ export default class ShareVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/colors.scss';
+
 div {
     position: relative;
     display: flex;
     align-items: center;
 
     >input {
-        font-size: 12px;
+        font-size: 1rem;
         min-width: 300px;
-        padding-right: 3.7em;
-
-        &:active, &:focus {
-            background-color: #D6D4D3 !important;
-        }
+        padding-right: 2.6rem;
     }
 
     > i {
         cursor: pointer;
         font-size: 1.5em;
         right: 0px;
-        padding: calc((1.877em - 1em) / 2);
+        padding: 0.5rem;
         position: absolute;
-        color: rgba(black, 0.5);
+        color: $color-inactive;
         user-select: none;
+        transition: all 0.1s ease-in-out;
     }
+
+    &:focus-within {
+        > i {
+            color: $color-active;
+        }
+    }
+
 }
 </style>
