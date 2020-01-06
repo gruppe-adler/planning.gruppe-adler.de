@@ -7,7 +7,6 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Picture } from '@/services/shared';
-import { rgbToCssFilter } from '@/utils/color';
 import { PropType } from 'vue';
 
 @Component

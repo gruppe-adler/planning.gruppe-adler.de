@@ -26,7 +26,6 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Marker } from '@/services/shared';
-import { rgbToCssFilter } from '@/utils/color';
 import ColorsVue from '../Popups/Create/Colors.vue';
 import { PropType } from 'vue';
 interface ArmaMarker {
