@@ -8,22 +8,26 @@
     <CommentForm v-if="value.type === 'comment'" v-model="valueCopy" />
     <PictureForm v-if="value.type === 'picture'" v-model="valueCopy" />
     <template v-slot:action-btns>
-        <div class="grad-icon-button" @click="$emit('duplicate', value)">
-            <i class="material-icons">content_copy</i>
-            <span class="grad-icon-button__tooltip">Duplicate</span>
-        </div>
-        <div class="grad-icon-button" @click="$emit('delete', value)">
-            <i class="material-icons">delete</i>
-            <span class="grad-icon-button__tooltip">Delete</span>
-        </div>
-        <div class="grad-icon-button" @click="$emit('input', null)">
-            <i class="material-icons">close</i>
-            <span class="grad-icon-button__tooltip">Close</span>
-        </div>
-        <div class="grad-icon-button" @click="$emit('submit', valueCopy)">
-            <i class="material-icons">done</i>
-            <span class="grad-icon-button__tooltip">Sumbit</span>
-        </div>
+        <grad-icon-btn
+            @click="$emit('duplicate', value);"
+            icon="content_copy"
+            tooltip="Duplicate"
+        />
+        <grad-icon-btn
+            @click="$emit('delete', value)"
+            icon="delete"
+            tooltip="Delete"
+        />
+        <grad-icon-btn
+            @click="$emit('input', null)"
+            icon="close"
+            tooltip="Close"
+        />
+        <grad-icon-btn
+            @click="$emit('submit', valueCopy)"
+            icon="done"
+            tooltip="Submit"
+        />
     </template>
 </Popup>
 </template>

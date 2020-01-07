@@ -21,14 +21,16 @@
     <CommentForm v-show="tab === 'comment'" v-model="comment" />
     <PictureForm v-show="tab === 'picture'" v-model="picture" />
     <template v-slot:action-btns>
-        <div class="grad-icon-button" @click="pos = null;">
-            <i class="material-icons">close</i>
-            <span class="grad-icon-button__tooltip">Abort</span>
-        </div>
-        <div class="grad-icon-button" @click="submit">
-            <i class="material-icons">done</i>
-            <span class="grad-icon-button__tooltip">Create</span>
-        </div>
+        <grad-icon-btn
+            @click="pos = null;"
+            icon="close"
+            tooltip="Abort"
+        />
+        <grad-icon-btn
+            @click="submit"
+            icon="done"
+            tooltip="Create"
+        />
     </template>
 </Popup>
 </template>

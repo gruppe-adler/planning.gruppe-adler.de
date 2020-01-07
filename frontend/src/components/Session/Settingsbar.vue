@@ -1,15 +1,17 @@
 <template>
 <div class="grad-settigs-bar grad-group">
-    <div class="grad-icon-button grad-icon-button--disabled">
-        <i class="material-icons">settings</i>
-        <span class="grad-icon-button__tooltip">Settings</span>
-    </div>
+    <grad-icon-btn
+        icon="settings"
+        tooltip="Settings"
+        :disabled="true"
+    />
     <Share v-model="extended" />
     <Export v-model="extended" />
-    <div class="grad-icon-button grad-icon-button--disabled">
-        <i class="material-icons">upload_file</i>
-        <span class="grad-icon-button__tooltip">Import</span>
-    </div>
+    <grad-icon-btn
+        icon="upload_file"
+        tooltip="Import"
+        :disabled="true"
+    />
 </div>
 </template>
 

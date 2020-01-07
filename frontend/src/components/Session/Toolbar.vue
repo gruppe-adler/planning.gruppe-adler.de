@@ -1,14 +1,14 @@
 <template>
 <div class="grad-toolbar grad-group">
-    <div
+    <grad-icon-btn
         v-for="t in tools"
         :key="t.id"
-        :class="['grad-icon-button', t.id === tool ? 'grad-icon-button--active' : '', t.disabled ? 'grad-icon-button--disabled' : '']"
+        :tooltip="t.displayName"
+        :icon="t.icon"
+        :active="t.id === tool"
+        :disabled="t.disabled"
         @click="!t.disabled ? tool = t.id : null"
-    >
-        <i class="material-icons">{{t.icon}}</i>
-        <span class="grad-icon-button__tooltip">{{t.displayName}}</span>
-    </div>
+    />
 </div>
 </template>
 

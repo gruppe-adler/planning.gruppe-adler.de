@@ -1,11 +1,14 @@
 <template>
-    <div :class="['grad-icon-button', isExtended ? 'grad-icon-button--active' : '']" @click="extend">
-        <i class="material-icons">{{icon}}</i>
-        <span v-if="tooltip.length > 0" class="grad-icon-button__tooltip">{{tooltip}}</span>
+    <grad-icon-btn
+        :active="isExtended"
+        @click="extend"
+        :tooltip="tooltip"
+        :icon="icon"
+    >
         <div v-if="isExtended" class="grad-settings-bar-panel__dialog grad-group" @click.stop>
             <slot />
         </div>
-    </div>
+    </grad-icon-btn>
 </template>
 
 <script lang='ts'>

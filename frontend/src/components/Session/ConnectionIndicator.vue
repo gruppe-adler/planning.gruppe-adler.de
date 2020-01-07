@@ -1,11 +1,15 @@
 <template>
 <div class="grad-connection-idicator grad-group">
-    <div class="grad-icon-button grad-icon-button--disabled grad-icon-button--tooltip-left">
-        <i v-if="connected === null" class="material-icons">sync</i>
-        <i v-else-if="connected" class="material-icons" style="color: #66AA66; opacity: 1;">link</i>
-        <i v-else class="material-icons" style="color: #AA6666; opacity: 1;">link__off</i>
-        <span class="grad-icon-button__tooltip">Status ({{status}})</span>
-    </div>
+    <grad-icon-btn
+        :disabled="true"
+        tooltip-pos="left"
+        :icon="icon"
+        :tooltip="`Status (${status})`"
+    >
+        <template v-slot:icon="{ icon }">
+            <i class="material-icons" :style="`color: ${connected ? '#66AA66' : '#AA6666'}; opacity: 1;`">{{icon}}</i>
+        </template>
+    </grad-icon-btn>
 </div>
 </template>
 
@@ -64,6 +68,12 @@ export default class ConnectionIndicatorVue extends Vue {
         if (this.connected === null) return 'unknown';
 
         return this.connected ? 'connected' : 'disconnected';
+    }
+
+    private get icon(): string {
+        if (this.connected === null) return 'sync';
+
+        return this.connected ? 'link' : 'link__off';
     }
 }
 </script>
