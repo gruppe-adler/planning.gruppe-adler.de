@@ -33,7 +33,7 @@ export default class ToolbarVue extends Vue {
             icon: 'pan_tool'
         },
         {
-            id: 'point',
+            id: 'pointing',
             displayName: 'Pointing',
             icon: 'touch_app',
             disabled: true
