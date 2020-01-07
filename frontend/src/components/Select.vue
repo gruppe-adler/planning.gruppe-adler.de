@@ -15,8 +15,9 @@
             :key="index"
             @click="$emit('input', item); expanded = false;"
         >
-            <slot v-if="$scopedSlots.item" name="item" :item="item"></slot>
-            <span v-else>{{item[nameField]}}</span>
+            <slot name="item" :item="item">
+                <span>{{item[nameField]}}</span>
+            </slot>
         </div>
     </div>
 </div>
