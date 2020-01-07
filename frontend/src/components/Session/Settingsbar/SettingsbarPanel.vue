@@ -22,7 +22,7 @@ export default class SettingsbarPanelVue extends Vue {
     @Prop({ default: '' }) private tooltip!: string;
 
     // helper functions for v-model
-    // just use this.map to access it
+    // just use this.extended to access it
     private get extended() { return this.value; }
     private set extended(val: string) { this.$emit('input', val); }
 
