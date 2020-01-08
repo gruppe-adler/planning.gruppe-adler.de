@@ -1,6 +1,9 @@
 import { join } from 'path';
 
+// eslint-disable-next-line import/no-duplicates
 import * as express from 'express';
+// eslint-disable-next-line import/no-duplicates
+import { Request, Response, NextFunction } from 'express';
 
 import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
@@ -36,7 +39,12 @@ app.use('/api/', router);
 
 // frontend
 app.use('/', express.static(join(__dirname, '../frontend')));
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response, next: NextFunction) => {
+    if (req.headers['content-type'] === 'application/html') {
+        next();
+        return;
+    }
+
     res.sendFile(join(__dirname, '../frontend/index.html'));
 });
 

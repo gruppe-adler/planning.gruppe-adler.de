@@ -1,7 +1,10 @@
 import WebSocket, { Server, Data, OPEN } from 'ws';
-import { Message, CreateFeatureMessage, InitFeaturesMessage } from '../shared/messages';
+import { Message, CreateFeatureMessage, InitMessage, UserJoinMessage, UserLeaveMessage } from '../shared/messages';
 import { updateFeatures } from '../shared';
 import PlanningSessionWorker from './PlanningSessionWorker';
+
+const generateId = (): string => Math.ceil((Math.random() * 1000000000000000)).toString(16);
+const userIds: string[] = [];
 
 /**
  * Callback for when websocket-server receives message
@@ -9,7 +12,12 @@ import PlanningSessionWorker from './PlanningSessionWorker';
  * @param clientSocket Socket of client who sent message
  * @param data Received data
  */
-function handleMessage(sessionId: string, clientSocket: WebSocket, data: Data): void {
+function handleMessage(
+    sessionId: string,
+    userId: string,
+    clientSocket: WebSocket,
+    data: Data
+): void {
     const session = PlanningSessionWorker.getInstance().getSession(sessionId);
 
     if (!session) return;
@@ -24,11 +32,27 @@ function handleMessage(sessionId: string, clientSocket: WebSocket, data: Data): 
         console.error(`Received non JSON message from client: "${data.toString()}"`);
         return;
     }
+    // new user joined
+    if (message.type === 'user_join') {
+        // update userId
+        (message as UserJoinMessage).payload.uid = userId;
+
+        // add user to session
+        session.users.set(userId, (message as UserJoinMessage).payload);
+
+        // send init message
+        const initMsg: InitMessage = {
+            type: 'init',
+            payload: {
+                features: session.features,
+                user: (message as UserJoinMessage).payload
+            }
+        };
+        clientSocket.send(JSON.stringify(initMsg));
+    }
 
     // generate new id and assign it to newly created feature
     if (message.type === 'create_feature') {
-        const generateId = (): string => Math.ceil((Math.random() * 1000000000000000)).toString(16);
-
         let id = generateId();
         while (session.features.findIndex(f => f.id === id) >= 0) {
             id = generateId();
@@ -43,10 +67,27 @@ function handleMessage(sessionId: string, clientSocket: WebSocket, data: Data): 
 
     // relay to all other clients
     wss.clients.forEach(socket => {
-        // if (socket === clientSocket) continue;
-
         if (socket.readyState === OPEN) {
             socket.send(JSON.stringify(message));
+        }
+    });
+}
+
+function handleClose(sessionId: string, userId: string): void {
+    const session = PlanningSessionWorker.getInstance().getSession(sessionId);
+    if (!session) return;
+
+    if (!session.users.has(userId)) return;
+    const user = session.users.get(userId);
+
+    // notify all client that user left
+    const leaveMsg: UserLeaveMessage = {
+        type: 'user_leave',
+        payload: user
+    };
+    session.wss.clients.forEach(socket => {
+        if (socket.readyState === OPEN) {
+            socket.send(JSON.stringify(leaveMsg));
         }
     });
 }
@@ -75,20 +116,22 @@ export default (sessionId: string): Server => {
         }
     });
 
-    wss.on('connection', (socket: WebSocket) => {
-        socket.on('message', (data: Data) => handleMessage(sessionId, socket, data));
-
-
+    wss.on('connection', (socket: WebSocket): void => {
         const session = PlanningSessionWorker.getInstance().getSession(sessionId);
+        if (!session) {
+            socket.close();
+            return;
+        }
 
-        if (!session) return;
+        // generate userId
+        let userId = generateId();
+        while (userIds.includes(userId)) {
+            userId = generateId();
+        }
+        userIds.push(userId);
 
-        const initFeatures: InitFeaturesMessage = {
-            type: 'init_features',
-            payload: session.features
-        };
-
-        socket.send(JSON.stringify(initFeatures));
+        socket.on('message', (data: Data) => handleMessage(sessionId, userId, socket, data));
+        socket.on('close', () => handleClose(sessionId, userId));
     });
 
     return wss;

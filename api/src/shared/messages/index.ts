@@ -4,7 +4,7 @@ import UserJoinMessage from './UserJoin';
 import DeleteFeatureMessage from './DeleteFeature';
 import EditFeatureMessage from './EditFeature';
 import CreateFeatureMessage from './CreateFeature';
-import InitFeaturesMessage from './InitFeatures';
+import InitMessage from './Init';
 
 export {
     CreateFeatureMessage,
@@ -13,5 +13,5 @@ export {
     Message,
     UserJoinMessage,
     UserLeaveMessage,
-    InitFeaturesMessage
+    InitMessage
 };
