@@ -142,6 +142,7 @@ export default class SessionVue extends Vue {
 
         if (msg.type === 'user_join' || msg.type === 'user_leave') {
             const name = (msg as UserJoinMessage|UserLeaveMessage).payload.nick;
+            // eslint-disable-next-line no-console
             console.log(name, msg.type === 'user_join' ? 'joined' : 'left');
         }
     }
