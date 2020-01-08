@@ -4,6 +4,7 @@ import {
 
 import { WebSocketController } from './websocket';
 import { EditFeatureMessage } from './shared/messages';
+import { LatLng } from 'leaflet';
 
 export function updateFeature(controller: WebSocketController, feature: Partial<Feature> & Pick<Feature, 'id'>): void {
     const msg: EditFeatureMessage = {
@@ -35,10 +36,10 @@ export function addComment(controller: WebSocketController, pos: [number, number
     createFeature(controller, comment);
 }
 
-export function addLine(controller: WebSocketController, positions: Array<[number, number]>, color: string): void {
+export function addLine(controller: WebSocketController, positions: LatLng[], color: string): void {
     const comment: Line = {
         type: 'line',
-        positions,
+        positions: positions.map(pos => [pos.lat, pos.lng]),
         color,
         id: 'temp'
     };

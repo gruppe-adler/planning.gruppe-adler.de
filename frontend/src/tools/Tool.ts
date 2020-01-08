@@ -1,15 +1,15 @@
-import { Map } from 'leaflet';
+import { Map as LeafletMap } from 'leaflet';
 
-export default abstract class Tool {
-    map: Map;
-    constructor(m: Map) {
+export default abstract class Tool extends EventTarget {
+    protected map: LeafletMap;
+
+    constructor(m: LeafletMap) {
+        super();
         this.map = m;
 
         this.setup();
     }
 
-    abstract setup(): void;
+    protected abstract setup(): void;
     public abstract destroy(): void;
-
-    public abstract onCreate?: (payload: any) => void;
 }

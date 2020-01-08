@@ -9,10 +9,12 @@ export default class LineFeature extends FeatureGroup {
     constructor(options: Line) {
         super();
 
+        const coordinates = options.positions.map(([lat, lng]) => [lng, lat]);
+
         this.mainFeature = new GeoJSON(
             {
                 type: 'LineString',
-                coordinates: options.positions
+                coordinates
             } as LineString,
             {
                 style: {
@@ -26,7 +28,7 @@ export default class LineFeature extends FeatureGroup {
         this.hoverFeature = new GeoJSON(
             {
                 type: 'LineString',
-                coordinates: options.positions
+                coordinates
             } as LineString,
             {
                 style: {

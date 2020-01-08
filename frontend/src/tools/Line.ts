@@ -2,15 +2,22 @@ import Tool from './Tool';
 import { LatLng, LeafletMouseEvent, GeoJSON } from 'leaflet';
 import { LineString } from 'geojson';
 
-export default class LineTool extends Tool {
-    public onCreate?: (payload: Array<[number, number]>) => void;
+export class LineCreateEvent extends Event {
+    public coords: LatLng[];
 
+    constructor(coords: LatLng[]) {
+        super('update');
+        this.coords = coords;
+    }
+}
+
+export default class LineTool extends Tool {
     private points: LatLng[] = [];
     private lastPoint: LatLng|null = null;
     private previewLayer: GeoJSON|null = null;
     private mouseDownListener?: (ev: LeafletMouseEvent) => void;
 
-    setup() {
+    protected setup() {
         this.mouseDownListener = (ev: LeafletMouseEvent) => this.onMouseDown(ev);
 
         this.map.addEventListener('mousedown', this.mouseDownListener);
@@ -23,23 +30,28 @@ export default class LineTool extends Tool {
     private onMouseDown(event: LeafletMouseEvent) {
         const mouseMove = (ev: LeafletMouseEvent) => this.onMouseMove(ev);
 
-        this.map.addEventListener('mousemove', mouseMove);
+        // disable map
         this.map.dragging.disable();
 
         // add first point
         this.onMouseMove(event);
 
         const mouseUp = (ev: LeafletMouseEvent) => {
+            // remove listeners
             this.map.removeEventListener('mousemove', mouseMove);
             this.map.removeEventListener('mouseup', mouseUp);
 
             // add last point
             this.onMouseMove(ev);
+
+            // enable map
             this.map.dragging.enable();
 
-            this.commit();
+            this.done();
         };
 
+        // add listeners
+        this.map.addEventListener('mousemove', mouseMove);
         this.map.addEventListener('mouseup', mouseUp);
     }
 
@@ -48,11 +60,11 @@ export default class LineTool extends Tool {
         if (this.lastPoint === null || event.latlng.distanceTo(this.lastPoint) > 10000) {
             this.points.push(event.latlng);
             this.lastPoint = event.latlng;
-            this.updateShape();
+            this.updatePreview();
         }
     }
 
-    private updateShape() {
+    private updatePreview() {
         if (this.previewLayer) this.previewLayer.remove();
 
         this.previewLayer = new GeoJSON(this.previewGeoJSON, {
@@ -71,12 +83,10 @@ export default class LineTool extends Tool {
         };
     }
 
-    private commit() {
+    private done() {
         if (this.previewGeoJSON.coordinates.length < 2) return;
 
-        if (this.onCreate) {
-            this.onCreate(this.previewGeoJSON.coordinates as Array<[number, number]>);
-        }
+        this.dispatchEvent(new LineCreateEvent(this.points));
         if (this.previewLayer) this.previewLayer.remove();
         this.points = [];
     }

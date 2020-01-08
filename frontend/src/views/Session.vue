@@ -48,7 +48,7 @@ import SettingsbarVue from '@/components/Session/Settingsbar.vue';
 import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue';
 
 import Tool from '@/tools/Tool';
-import LineTool from '@/tools/Line';
+import LineTool, { LineCreateEvent } from '@/tools/Line';
 import { addLine, deleteFeature, addComment, createFeature, updateFeature } from '@/services/feature';
 import CreatePopupVue from '@/components/Session/Popups/Create.vue';
 import EditPopupVue from '@/components/Session/Popups/Edit.vue';
@@ -205,10 +205,11 @@ export default class SessionVue extends Vue {
         switch (this.activeTool) {
         case 'line':
             const lineTool = new LineTool(this.map);
-            lineTool.onCreate = coords => {
+            lineTool.addEventListener('create', (event: Event) => {
                 if (!this.controller) return;
-                addLine(this.controller, coords, 'black');
-            };
+
+                addLine(this.controller, (event as LineCreateEvent).coords, 'black');
+            });
             this.tool = lineTool;
             break;
 
