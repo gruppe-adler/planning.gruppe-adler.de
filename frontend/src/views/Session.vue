@@ -39,7 +39,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as WebSocket from 'ws';
 import { Map, LatLng } from 'leaflet';
 
-import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFeatureMessage, updateFeatures } from '@/services/shared';
+import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFeatureMessage, InitMessage, UserJoinMessage, UserLeaveMessage, updateFeatures } from '@/services/shared';
 
 import { WebSocketController } from '@/services/websocket';
 import MapVue from '@/components/Session/Map.vue';
@@ -143,7 +143,7 @@ export default class SessionVue extends Vue {
         if (msg.type === 'user_join' || msg.type === 'user_leave') {
             const name = (msg as UserJoinMessage|UserLeaveMessage).payload.nick;
             console.log(name, msg.type === 'user_join' ? 'joined' : 'left');
-    }
+        }
     }
 
     private onSocketConnect() {
