@@ -3,8 +3,17 @@ import {
 } from '@/services/shared';
 
 import { WebSocketController } from './websocket';
-import { EditFeatureMessage } from './shared/messages';
+import { EditFeatureMessage, UserJoinMessage } from './shared/messages';
 import { LatLng } from 'leaflet';
+
+export function join(controller: WebSocketController, user: User) {
+    const msg: UserJoinMessage = {
+        type: 'user_join',
+        payload: user
+    };
+
+    controller.send(msg);
+}
 
 export function updateFeature(controller: WebSocketController, feature: Partial<Feature> & Pick<Feature, 'id'>): void {
     const msg: EditFeatureMessage = {

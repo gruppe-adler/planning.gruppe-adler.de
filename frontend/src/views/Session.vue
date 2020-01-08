@@ -49,7 +49,14 @@ import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue
 
 import Tool from '@/tools/Tool';
 import LineTool, { LineCreateEvent } from '@/tools/Line';
-import { addLine, deleteFeature, addComment, createFeature, updateFeature } from '@/services/feature';
+import {
+    addLine,
+    deleteFeature,
+    addComment,
+    createFeature,
+    updateFeature,
+    join
+} from '@/services/feature';
 import CreatePopupVue from '@/components/Session/Popups/Create.vue';
 import EditPopupVue from '@/components/Session/Popups/Edit.vue';
 
@@ -66,8 +73,6 @@ import EditPopupVue from '@/components/Session/Popups/Edit.vue';
 export default class SessionVue extends Vue {
     @Prop({ default: '' }) private id!: string;
 
-    private nickname: string = '';
-    private color: string = '#d18d1f';
     private error: Error|null = null;
     private controller: WebSocketController|null = null;
 
@@ -109,6 +114,7 @@ export default class SessionVue extends Vue {
         this.controller = new WebSocketController(this.id);
         this.controller.on('error', err => this.onSocketError(err));
         this.controller.on('message', msg => this.onSocketMessage(msg));
+        this.controller.on('open', () => this.onSocketConnect());
     }
 
     private onSocketError(err: Error) {
@@ -121,10 +127,29 @@ export default class SessionVue extends Vue {
         // eslint-disable-next-line no-console
         console.log('socket message recieved', msg);
 
-        if (['delete_feature', 'create_feature', 'edit_feature', 'init_features'].includes(msg.type)) {
+        if (['delete_feature', 'create_feature', 'edit_feature', 'init'].includes(msg.type)) {
             this.features = updateFeatures(this.features, msg);
             this.$store.commit('setFeatures', this.features);
         }
+
+        // save user
+        if (msg.type === 'init') {
+            this.$store.commit('setUser', {
+                ...this.$store.state.user,
+                ...(msg as InitMessage).payload.user
+            });
+        }
+
+        if (msg.type === 'user_join' || msg.type === 'user_leave') {
+            const name = (msg as UserJoinMessage|UserLeaveMessage).payload.nick;
+            console.log(name, msg.type === 'user_join' ? 'joined' : 'left');
+    }
+    }
+
+    private onSocketConnect() {
+        const user = JSON.parse(JSON.stringify(this.$store.state.user));
+        delete user.remember;
+        join(this.controller!, this.$store.state.user);
     }
 
     private onKeyDown(event: KeyboardEvent) {

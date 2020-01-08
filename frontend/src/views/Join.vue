@@ -1,7 +1,7 @@
 <template>
     <div class="grad-join">
         <h1 style="margin: 0.75em;">Join Session</h1>
-        <input type="text" v-model="nickname" placeholder="Nickname" />
+        <input type="text" v-model="nick" placeholder="Nickname" />
         <div style="display: flex; align-items: center; margin: 1rem 0px;">
             <label style="margin-right: 1rem;">Color:</label>
             <div class="grad-join__color" :style="`color: ${color}`" @click.self="pickerShown=true">
@@ -21,7 +21,7 @@
             <input type="checkbox" v-model="remember" />
             <label>Remember this</label>
         </div>
-        <button @click="join" :disabled="nickname.length === 0">Join</button>
+        <button @click="join" :disabled="nick.length === 0">Join</button>
     </div>
 </template>
 
@@ -41,7 +41,7 @@ import ColorPickerVue from '@caohenghu/vue-colorpicker';
 export default class JoinVue extends Vue {
     @Prop({ default: '' }) private id!: string;
 
-    private nickname: string = '';
+    private nick: string = '';
     private color: string = '#d18d1f';
     private remember: boolean = false;
     private pickerShown: boolean = false;
@@ -52,9 +52,9 @@ export default class JoinVue extends Vue {
         const item = localStorage.getItem('grad-planning-user');
         if (!item) return;
 
-        const { color, nickname } = JSON.parse(item);
+        const { color, nick } = JSON.parse(item);
         this.color = color;
-        this.nickname = nickname;
+        this.nick = nick;
         this.remember = true;
 
         this.join();
@@ -67,7 +67,7 @@ export default class JoinVue extends Vue {
     }
 
     private join() {
-        const values = { color: this.color, nickname: this.nickname };
+        const values = { color: this.color, nick: this.nick };
 
         if (this.remember) {
             localStorage.setItem('grad-planning-user', JSON.stringify(values));

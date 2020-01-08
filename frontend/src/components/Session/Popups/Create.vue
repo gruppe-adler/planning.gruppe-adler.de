@@ -70,7 +70,7 @@ export default class CreatePopupVue extends Vue {
         id: 'temp',
         type: 'comment',
         text: '',
-        author: this.$store.state.user.name,
+        author: this.$store.state.user.nick,
         pos: [0, 0]
     };
 
@@ -159,7 +159,7 @@ export default class CreatePopupVue extends Vue {
             id: 'temp',
             type: 'comment',
             text: '',
-            author: this.$store.state.user.name,
+            author: this.$store.state.user.nick,
             pos
         };
 

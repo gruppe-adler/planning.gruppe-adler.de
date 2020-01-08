@@ -1,13 +1,11 @@
 import Vue from 'vue';
 import VueX from 'vuex';
-import { Feature } from '@/services/shared';
+import { Feature, User as SharedUser } from '@/services/shared';
 import { Map as LeafletMap } from 'leaflet';
 
 Vue.use(VueX);
 
-interface User {
-    name: string;
-    color: string;
+interface User extends SharedUser {
     remember: boolean;
 }
 
