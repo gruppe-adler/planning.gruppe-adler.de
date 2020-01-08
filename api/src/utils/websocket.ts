@@ -61,7 +61,7 @@ function handleMessage(
         (message as CreateFeatureMessage).payload.id = id;
     }
 
-    if (['delete_feature', 'create_feature', 'edit_feature', 'init_features'].includes(message.type)) {
+    if (['delete_feature', 'create_feature', 'edit_feature', 'init'].includes(message.type)) {
         session.features = updateFeatures(session.features, message);
     }
 
