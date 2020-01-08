@@ -13,7 +13,7 @@ import {
     Message,
     UserJoinMessage,
     UserLeaveMessage,
-    InitFeaturesMessage
+    InitMessage
 } from './shared/messages';
 
 import {
@@ -39,7 +39,7 @@ export {
     Message,
     UserJoinMessage,
     UserLeaveMessage,
-    InitFeaturesMessage,
+    InitMessage,
 
     // users
     User,

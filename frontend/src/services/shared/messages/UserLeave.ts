@@ -5,4 +5,4 @@ export default interface UserLeaveMessage extends Message {
     payload: {
         uid: string;
     };
-};
+}

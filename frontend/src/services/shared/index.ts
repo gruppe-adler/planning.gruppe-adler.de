@@ -1,5 +1,5 @@
 import { Feature } from './features';
-import { Message, CreateFeatureMessage, DeleteFeatureMessage, EditFeatureMessage, InitFeaturesMessage } from './messages';
+import { Message, CreateFeatureMessage, DeleteFeatureMessage, EditFeatureMessage, InitMessage } from './messages';
 
 /**
  * Deletes a feature (IN PLACE), which is defined in given message from given features array
@@ -49,8 +49,8 @@ export const updateFeatures = (features: Feature[], message: Message): Feature[]
     case 'delete_feature':
         featuresCopy = deleteFeature(features, message as DeleteFeatureMessage);
         break;
-    case 'init_features':
-        featuresCopy = (message as InitFeaturesMessage).payload;
+    case 'init':
+        featuresCopy = (message as InitMessage).payload.features;
         break;
     default:
         throw new Error(`Message type ${message.type} is not supported`);
