@@ -6,7 +6,7 @@ export class LineCreateEvent extends Event {
     public coords: LatLng[];
 
     constructor(coords: LatLng[]) {
-        super('update');
+        super('create');
         this.coords = coords;
     }
 }
