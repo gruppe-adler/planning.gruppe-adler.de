@@ -6,60 +6,68 @@ import { WebSocketController } from './websocket';
 import { EditFeatureMessage, UserJoinMessage } from './shared/messages';
 import { LatLng } from 'leaflet';
 
-export function join(controller: WebSocketController, user: User) {
-    const msg: UserJoinMessage = {
-        type: 'user_join',
-        payload: user
-    };
+export default class FeatureService {
+    private controller: WebSocketController;
 
-    controller.send(msg);
-}
+    constructor(controller: WebSocketController) {
+        this.controller = controller;
+    }
 
-export function updateFeature(controller: WebSocketController, feature: Partial<Feature> & Pick<Feature, 'id'>): void {
-    const msg: EditFeatureMessage = {
-        type: 'edit_feature',
-        payload: feature
-    };
+    public join(user: User) {
+        const msg: UserJoinMessage = {
+            type: 'user_join',
+            payload: user
+        };
 
-    controller.send(msg);
-}
+        this.controller.send(msg);
+    }
 
-export function createFeature(controller: WebSocketController, feature: Feature): void {
-    const msg: CreateFeatureMessage = {
-        type: 'create_feature',
-        payload: feature
-    };
+    public updateFeature(feature: Partial<Feature> & Pick<Feature, 'id'>): void {
+        const msg: EditFeatureMessage = {
+            type: 'edit_feature',
+            payload: feature
+        };
 
-    controller.send(msg);
-}
+        this.controller.send(msg);
+    }
 
-export function addComment(controller: WebSocketController, pos: [number, number], text: string, author: string): void {
-    const comment: Comment = {
-        type: 'comment',
-        pos,
-        text,
-        author,
-        id: 'temp'
-    };
+    public createFeature(feature: Feature): void {
+        const msg: CreateFeatureMessage = {
+            type: 'create_feature',
+            payload: feature
+        };
 
-    createFeature(controller, comment);
-}
+        this.controller.send(msg);
+    }
 
-export function addLine(controller: WebSocketController, positions: LatLng[], color: string): void {
-    const comment: Line = {
-        type: 'line',
-        positions: positions.map(pos => [pos.lat, pos.lng]),
-        color,
-        id: 'temp'
-    };
+    public addComment(pos: [number, number], text: string, author: string): void {
+        const comment: Comment = {
+            type: 'comment',
+            pos,
+            text,
+            author,
+            id: 'temp'
+        };
 
-    createFeature(controller, comment);
-}
+        this.createFeature(comment);
+    }
 
-export function deleteFeature(controller: WebSocketController, id: string): void {
-    const msg: DeleteFeatureMessage = {
-        type: 'delete_feature',
-        payload: { id }
-    };
-    controller.send(msg);
+    public addLine(positions: LatLng[], color: string): void {
+        const comment: Line = {
+            type: 'line',
+            positions: positions.map(pos => [pos.lat, pos.lng]),
+            color,
+            id: 'temp'
+        };
+
+        this.createFeature(comment);
+    }
+
+    public deleteFeature(id: string): void {
+        const msg: DeleteFeatureMessage = {
+            type: 'delete_feature',
+            payload: { id }
+        };
+        this.controller.send(msg);
+    }
 }

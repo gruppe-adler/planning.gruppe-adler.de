@@ -49,14 +49,7 @@ import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue
 
 import Tool from '@/tools/Tool';
 import LineTool, { LineCreateEvent } from '@/tools/Line';
-import {
-    addLine,
-    deleteFeature,
-    addComment,
-    createFeature,
-    updateFeature,
-    join
-} from '@/services/feature';
+import FeatureService from '@/services/feature';
 import CreatePopupVue from '@/components/Session/Popups/Create.vue';
 import EditPopupVue from '@/components/Session/Popups/Edit.vue';
 
@@ -75,6 +68,7 @@ export default class SessionVue extends Vue {
 
     private error: Error|null = null;
     private controller: WebSocketController|null = null;
+    private featureService: FeatureService|null = null;
 
     private features: Feature[] = [];
     private users: User[] = [];
@@ -115,6 +109,8 @@ export default class SessionVue extends Vue {
         this.controller.on('error', err => this.onSocketError(err));
         this.controller.on('message', msg => this.onSocketMessage(msg));
         this.controller.on('open', () => this.onSocketConnect());
+
+        this.featureService = new FeatureService(this.controller);
     }
 
     private onSocketError(err: Error) {
@@ -150,7 +146,7 @@ export default class SessionVue extends Vue {
     private onSocketConnect() {
         const user = JSON.parse(JSON.stringify(this.$store.state.user));
         delete user.remember;
-        join(this.controller!, this.$store.state.user);
+        this.featureService!.join(this.$store.state.user);
     }
 
     private onKeyDown(event: KeyboardEvent) {
@@ -169,26 +165,26 @@ export default class SessionVue extends Vue {
     }
 
     private deleteFeature(feature: Feature) {
-        if (!this.controller) return;
+        if (!this.featureService) return;
 
         // reset highlighted feature if it is deleted
         if (this.highlightedFeature && this.highlightedFeature.id === feature.id) {
             this.highlightedFeature = null;
         }
 
-        deleteFeature(this.controller, feature.id);
+        this.featureService.deleteFeature(feature.id);
 
         this.featureToEdit = null;
     }
 
     private createFeature(feature: Feature) {
-        if (this.controller) createFeature(this.controller, feature);
+        if (this.featureService) this.featureService.createFeature(feature);
 
         this.createPos = null;
     }
 
     private editFeature(feature: Feature) {
-        if (this.controller) updateFeature(this.controller, feature);
+        if (this.featureService) this.featureService.updateFeature(feature);
 
         this.featureToEdit = null;
     }
@@ -196,7 +192,7 @@ export default class SessionVue extends Vue {
     private duplicateFeature(feature: Feature) {
         feature.id = 'temp';
 
-        if (this.controller) createFeature(this.controller, feature);
+        if (this.featureService) this.featureService.createFeature(feature);
 
         this.featureToEdit = null;
     }
@@ -236,9 +232,9 @@ export default class SessionVue extends Vue {
         case 'line':
             const lineTool = new LineTool(this.map);
             lineTool.addEventListener('create', (event: Event) => {
-                if (!this.controller) return;
+                if (!this.featureService) return;
 
-                addLine(this.controller, (event as LineCreateEvent).coords, 'black');
+                this.featureService.addLine((event as LineCreateEvent).coords, 'black');
             });
             this.tool = lineTool;
             break;
