@@ -1,4 +1,4 @@
-import { Marker, DivIcon, Popup, tooltip, Tooltip } from 'leaflet';
+import { Marker, DivIcon, LatLng } from 'leaflet';
 import { Comment } from '@/services/shared';
 
 export default class CommentFeature extends Marker {
@@ -9,7 +9,9 @@ export default class CommentFeature extends Marker {
             iconSize: [36, 36]
         });
 
-        super(options.pos, {
+        const pos = new LatLng(options.pos[0], options.pos[1]);
+
+        super(pos, {
             icon
         });
     }

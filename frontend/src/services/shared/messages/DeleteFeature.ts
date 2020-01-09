@@ -1,8 +1,7 @@
 import Message from './Message';
+import { Feature } from '../features';
 
 export default interface DeleteFeatureMessage extends Message {
     type: 'delete_feature';
-    payload: {
-        id: string;
-    };
+    payload: Pick<Feature, 'id'>
 }

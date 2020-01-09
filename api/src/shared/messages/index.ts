@@ -5,6 +5,9 @@ import DeleteFeatureMessage from './DeleteFeature';
 import EditFeatureMessage from './EditFeature';
 import CreateFeatureMessage from './CreateFeature';
 import InitMessage from './Init';
+import PointingUpdateMessage from './PointingUpdate';
+import PointingStartMessage from './PointingStart';
+import PointingStopMessage from './PointingStop';
 
 export {
     CreateFeatureMessage,
@@ -13,5 +16,8 @@ export {
     Message,
     UserJoinMessage,
     UserLeaveMessage,
-    InitMessage
+    InitMessage,
+    PointingStartMessage,
+    PointingUpdateMessage,
+    PointingStopMessage
 };
