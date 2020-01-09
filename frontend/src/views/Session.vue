@@ -161,6 +161,10 @@ export default class SessionVue extends Vue {
         case 'Delete':
             if (this.highlightedFeature) this.deleteFeature(this.highlightedFeature);
             break;
+        case 'Escape':
+            this.createPos = null;
+            this.featureToEdit = null;
+            break;
         }
     }
 
