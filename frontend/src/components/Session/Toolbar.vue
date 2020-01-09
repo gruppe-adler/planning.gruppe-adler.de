@@ -6,8 +6,7 @@
         :tooltip="t.displayName"
         :icon="t.icon"
         :active="t.id === tool"
-        :disabled="t.disabled"
-        @click="!t.disabled ? tool = t.id : null"
+        @click="tool = t.id"
     />
 </div>
 </template>
@@ -19,7 +18,6 @@ interface Tool {
     id: string;
     displayName: string;
     icon: string;
-    disabled?: boolean;
 }
 
 @Component
@@ -35,8 +33,7 @@ export default class ToolbarVue extends Vue {
         {
             id: 'pointing',
             displayName: 'Pointing',
-            icon: 'touch_app',
-            disabled: true
+            icon: 'touch_app'
         },
         {
             id: 'line',

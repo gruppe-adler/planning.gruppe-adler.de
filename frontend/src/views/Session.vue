@@ -49,7 +49,9 @@ import ConnectionIndicatorVue from '@/components/Session/ConnectionIndicator.vue
 
 import Tool from '@/tools/Tool';
 import LineTool, { LineCreateEvent } from '@/tools/Line';
+import PointingTool from '@/tools/Pointing';
 import FeatureService from '@/services/feature';
+import PointingService from '@/services/pointing';
 import CreatePopupVue from '@/components/Session/Popups/Create.vue';
 import EditPopupVue from '@/components/Session/Popups/Edit.vue';
 
@@ -69,6 +71,7 @@ export default class SessionVue extends Vue {
     private error: Error|null = null;
     private controller: WebSocketController|null = null;
     private featureService: FeatureService|null = null;
+    private pointingService: PointingService|null = null;
 
     private features: Feature[] = [];
     private users: User[] = [];
@@ -111,6 +114,7 @@ export default class SessionVue extends Vue {
         this.controller.on('open', () => this.onSocketConnect());
 
         this.featureService = new FeatureService(this.controller);
+        this.pointingService = new PointingService(this.controller);
     }
 
     private onSocketError(err: Error) {
@@ -156,6 +160,9 @@ export default class SessionVue extends Vue {
             break;
         case 'Delete':
             if (this.highlightedFeature) this.deleteFeature(this.highlightedFeature);
+            break;
+        case 'ShiftLeft':
+            this.tempSwitchTool('pointing', event.code);
             break;
         case 'Escape':
             this.createPos = null;
@@ -238,7 +245,22 @@ export default class SessionVue extends Vue {
             });
             this.tool = lineTool;
             break;
-
+        case 'pointing':
+            const pointTool = new PointingTool(this.map);
+            pointTool.addEventListener('start', ({ pos }) => {
+                if (this.pointingService === null) return;
+                this.pointingService.start(pos);
+            });
+            pointTool.addEventListener('update', ({ pos }) => {
+                if (this.pointingService === null) return;
+                this.pointingService.update(pos);
+            });
+            pointTool.addEventListener('stop', event => {
+                if (this.pointingService === null) return;
+                this.pointingService.stop();
+            });
+            this.tool = pointTool;
+            break;
         default:
             break;
         }
