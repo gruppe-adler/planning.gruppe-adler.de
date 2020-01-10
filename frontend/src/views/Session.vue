@@ -277,7 +277,7 @@ export default class SessionVue extends Vue {
     border-radius: .25rem;
 }
 
-.grad-marker {
+.grad-marker, .grad-pointing {
     display: flex;
     align-items: center;
     justify-content: flex-start;

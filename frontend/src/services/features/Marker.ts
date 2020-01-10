@@ -24,7 +24,7 @@ export default class MarkerFeature extends LeafletMarker {
             className: 'grad-marker',
             html: `
                 <img width="36" height="36" style="${style}" src="${url}" />
-                <span style="color: rgba(${r * 255},${g * 255},${b * 255},${a})">${options.text}</span>
+                <span style="color: rgba(${r},${g},${b},${a})">${options.text}</span>
             `,
             iconSize: [36, 36]
         });

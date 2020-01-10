@@ -36,6 +36,7 @@ interface PointingTool {
 
 class PointingTool extends Tool {
     private mouseDownListener?: (ev: LeafletMouseEvent) => void;
+    private lastPoint: [number, number]|null = null;
 
     protected setup() {
         this.mouseDownListener = (ev: LeafletMouseEvent) => this.onMouseDown(ev);
@@ -48,7 +49,7 @@ class PointingTool extends Tool {
     }
 
     private onMouseDown(event: LeafletMouseEvent) {
-        const onMouseMove = (ev: LeafletMouseEvent) => this.dispatchEvent(new PointingUpdateEvent(ev.latlng));
+        const onMouseMove = (ev: LeafletMouseEvent) => this.onMouseMove(ev);
 
         // disable map
         this.map.dragging.disable();
@@ -70,6 +71,22 @@ class PointingTool extends Tool {
 
         this.map.addEventListener('mousemove', onMouseMove);
         this.map.addEventListener('mouseup', onMouseUp);
+    }
+
+    private onMouseMove(ev: LeafletMouseEvent) {
+        const distance = ([x1, y1]: [number, number], [x2, y2]: [number, number]) => {
+            const a = Math.abs(x1 - x2);
+            const b = Math.abs(y1 - y2);
+
+            return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        };
+
+        const pos: [number, number] = [ev.originalEvent.x, ev.originalEvent.y];
+
+        if (this.lastPoint === null || distance(pos, this.lastPoint) > 20) {
+            this.lastPoint = pos;
+            this.dispatchEvent(new PointingUpdateEvent(ev.latlng));
+        }
     }
 }
 

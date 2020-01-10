@@ -32,6 +32,7 @@ import { Map, fetchMaps } from '@/services/maps';
 
 // @ts-ignore
 import ColorPickerVue from '@caohenghu/vue-colorpicker';
+import { rgbToHex } from '../utils/color';
 
 @Component({
     components: {
@@ -63,7 +64,7 @@ export default class JoinVue extends Vue {
     private changeColor(color: { rgba: { r: number, g: number, b: number }}) {
         const { r, g, b } = color.rgba;
 
-        this.color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+        this.color = rgbToHex([r, g, b]);
     }
 
     private join() {

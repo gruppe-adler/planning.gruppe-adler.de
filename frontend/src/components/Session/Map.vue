@@ -15,7 +15,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 
 import { WebSocketController } from '@/services/websocket';
-import { Feature, Line, Comment, Marker } from '@/services/shared';
+import { Feature, Line, Comment, Marker, Pointing } from '@/services/shared';
 import { LineString } from 'geojson';
 
 import LineFeature from '@/services/features/Line';
@@ -24,6 +24,7 @@ import CommentFeature from '@/services/features/Comment';
 import deepEqual from 'deep-equal';
 import { mapState } from 'vuex';
 import MarkerFeature from '@/services/features/Marker';
+import PointingFeature from '@/services/features/Pointing';
 
 @Component({
     computed: {
@@ -130,6 +131,9 @@ export default class MapVue extends Vue {
                 break;
             case 'marker':
                 layer = new MarkerFeature(f as Marker).addTo(this.map!);
+                break;
+            case 'pointing':
+                layer = new PointingFeature(f as Pointing).addTo(this.map!);
                 break;
             default:
                 break;

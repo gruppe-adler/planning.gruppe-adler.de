@@ -3,7 +3,8 @@ import {
     Comment,
     Line,
     Marker,
-    Picture
+    Picture,
+    Pointing
 } from './shared/features';
 
 import {
@@ -31,6 +32,7 @@ export {
     Line,
     Marker,
     Picture,
+    Pointing,
 
     // messages
     CreateFeatureMessage,
