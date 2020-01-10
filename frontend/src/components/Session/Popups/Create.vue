@@ -41,9 +41,9 @@ import { WebSocketController } from '@/services/websocket';
 import { Comment, Marker, Picture, Feature } from '@/services/shared';
 import PopupVue from './Popup.vue';
 import { LatLng, Layer as LeafletLayer } from 'leaflet';
-import MarkerFormVue from '../Forms/Marker.vue';
-import CommentFormVue from '../Forms/Comment.vue';
-import PictureFormVue from '../Forms/Picture.vue';
+import MarkerFormVue from './Forms/Marker.vue';
+import CommentFormVue from './Forms/Comment.vue';
+import PictureFormVue from './Forms/Picture.vue';
 
 import CommentFeature from '@/services/features/Comment';
 import MarkerFeature from '@/services/features/Marker';
