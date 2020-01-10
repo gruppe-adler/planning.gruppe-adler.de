@@ -3,5 +3,5 @@ import { Feature } from '../features';
 
 export default interface DeleteFeatureMessage extends Message {
     type: 'delete_feature';
-    payload: Pick<Feature, 'id'>
+    payload: Pick<Feature, 'id'>;
 }
