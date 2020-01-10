@@ -1,10 +1,13 @@
 import WebSocket, { Server, Data, OPEN } from 'ws';
-import { Message, CreateFeatureMessage, InitMessage, UserJoinMessage, UserLeaveMessage } from '../shared/messages';
+import { Message, CreateFeatureMessage, InitMessage, UserJoinMessage, UserLeaveMessage, DeleteFeatureMessage, PointingStartMessage, PointingUpdateMessage, EditFeatureMessage } from '../shared/messages';
 import { updateFeatures } from '../shared';
 import PlanningSessionWorker from './PlanningSessionWorker';
+import { Pointing } from '../shared/features';
 
 const generateId = (): string => Math.ceil((Math.random() * 1000000000000000)).toString(16);
 const userIds: string[] = [];
+// userId -> pointing feature id
+const pointingFeatures: Map<string, string> = new Map();
 
 /**
  * Callback for when websocket-server receives message
@@ -22,16 +25,14 @@ function handleMessage(
 
     if (!session) return;
 
-    const { wss } = session;
-
     let message: Message;
-
     try {
         message = JSON.parse(data.toString());
     } catch (err) {
         console.error(`Received non JSON message from client: "${data.toString()}"`);
         return;
     }
+
     // new user joined
     if (message.type === 'user_join') {
         // update userId
@@ -61,12 +62,74 @@ function handleMessage(
         (message as CreateFeatureMessage).payload.id = id;
     }
 
+    if (message.type === 'pointing_update') {
+        if (!pointingFeatures.has(userId)) {
+            // there is no pointing feature -> change message to pointing_start message
+            message = {
+                type: 'pointing_start',
+                payload: (message as PointingUpdateMessage).payload
+            } as PointingStartMessage;
+        } else {
+            const featureId = pointingFeatures.get(userId);
+
+            const payload: (Pick<Pointing, 'id'> & Partial<Pointing>) = {
+                id: featureId,
+                pos: (message as PointingUpdateMessage).payload
+            };
+
+            message = {
+                type: 'edit_feature',
+                payload
+            } as EditFeatureMessage;
+        }
+    }
+
+    if (message.type === 'pointing_stop') {
+        if (!pointingFeatures.has(userId)) return;
+
+        const featureId = pointingFeatures.get(userId);
+
+        pointingFeatures.delete(userId);
+
+        message = {
+            type: 'delete_feature',
+            payload: {
+                id: featureId
+            }
+        } as DeleteFeatureMessage;
+    }
+
+    if (message.type === 'pointing_start') {
+        let id = generateId();
+        while (session.features.findIndex(f => f.id === id) >= 0) {
+            id = generateId();
+        }
+
+        pointingFeatures.set(userId, id);
+
+        if (!session.users.has(userId)) return;
+
+        const user = session.users.get(userId);
+
+        const feature: Pointing = {
+            type: 'pointing',
+            id,
+            user,
+            pos: (message as PointingStartMessage).payload
+        };
+
+        message = {
+            type: 'create_feature',
+            payload: feature
+        } as CreateFeatureMessage;
+    }
+
     if (['delete_feature', 'create_feature', 'edit_feature', 'init'].includes(message.type)) {
         session.features = updateFeatures(session.features, message);
     }
 
     // relay to all other clients
-    wss.clients.forEach(socket => {
+    session.wss.clients.forEach(socket => {
         if (socket.readyState === OPEN) {
             socket.send(JSON.stringify(message));
         }
@@ -79,6 +142,7 @@ function handleClose(sessionId: string, userId: string): void {
 
     if (!session.users.has(userId)) return;
     const user = session.users.get(userId);
+    session.users.delete(userId);
 
     // notify all client that user left
     const leaveMsg: UserLeaveMessage = {
