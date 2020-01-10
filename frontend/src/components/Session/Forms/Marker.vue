@@ -26,7 +26,7 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Marker } from '@/services/shared';
-import ColorsVue from '../Popups/Create/Colors.vue';
+import ColorsVue from './Marker/Colors.vue';
 import { PropType } from 'vue';
 interface ArmaMarker {
     id: string;
