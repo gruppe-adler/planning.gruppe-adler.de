@@ -65,8 +65,10 @@ export default class EditPopupVue extends Vue {
     @Watch('value', { deep: true })
     private createValueCopy() {
         if (this.value === null) {
+            if (this.valueCopy) this.$store.commit('removeHiddenFeature', this.valueCopy);
             this.valueCopy = null;
         } else {
+            this.$store.commit('addHiddenFeature', this.valueCopy);
             this.valueCopy = JSON.parse(JSON.stringify(this.value)) as Feature;
         }
     }

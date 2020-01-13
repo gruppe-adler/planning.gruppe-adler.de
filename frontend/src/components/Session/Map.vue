@@ -43,6 +43,7 @@ export default class MapVue extends Vue {
     private hoverFeatures: Map<string, Feature> = new Map();
 
     private featureLayers: Map<string, { feature: Feature, layer: LeafletLayer }> = new Map();
+    private hiddenFeatureLayers: Map<string, LeafletLayer> = new Map();
 
     // helper functions for v-model
     // just use this.map to access it
@@ -83,6 +84,27 @@ export default class MapVue extends Vue {
             this.$emit('click', ev.latlng);
         });
     }
+
+    // @Watch('featureLayers')
+    // @Watch('$store.state.hiddenFeatures')
+    // private hideFeatures() {
+    //     if (this.map === null) return;
+
+    //     for (const layer of this.hiddenFeatureLayers.values()) {
+    //         layer.addTo(this.map);
+    //     }
+
+    //     this.hiddenFeatureLayers.clear();
+
+    //     // this.$store.state.hiddenFeatures.forEach((id: string) => {
+    //     //     if (!this.featureLayers.has(id)) return;
+
+    //     //     const layer = this.featureLayers.get(id)!.layer;
+
+    //     //     layer.removeFrom(this.map!);
+    //     //     this.hiddenFeatureLayers.set(id, layer);
+    //     // });
+    // }
 
     @Watch('popup')
     @Watch('features')
