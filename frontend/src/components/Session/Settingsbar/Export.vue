@@ -51,7 +51,7 @@ export default class ExportVue extends Vue {
         const dateStr = iso.substr(0, 10);
         const timeStr = iso.substr(11, 5);
 
-        const id: string = this.$store.state.sessionId;
+        const id: string = this.$tstore.state.sessionId!;
 
         return `planning-session ${id} (${dateStr} ${timeStr}).${extension}`;
     }

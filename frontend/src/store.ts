@@ -9,7 +9,7 @@ interface User extends SharedUser {
     remember: boolean;
 }
 
-interface RootState {
+export interface RootState {
     sessionId: string|null;
     features: Feature[];
     hiddenFeatures: string[];

@@ -26,7 +26,7 @@ export default class ShareVue extends Vue {
     @Prop({ default: '' }) private value!: string;
 
     private get link() {
-        return `${location.origin}/join/${this.$store.state.sessionId}`;
+        return `${location.origin}/join/${this.$tstore.state.sessionId}`;
     }
 
     private copy() {

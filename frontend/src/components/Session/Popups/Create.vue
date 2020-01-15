@@ -70,7 +70,7 @@ export default class CreatePopupVue extends Vue {
         id: 'temp',
         type: 'comment',
         text: '',
-        author: this.$store.state.user.nick,
+        author: this.$tstore.state.user!.nick,
         pos: [0, 0]
     };
 
@@ -145,8 +145,9 @@ export default class CreatePopupVue extends Vue {
         }
 
         if (this.previewFeature === null) return;
+        if (this.$tstore.state.map === null) return;
 
-        this.previewFeature.addTo(this.$store.state.map);
+        this.previewFeature.addTo(this.$tstore.state.map);
     }
 
     @Watch('pos')
@@ -159,7 +160,7 @@ export default class CreatePopupVue extends Vue {
             id: 'temp',
             type: 'comment',
             text: '',
-            author: this.$store.state.user.nick,
+            author: this.$tstore.state.user!.nick,
             pos
         };
 

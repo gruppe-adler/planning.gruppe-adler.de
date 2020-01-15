@@ -67,7 +67,7 @@ export default class MapVue extends Vue {
      */
     @Watch('map')
     private setupMap() {
-        this.$store.commit('setMap', this.map);
+        this.$tstore.commit('setMap', this.map);
 
         if (!this.map) return;
 

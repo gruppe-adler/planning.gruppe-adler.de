@@ -76,7 +76,7 @@ export default class JoinVue extends Vue {
             localStorage.removeItem('grad-planning-user');
         }
 
-        this.$store.commit('setUser', {
+        this.$tstore.commit('setUser', {
             ...values,
             remember: this.remember
         });

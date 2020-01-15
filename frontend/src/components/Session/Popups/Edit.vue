@@ -101,8 +101,10 @@ export default class EditPopupVue extends Vue {
         }
 
         if (this.previewFeature === null) return;
+        if (this.$tstore.state.map === null) return;
+        this.previewFeature.addTo(this.$tstore.state.map);
 
-        this.previewFeature.addTo(this.$store.state.map);
+        this.feature = null;
     }
 }
 </script>

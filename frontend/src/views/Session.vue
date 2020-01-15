@@ -89,14 +89,14 @@ export default class SessionVue extends Vue {
     private created() {
         if (this.id === '') this.$router.push('/');
 
-        if (this.$store.state.user === null) {
+        if (this.$tstore.state.user === null) {
             this.$router.push(`/join/${this.id}`);
             return;
         }
 
         window.addEventListener('keydown', this.onKeyDown);
 
-        this.$store.commit('setSessionId', this.id);
+        this.$tstore.commit('setSessionId', this.id);
 
         this.setupSocket();
     }
@@ -129,13 +129,13 @@ export default class SessionVue extends Vue {
 
         if (['delete_feature', 'create_feature', 'edit_feature', 'init'].includes(msg.type)) {
             this.features = updateFeatures(this.features, msg);
-            this.$store.commit('setFeatures', this.features);
+            this.$tstore.commit('setFeatures', this.features);
         }
 
         // save user
         if (msg.type === 'init') {
-            this.$store.commit('setUser', {
-                ...this.$store.state.user,
+            this.$tstore.commit('setUser', {
+                ...this.$tstore.state.user,
                 ...(msg as InitMessage).payload.user
             });
         }
@@ -148,9 +148,9 @@ export default class SessionVue extends Vue {
     }
 
     private onSocketConnect() {
-        const user = JSON.parse(JSON.stringify(this.$store.state.user));
+        const user = JSON.parse(JSON.stringify(this.$tstore.state.user!));
         delete user.remember;
-        this.featureService!.join(this.$store.state.user);
+        this.featureService!.join(user);
     }
 
     private onKeyDown(event: KeyboardEvent) {
