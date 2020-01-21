@@ -12,7 +12,6 @@ interface User extends SharedUser {
 export interface RootState {
     sessionId: string|null;
     features: Feature[];
-    hiddenFeatures: string[];
     user: User|null;
     map: LeafletMap|null;
 }
@@ -22,8 +21,7 @@ export default new VueX.Store<RootState>({
         sessionId: null,
         user: null,
         map: null,
-        features: [],
-        hiddenFeatures: []
+        features: []
     },
     mutations: {
         setSessionId(state, id: string) {
@@ -37,15 +35,6 @@ export default new VueX.Store<RootState>({
         },
         setMap(state, map: LeafletMap) {
             state.map = map;
-        },
-        addHiddenFeature(state, feature: Feature) {
-            if (state.hiddenFeatures.includes(feature.id)) return;
-
-            state.hiddenFeatures.push(feature.id);
-        },
-        removeHiddenFeature(state, feature: Feature) {
-            const index = state.hiddenFeatures.indexOf(feature.id);
-            if (index > -1) state.hiddenFeatures.splice(index, 1);
         }
     }
 });
