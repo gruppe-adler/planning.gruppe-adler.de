@@ -13,8 +13,6 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import ShareVue from './Settingsbar/Share.vue';
-import ExportVue from './Settingsbar/Export.vue';
 
 @Component
 export default class IconButtonVue extends Vue {
