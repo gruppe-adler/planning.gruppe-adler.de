@@ -1,39 +1,18 @@
-import { Marker as LeafletMarker, DivIcon, LeafletMouseEvent } from 'leaflet';
+import { Marker as LeafletMarker, DivIcon } from 'leaflet';
 import { Marker } from '@/services/shared';
 import { armaColorToRgba, getColoredMarkerURL } from '@/utils/color';
-import FeatureInteractionEvent from './FeatureInteractionEvent';
+import GradFeature from './Feature';
 
-export default class MarkerFeature extends LeafletMarker {
+export default class MarkerFeature extends GradFeature {
     constructor(options: Marker, interactive: boolean = true) {
-        super(options.pos);
+        super(options, interactive);
 
-        // fire events on map
-        if (interactive) {
-            this.addEventListener('click', (e: LeafletMouseEvent) => {
-                const event: FeatureInteractionEvent = {
-                    ...e,
-                    gradFeature: options
-                };
-
-                this._map.fireEvent('grad/feature/click', event);
-            });
-            this.addEventListener('dblclick', (e: LeafletMouseEvent) => {
-                const event: FeatureInteractionEvent = {
-                    ...e,
-                    gradFeature: options
-                };
-
-                this._map.fireEvent('grad/feature/dblclick', event);
-            });
-        }
-
-        this.loadIconAsync(options);
+        this.setup(options);
     }
 
-    private async loadIconAsync(options: Marker) {
+    private async setup(options: Marker) {
         const [r, g, b, a] = armaColorToRgba(options.color, options.markerType);
 
-        // const url = `/markers/${options.markerType}.png`;
         const url = await getColoredMarkerURL(options.markerType, options.color);
 
         const style = `
@@ -50,6 +29,6 @@ export default class MarkerFeature extends LeafletMarker {
             iconSize: [36, 36]
         });
 
-        this.setIcon(icon);
+        this.addLayer(new LeafletMarker(options.pos, { icon }));
     }
 }
