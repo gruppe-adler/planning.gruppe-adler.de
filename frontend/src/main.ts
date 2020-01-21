@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 // Set $tstore to be a getter that simply returns $store.
 Object.defineProperty(Vue.prototype, '$tstore', {
     get: function() {
-        return this.$tstore as Store<RootState>;
+        return this.$store as Store<RootState>;
     },
     enumerable: true
 });
