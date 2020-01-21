@@ -1,12 +1,13 @@
-import { GeoJSON, PathOptions, LeafletEvent, FeatureGroup } from 'leaflet';
+import { GeoJSON, LeafletEvent, FeatureGroup, LeafletMouseEvent } from 'leaflet';
 import { LineString } from 'geojson';
 import { Line } from '@/services/shared';
+import FeatureInteractionEvent from './FeatureInteractionEvent';
 
 export default class LineFeature extends FeatureGroup {
     private mainFeature: GeoJSON;
     private hoverFeature: GeoJSON;
 
-    constructor(options: Line) {
+    constructor(options: Line, interactive: boolean = true) {
         super();
 
         const coordinates = options.positions.map(([lat, lng]) => [lng, lat]);
@@ -39,8 +40,28 @@ export default class LineFeature extends FeatureGroup {
             }
         );
 
-        this.on('mouseover', this.onMouseOver.bind(this));
-        this.on('mouseout', this.onMouseOut.bind(this));
+        this.addEventListener('mouseover', this.onMouseOver.bind(this));
+        this.addEventListener('mouseout', this.onMouseOut.bind(this));
+
+        // fire events on map
+        if (interactive) {
+            this.addEventListener('click', (e: LeafletMouseEvent) => {
+                const event: FeatureInteractionEvent = {
+                    ...e,
+                    gradFeature: options
+                };
+
+                this._map.fireEvent('grad/feature/click', event);
+            });
+            this.addEventListener('dblclick', (e: LeafletMouseEvent) => {
+                const event: FeatureInteractionEvent = {
+                    ...e,
+                    gradFeature: options
+                };
+
+                this._map.fireEvent('grad/feature/dblclick', event);
+            });
+        }
 
         this.addLayer(this.mainFeature);
         this.addLayer(this.hoverFeature);

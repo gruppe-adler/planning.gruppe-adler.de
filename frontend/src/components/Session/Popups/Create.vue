@@ -37,10 +37,9 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { WebSocketController } from '@/services/websocket';
+import { LatLng, Layer as LeafletLayer, LeafletMouseEvent } from 'leaflet';
 import { Comment, Marker, Picture, Feature } from '@/services/shared';
 import PopupVue from './Popup.vue';
-import { LatLng, Layer as LeafletLayer } from 'leaflet';
 import MarkerFormVue from './Forms/Marker.vue';
 import CommentFormVue from './Forms/Comment.vue';
 import PictureFormVue from './Forms/Picture.vue';
@@ -57,13 +56,8 @@ import MarkerFeature from '@/services/features/Marker';
     }
 })
 export default class CreatePopupVue extends Vue {
-    @Prop({ default: null }) private value!: LatLng|null;
-
-    private get pos() { return this.value; };
-    private set pos(v: LatLng|null) { this.$emit('input', v); };
-
+    private pos: LatLng|null = null;
     private tab: 'marker'|'comment'|'picture' = 'marker';
-
     private previewFeature: LeafletLayer|null = null;
 
     private comment: Comment = {
@@ -97,6 +91,23 @@ export default class CreatePopupVue extends Vue {
         opacity: 1
     };
 
+    private created() {
+        this.setupMap();
+    }
+
+    @Watch('$tstore.state.map')
+    private setupMap() {
+        if (this.$tstore.state.map === null) return;
+
+        this.$tstore.state.map.addEventListener('dblclick', (event: LeafletMouseEvent) => {
+            this.pos = event.latlng;
+        });
+
+        this.$tstore.state.map.addEventListener('click', (event: LeafletMouseEvent) => {
+            if (this.pos !== null) this.pos = null;
+        });
+    }
+
     private submit() {
         let feature: Feature;
 
@@ -112,13 +123,10 @@ export default class CreatePopupVue extends Vue {
             break;
         };
 
-        this.$emit('submit', feature);
-    }
+        if (this.$tstore.state.featureService === null) return;
+        this.$tstore.state.featureService.createFeature(feature);
 
-    private deletePreview() {
-        if (this.previewFeature === null) return;
-        this.previewFeature.remove();
-        this.previewFeature = null;
+        this.pos = null;
     }
 
     @Watch('comment', { deep: true })
@@ -128,7 +136,10 @@ export default class CreatePopupVue extends Vue {
     @Watch('pos')
     private updatePreviewFeature() {
         // remove old feature if there is one
-        this.deletePreview();
+        if (this.previewFeature !== null) {
+            this.previewFeature.remove();
+            this.previewFeature = null;
+        };
 
         if (this.pos === null) return;
 

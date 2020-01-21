@@ -1,10 +1,31 @@
-import { Marker as LeafletMarker, DivIcon, Popup, tooltip, Tooltip, marker } from 'leaflet';
+import { Marker as LeafletMarker, DivIcon, LeafletMouseEvent } from 'leaflet';
 import { Marker } from '@/services/shared';
 import { armaColorToRgba, getColoredMarkerURL } from '@/utils/color';
+import FeatureInteractionEvent from './FeatureInteractionEvent';
 
 export default class MarkerFeature extends LeafletMarker {
-    constructor(options: Marker) {
+    constructor(options: Marker, interactive: boolean = true) {
         super(options.pos);
+
+        // fire events on map
+        if (interactive) {
+            this.addEventListener('click', (e: LeafletMouseEvent) => {
+                const event: FeatureInteractionEvent = {
+                    ...e,
+                    gradFeature: options
+                };
+
+                this._map.fireEvent('grad/feature/click', event);
+            });
+            this.addEventListener('dblclick', (e: LeafletMouseEvent) => {
+                const event: FeatureInteractionEvent = {
+                    ...e,
+                    gradFeature: options
+                };
+
+                this._map.fireEvent('grad/feature/dblclick', event);
+            });
+        }
 
         this.loadIconAsync(options);
     }

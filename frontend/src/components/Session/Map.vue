@@ -74,14 +74,6 @@ export default class MapVue extends Vue {
 
         const tl = new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
         tl.addTo(this.map!);
-
-        this.map.on('dblclick', (ev: LeafletMouseEvent) => {
-            this.$emit('dblclick', ev.latlng);
-        });
-
-        this.map.on('click', (ev: LeafletMouseEvent) => {
-            this.$emit('click', ev.latlng);
-        });
     }
 
     @Watch('popup')
@@ -143,7 +135,6 @@ export default class MapVue extends Vue {
                 layer.on('mouseover', () => this.onFeatureMouseOver(f));
                 layer.on('mouseout', () => this.onFeatureMouseOut(f));
                 layer.on('remove', () => this.onFeatureMouseOut(f));
-                layer.on('dblclick', () => this.$emit('dblclick-feature', f));
 
                 this.featureLayers.set(f.id, { feature: f, layer });
             };

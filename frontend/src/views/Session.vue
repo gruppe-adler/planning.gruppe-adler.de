@@ -9,24 +9,12 @@
     <template v-else-if="controller !== null">
         <Map
             :controller="controller"
-            :features="features"
             mapId="stratis"
             v-model="map"
             @highlight-feature="highlightedFeature = $event;"
-            @dblclick-feature="featureToEdit = $event"
-            @dblclick="onMapDblClick"
-            @click="onMapClick"
         />
-        <CreatePopup
-            v-model="createPos"
-            @submit="createFeature"
-        />
-        <EditPopup
-            v-model="featureToEdit"
-            @delete="deleteFeature"
-            @duplicate="duplicateFeature"
-            @submit="editFeature"
-        />
+        <CreatePopup />
+        <EditPopup />
         <Toolbar v-model="activeTool" />
         <Settingsbar />
         <ConnectionIndicator :controller="controller" />
@@ -39,7 +27,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as WebSocket from 'ws';
 import { Map, LatLng } from 'leaflet';
 
-import { User, Feature, Marker, Comment, Message, CreateFeatureMessage, DeleteFeatureMessage, InitMessage, UserJoinMessage, UserLeaveMessage, updateFeatures } from '@/services/shared';
+import { User, Feature, Message, InitMessage, UserJoinMessage, UserLeaveMessage, updateFeatures } from '@/services/shared';
 
 import { WebSocketController } from '@/services/websocket';
 import MapVue from '@/components/Session/Map.vue';
@@ -87,8 +75,6 @@ export default class SessionVue extends Vue {
     private prevTool: string = '';
 
     private tool: Tool|null = null;
-    private createPos: LatLng|null = null;
-    private featureToEdit: Feature|null = null;
 
     private highlightedFeature: Feature|null = null;
 
@@ -165,49 +151,12 @@ export default class SessionVue extends Vue {
             this.tempSwitchTool('line', event.code);
             break;
         case 'Delete':
-            if (this.highlightedFeature) this.deleteFeature(this.highlightedFeature);
+            if (this.highlightedFeature && this.featureService) this.featureService.deleteFeature(this.highlightedFeature.id);
             break;
         case 'ShiftLeft':
             this.tempSwitchTool('pointing', event.code);
             break;
-        case 'Escape':
-            this.createPos = null;
-            this.featureToEdit = null;
-            break;
         }
-    }
-
-    private deleteFeature(feature: Feature) {
-        if (!this.featureService) return;
-
-        // reset highlighted feature if it is deleted
-        if (this.highlightedFeature && this.highlightedFeature.id === feature.id) {
-            this.highlightedFeature = null;
-        }
-
-        this.featureService.deleteFeature(feature.id);
-
-        this.featureToEdit = null;
-    }
-
-    private createFeature(feature: Feature) {
-        if (this.featureService) this.featureService.createFeature(feature);
-
-        this.createPos = null;
-    }
-
-    private editFeature(feature: Feature) {
-        if (this.featureService) this.featureService.updateFeature(feature);
-
-        this.featureToEdit = null;
-    }
-
-    private duplicateFeature(feature: Feature) {
-        feature.id = 'temp';
-
-        if (this.featureService) this.featureService.createFeature(feature);
-
-        this.featureToEdit = null;
     }
 
     private tempSwitchTool(tool: string, keyCode: string) {
@@ -224,15 +173,6 @@ export default class SessionVue extends Vue {
         };
 
         window.addEventListener('keyup', handler, { once: true });
-    }
-
-    private onMapDblClick(latLng: LatLng) {
-        this.createPos = latLng;
-    }
-
-    private onMapClick(latLng: LatLng) {
-        if (this.createPos !== null) this.createPos = null;
-        if (this.featureToEdit !== null) this.featureToEdit = null;
     }
 
     @Watch('activeTool')
