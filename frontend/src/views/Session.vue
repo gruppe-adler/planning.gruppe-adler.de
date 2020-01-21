@@ -70,8 +70,14 @@ export default class SessionVue extends Vue {
 
     private error: Error|null = null;
     private controller: WebSocketController|null = null;
-    private featureService: FeatureService|null = null;
     private pointingService: PointingService|null = null;
+
+    private get featureService(): FeatureService|null {
+        return this.$tstore.state.featureService;
+    };
+    private set featureService(service: FeatureService|null) {
+        this.$tstore.commit('setFeatureService', service);
+    };
 
     private features: Feature[] = [];
     private users: User[] = [];

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueX from 'vuex';
 import { Feature, User as SharedUser } from '@/services/shared';
 import { Map as LeafletMap } from 'leaflet';
+import FeatureService from './services/feature';
 
 Vue.use(VueX);
 
@@ -14,6 +15,7 @@ export interface RootState {
     features: Feature[];
     user: User|null;
     map: LeafletMap|null;
+    featureService: FeatureService|null;
 }
 
 export default new VueX.Store<RootState>({
@@ -21,6 +23,7 @@ export default new VueX.Store<RootState>({
         sessionId: null,
         user: null,
         map: null,
+        featureService: null,
         features: []
     },
     mutations: {
@@ -35,6 +38,9 @@ export default new VueX.Store<RootState>({
         },
         setMap(state, map: LeafletMap) {
             state.map = map;
+        },
+        setFeatureService(state, service: FeatureService) {
+            state.featureService = service;
         }
     }
 });
