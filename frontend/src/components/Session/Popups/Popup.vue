@@ -1,11 +1,5 @@
 <template>
-<div
-    class="grad-popup grad-group"
-    @mousedown.stop
-    @mouseup.stop
-    @mousewheel.stop
-    @click.stop
->
+<div class="grad-popup grad-group">
     <div class="grad-popup__tri"></div>
     <slot />
     <div class="grad-popup__action-btns" v-if="$scopedSlots['action-btns']">
@@ -18,7 +12,7 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { WebSocketController } from '@/services/websocket';
 import { Comment } from '@/services/shared';
-import { LatLng, DivOverlay, Map as LeafletMap } from 'leaflet';
+import { LatLng, DivOverlay, Map as LeafletMap, DomEvent as LeafletDomEvent } from 'leaflet';
 import { mapState } from 'vuex';
 
 class GradPopup extends DivOverlay {
@@ -48,15 +42,24 @@ export default class PopupVue extends Vue {
     private map!: null|LeafletMap;
 
     private mounted() {
+        const el = this.$el as HTMLDivElement;
+
         this.overlay = new GradPopup();
-        this.overlay.setContent(this.$el as HTMLDivElement);
+        this.overlay.setContent(el);
         this.overlay!.setLatLng(new LatLng(0, 0)); // inital pos
+
+        LeafletDomEvent.disableScrollPropagation(el);
+        LeafletDomEvent.disableClickPropagation(el);
     }
 
     private updated() {
         if (!this.overlay) return;
+        const el = this.$el as HTMLDivElement;
 
-        this.overlay.setContent(this.$el as HTMLDivElement);
+        this.overlay.setContent(el);
+
+        LeafletDomEvent.disableScrollPropagation(el);
+        LeafletDomEvent.disableClickPropagation(el);
     }
 
     private destroyed() {
