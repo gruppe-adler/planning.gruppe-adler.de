@@ -103,9 +103,9 @@ export default class CreatePopupVue extends Vue {
             this.pos = event.latlng;
         });
 
-        this.$tstore.state.map.addEventListener('click', (event: LeafletMouseEvent) => {
-            if (this.pos !== null) this.pos = null;
-        });
+        this.$tstore.state.map.addEventListener('click', () => { this.pos = null; });
+        this.$tstore.state.map.addEventListener('grad/feature/click', () => { this.pos = null; });
+        this.$tstore.state.map.addEventListener('grad/feature/dblclick', () => { this.pos = null; });
     }
 
     private submit() {
