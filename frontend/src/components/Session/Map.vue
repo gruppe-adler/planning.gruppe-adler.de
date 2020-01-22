@@ -18,13 +18,13 @@ import { WebSocketController } from '@/services/websocket';
 import { Feature, Line, Comment, Marker, Pointing } from '@/services/shared';
 import { LineString } from 'geojson';
 
-import LineFeature from '@/services/features/Line';
-import CommentFeature from '@/services/features/Comment';
+import LineFeature from '@/features/Line';
+import CommentFeature from '@/features/Comment';
+import PointingFeature from '@/features/Pointing';
+import MarkerFeature from '@/features/Marker';
 
 import deepEqual from 'deep-equal';
 import { mapState } from 'vuex';
-import MarkerFeature from '@/services/features/Marker';
-import PointingFeature from '@/services/features/Pointing';
 
 @Component({
     computed: {

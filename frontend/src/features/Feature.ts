@@ -1,6 +1,6 @@
 import { FeatureGroup, LeafletMouseEvent } from 'leaflet';
 import FeatureInteractionEvent from './FeatureInteractionEvent';
-import { Feature } from '../shared';
+import { Feature } from '@/services/shared';
 
 export default abstract class GradFeature extends FeatureGroup {
     constructor(feature: Feature, interactive: boolean) {

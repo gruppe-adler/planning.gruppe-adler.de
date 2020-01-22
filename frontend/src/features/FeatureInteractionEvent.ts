@@ -1,5 +1,5 @@
 import { LeafletEvent } from 'leaflet';
-import { Feature } from '../shared';
+import { Feature } from '@/services/shared';
 
 export default interface FeatureInteractionEvent extends LeafletEvent {
     gradFeature: Feature;

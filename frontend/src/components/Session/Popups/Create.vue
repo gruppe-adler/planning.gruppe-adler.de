@@ -44,8 +44,8 @@ import MarkerFormVue from './Forms/Marker.vue';
 import CommentFormVue from './Forms/Comment.vue';
 import PictureFormVue from './Forms/Picture.vue';
 
-import CommentFeature from '@/services/features/Comment';
-import MarkerFeature from '@/services/features/Marker';
+import CommentFeature from '@/features/Comment';
+import MarkerFeature from '@/features/Marker';
 
 @Component({
     components: {
