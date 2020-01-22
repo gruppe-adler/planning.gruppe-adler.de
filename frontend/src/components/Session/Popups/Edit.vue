@@ -121,8 +121,8 @@ export default class EditPopupVue extends Vue {
     private duplicateFeature() {
         if (this.$tstore.state.featureService === null) return;
         if (this.feature === null) return;
-        this.$tstore.state.featureService.createFeature(this.feature);
 
+        this.$tstore.state.featureService.createFeature(this.feature);
         this.feature = null;
     }
 
@@ -131,15 +131,14 @@ export default class EditPopupVue extends Vue {
         if (this.feature === null) return;
 
         this.$tstore.state.featureService.deleteFeature(this.feature.id);
-
         this.feature = null;
     }
 
     private editFeature() {
         if (this.$tstore.state.featureService === null) return;
         if (this.featureCopy === null) return;
-        this.$tstore.state.featureService.updateFeature(this.featureCopy);
 
+        this.$tstore.state.featureService.updateFeature(this.featureCopy);
         this.feature = null;
     }
 }

@@ -69,8 +69,10 @@ export default class PopupVue extends Vue {
     private reposition() {
         if (!this.overlay || !this.map) return;
 
+        // TODO: make sure this only happens once
+        this.overlay.addTo(this.map); // add it once to make sure it was added at some point to the map
+
         if (!this.pos) {
-            this.overlay.addTo(this.map); // add it once to make sure it was added at some point to the map
             this.overlay.removeFrom(this.map);
         } else {
             this.overlay!.setLatLng(this.pos);

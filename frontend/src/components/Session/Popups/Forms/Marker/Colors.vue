@@ -44,7 +44,6 @@ export default class ColorsVue extends Vue {
 <style lang="scss" scoped>
 @import '~@/colors.scss';
 .grad-colors {
-
     display: flex;
     align-items: center;
     flex-wrap: wrap;
