@@ -1,6 +1,6 @@
-import { LeafletEvent } from 'leaflet';
+import { LeafletMouseEvent } from 'leaflet';
 import { Feature } from '@/services/shared';
 
-export default interface FeatureInteractionEvent extends LeafletEvent {
+export default interface FeatureInteractionEvent extends LeafletMouseEvent {
     gradFeature: Feature;
 }

@@ -25,10 +25,13 @@ const markerColors: ArmaMarkerColor[] = require('@/assets/marker-colors.json');
 
 @Component
 export default class ColorsVue extends Vue {
-    @Prop({ default: 'GRAD_DEFAULT_COLOR' }) private value!: string;
+    @Prop({ default: 'ColorBlack' }) private value!: string;
+    @Prop({ default: true }) private showDefault!: boolean;
     @Prop({ default: () => [0, 0, 0, 1] }) private default!: [number, number, number, number];
 
     private get colors(): ArmaMarkerColor[] {
+        if (!this.showDefault) return [ ...markerColors ];
+
         return [
             {
                 color: this.default,

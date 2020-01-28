@@ -2,11 +2,12 @@
 <Popup
     v-if="feature"
     class="grad-group grad-edit-popup"
-    :pos="feature.pos"
+    :pos="pos || feature.pos"
 >
     <MarkerForm v-if="feature.type === 'marker'" v-model="featureCopy" />
     <CommentForm v-if="feature.type === 'comment'" v-model="featureCopy" />
     <PictureForm v-if="feature.type === 'picture'" v-model="featureCopy" />
+    <LineForm v-if="feature.type === 'line'" v-model="featureCopy" />
     <template v-slot:action-btns>
         <grad-icon-btn
             @click="duplicateFeature"
@@ -19,7 +20,7 @@
             tooltip="Delete"
         />
         <grad-icon-btn
-            @click="feature = null;"
+            @click="close"
             icon="close"
             tooltip="Close"
         />
@@ -35,15 +36,17 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { WebSocketController } from '@/services/websocket';
-import { Comment, Marker, Picture, Feature } from '@/services/shared';
+import { Comment, Marker, Picture, Feature, Line } from '@/services/shared';
 import PopupVue from './Popup.vue';
 import { LatLng, Layer as LeafletLayer, Map as LeafletMap, LeafletMouseEvent } from 'leaflet';
 import MarkerFormVue from './Forms/Marker.vue';
 import CommentFormVue from './Forms/Comment.vue';
 import PictureFormVue from './Forms/Picture.vue';
+import LineFormVue from './Forms/Line.vue';
 
 import CommentFeature from '@/features/Comment';
 import MarkerFeature from '@/features/Marker';
+import LineFeature from '@/features/Line';
 import FeatureInteractionEvent from '@/features/FeatureInteractionEvent';
 
 @Component({
@@ -51,13 +54,15 @@ import FeatureInteractionEvent from '@/features/FeatureInteractionEvent';
         Popup: PopupVue,
         MarkerForm: MarkerFormVue,
         CommentForm: CommentFormVue,
-        PictureForm: PictureFormVue
+        PictureForm: PictureFormVue,
+        LineForm: LineFormVue
     }
 })
 export default class EditPopupVue extends Vue {
     private featureCopy: Feature|null = null;
     private previewFeature: LeafletLayer|null = null;
     private feature: Feature|null = null;
+    private pos: LatLng|null = null;
 
     private created() {
         this.createFeatureCopy();
@@ -72,13 +77,17 @@ export default class EditPopupVue extends Vue {
         // specified as a overload of the addEventListener function
         // @ts-ignore
         this.$tstore.state.map.addEventListener('grad/feature/dblclick', (event: FeatureInteractionEvent) => {
-            if (!['picture', 'comment', 'marker'].includes(event.gradFeature.type)) return;
+            if (!['picture', 'comment', 'marker', 'line'].includes(event.gradFeature.type)) return;
 
             this.feature = event.gradFeature;
+
+            if (event.gradFeature.type === 'line') {
+                this.pos = event.latlng;
+            }
         });
 
         this.$tstore.state.map.addEventListener('click', () => {
-            if (this.feature !== null) this.feature = null;
+            this.close();
         });
     }
 
@@ -108,6 +117,9 @@ export default class EditPopupVue extends Vue {
         case 'picture':
             // feature = this.picture;
             break;
+        case 'line':
+            this.previewFeature = new LineFeature(this.featureCopy as Line, false);
+            break;
         default:
             this.previewFeature = new MarkerFeature(this.featureCopy as Marker, false);
             break;
@@ -123,7 +135,7 @@ export default class EditPopupVue extends Vue {
         if (this.feature === null) return;
 
         this.$tstore.state.featureService.createFeature(this.feature);
-        this.feature = null;
+        this.close();
     }
 
     private deleteFeature() {
@@ -131,7 +143,7 @@ export default class EditPopupVue extends Vue {
         if (this.feature === null) return;
 
         this.$tstore.state.featureService.deleteFeature(this.feature.id);
-        this.feature = null;
+        this.close();
     }
 
     private editFeature() {
@@ -139,7 +151,12 @@ export default class EditPopupVue extends Vue {
         if (this.featureCopy === null) return;
 
         this.$tstore.state.featureService.updateFeature(this.featureCopy);
+        this.close();
+    }
+
+    private close() {
         this.feature = null;
+        this.pos = null;
     }
 }
 </script>
