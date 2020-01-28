@@ -1,5 +1,5 @@
 import { Message } from '@/services/shared';
-import { API_DOMAIN } from '.';
+import { API_DOMAIN, API_SECURE } from '.';
 
 export class WebSocketController {
     private socket: WebSocket;
@@ -13,7 +13,7 @@ export class WebSocketController {
     }
 
     private setupSocket(): WebSocket {
-        const socket = new WebSocket(`wss://${API_DOMAIN}/api/join/${this.id}`);
+        const socket = new WebSocket(`ws${API_SECURE ? 's' : ''}://${API_DOMAIN}/api/join/${this.id}`);
 
         socket.onopen = () => this.emit('open');
         socket.onclose = (ev: CloseEvent) => this.onClose(ev);

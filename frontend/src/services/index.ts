@@ -1,6 +1,8 @@
+export const API_SECURE = false;
 export const API_DOMAIN = 'planning.gruppe-adler.de';
-const API_URL = `https://${API_DOMAIN}/api`;
-// const API_URL = `${location.origin}/api`
+// export const API_DOMAIN = location.origin;
+
+const API_URL = `http${API_SECURE ? 's' : ''}://${API_DOMAIN}/api`;
 
 export async function makeJSONRequest<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
     init = Object.assign({
