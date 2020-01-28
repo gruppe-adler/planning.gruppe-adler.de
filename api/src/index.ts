@@ -1,4 +1,5 @@
 import { join } from 'path';
+import { existsSync } from 'fs';
 
 // eslint-disable-next-line import/no-duplicates
 import * as express from 'express';
@@ -38,15 +39,17 @@ app.use(morgan('short'));
 app.use('/api/', router);
 
 // frontend
-app.use('/', express.static(join(__dirname, '../frontend')));
-app.get('*', (req: Request, res: Response, next: NextFunction) => {
-    if (req.headers['content-type'] === 'application/html') {
-        next();
-        return;
-    }
+if (existsSync(join(__dirname, '../frontend'))) {
+    app.use('/', express.static(join(__dirname, '../frontend')));
+    app.get('*', (req: Request, res: Response, next: NextFunction) => {
+        if (req.headers['content-type'] === 'application/html') {
+            next();
+            return;
+        }
 
-    res.sendFile(join(__dirname, '../frontend/index.html'));
-});
+        res.sendFile(join(__dirname, '../frontend/index.html'));
+    });
+}
 
 const {
     PORT = '80'
@@ -61,5 +64,5 @@ server.on('upgrade', upgradeHandler);
 server.listen(port);
 
 console.log(`
-    Server listening on: 127.0.0.1:${port}
+    Server listening on port ${port}
 `);
