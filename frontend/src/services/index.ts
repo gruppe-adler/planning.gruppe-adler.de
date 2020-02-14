@@ -1,4 +1,4 @@
-export const API_SECURE = false;
+export const API_SECURE = true;
 export const API_DOMAIN = 'planning.gruppe-adler.de';
 // export const API_DOMAIN = location.origin;
 
