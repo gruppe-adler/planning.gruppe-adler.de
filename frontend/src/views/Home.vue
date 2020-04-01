@@ -1,23 +1,21 @@
 <template>
     <div class="grad-home">
-        <div>
-            <input type="text" v-model="token" placeholder="Session Beitreten" />
-            <p v-if="token.length === 0">oder</p>
-            <router-link
-                v-if="token.length === 0"
-                to="/create"
-                tag="button"
-            >
-                Session erstellen
-            </router-link>
-            <router-link
-                v-else
-                :to="`/join/${token}`"
-                tag="button"
-                :disabled="token.length === 0"
-            >
-                Beitreten
-            </router-link>
+        <div class="grad-home__wrapper">
+            <img src="@/assets/logo.svg" />
+            <div v-if="joinShown" class="grad-home__join">
+                <input type="text" v-model="token" autofocus />
+                <label>Session-Code</label>
+                <button @click="joinShown = false;">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <router-link :to="`/join/${token}`" tag="button" :disabled="token.length === 0">
+                    <i class="material-icons">check</i>
+                </router-link>
+            </div>
+            <template v-else>
+                <router-link tag="button" to="/create">Create</router-link>
+                <button @click="joinShown = true;">Join</button>
+            </template>
         </div>
     </div>
 </template>
@@ -28,29 +26,141 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 @Component
 export default class HomeVue extends Vue {
     private token: string = '';
+    private joinShown: boolean = false;
 };
 </script>
 
 <style lang="scss" scoped>
 .grad-home {
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
-    padding: 1rem;
     display: flex;
-    align-items: center;
+    height: 100vh;
+    width: 100vw;
     justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
 
-    > div {
-        width: 500px;
-        max-width: 100%;
+    input[type=text], button {
+        color: #2F80ED;
+        background-color: #E3E1DF;
+        border-radius: 1.35em;
+        padding: 0.75em 1em;
+        border: none;
+        font-weight: 600;
+        outline: none;
+        user-select: none;
+        height: 1.2em;
+        box-sizing: content-box;
+        font-size: inherit;
+    }
 
+    button {
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #2F80ED;
+            color: white;
+        }
+
+        &[disabled] {
+            color: #777;
+            background-color: rgba(#E3E1DF, 0.5);
+            pointer-events: none;
+        }
+    }
+
+    input[type=text] {
+        padding-top: 1.25em;
+        padding-bottom: 0.25em;
+        color: black;
+    }
+
+    &__wrapper {
+        display: inline-grid;
+        grid-column-gap: 2px;
+        grid-row-gap: 1rem;
+        grid-template:
+            "logo logo" auto
+            "btn btn" auto / .5fr .5fr;
+
+        width: 30rem;
+        max-width: calc(100vw - 2rem);
+        margin-bottom: 10%;
+
+        > img {
+            max-width: 100%;
+            height: 25rem;
+            grid-area: logo;
+            justify-self: center;
+        }
+
+        > button {
+            &:first-of-type {
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            &:last-of-type {
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+        }
+    }
+
+    &__join {
+        grid-area: btn;
+        justify-self: stretch;
+        align-self: stretch;
+        position: relative;
         display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        > *:not(:last-child) {
-            margin-bottom: 1rem;
+        input[type=text] {
+            width: 100%;
+            text-align: center;
+        }
+
+        label {
+            position: absolute;
+            top: 0.25rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: lighter;
+        }
+
+        > button {
+            top: .25rem;
+            bottom: .25rem;
+            position: absolute;
+            background-color: white;
+            padding: 0;
+            border-radius: 50%;
+            height: calc(2.7em - 0.5rem);
+            width: calc(2.7em - 0.5rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.75;
+
+            &:first-of-type {
+                left: .25rem;
+                color: black;
+                background-color: white;
+            }
+
+            &:last-of-type {
+                right: .25rem;
+                color: white;
+                background-color: #2F80ED;
+
+                &:disabled {
+                    background-color: #BBBBBB;
+                }
+            }
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 

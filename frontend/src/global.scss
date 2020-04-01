@@ -31,47 +31,6 @@ a, a:hover {
     text-decoration: none !important;
 }
 
-button {
-    color: #2F80ED;
-    background-color: #E3E1DF;
-    border-radius: 20px;
-    padding: 10px 15px;
-    border: none;
-    font-weight: 600;
-    outline: none;
-    user-select: none;
-    font-size: 1rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    &:hover, &.grad-active {
-        background-color: #2F80ED;
-        color: white;
-    }
-
-    > img {
-        width: 24px;
-        height: 24px;
-
-        &:first-child {
-            margin-right: 8px;
-        }
-
-        &:last-child {
-            margin-left: 8px;
-        }
-    }
-
-    &[disabled] {
-        color: #777;
-        background-color: rgba(#E3E1DF, 0.5);
-        pointer-events: none;
-    }
-}
 
 label {
     color: #333333;
