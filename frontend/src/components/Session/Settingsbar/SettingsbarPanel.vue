@@ -5,7 +5,7 @@
         :tooltip="tooltip"
         :icon="icon"
     >
-        <div v-if="isExtended" class="grad-settings-bar-panel__dialog grad-group" @click.stop>
+        <div v-if="isExtended" class="grad-settings-bar-panel__dialog grad-group" @click.stop :style="`${noPadding ? 'padding: 0px;' : ''}`">
             <slot />
         </div>
     </grad-icon-btn>
@@ -20,6 +20,7 @@ export default class SettingsbarPanelVue extends Vue {
     @Prop({ required: true }) private id!: string;
     @Prop({ default: '' }) private icon!: string;
     @Prop({ default: '' }) private tooltip!: string;
+    @Prop({ default: false }) private noPadding!: boolean;
 
     // helper functions for v-model
     // just use this.extended to access it

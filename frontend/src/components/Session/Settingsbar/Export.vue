@@ -3,12 +3,13 @@
         id="export"
         icon="save_alt"
         tooltip="Export"
+        :noPadding="true"
         :value="value"
         @input="$emit('input', $event)"
     >
-        <button @click="download('json', jsonData);">Export as Session-JSON</button>
-        <button disabled>Export as grad-saveMarkers</button>
-        <button disabled>Export as SQF</button>
+        <grad-btn @click="download('json', jsonData);" icon="attachment" :active="true">Export as Session-JSON</grad-btn>
+        <grad-btn icon="list" :disabled="true" :active="true">Export as grad-saveMarkers</grad-btn>
+        <grad-btn icon="code" :disabled="true" :active="true">Export as SQF</grad-btn>
     </SettingsbarPanel>
 </template>
 
@@ -57,24 +58,14 @@ export default class ExportVue extends Vue {
     }
 
     private get jsonData(): string {
-        const featuresCopy: Array<Omit<Feature, 'id'>> = this.features.filter((f: Feature) => {
-            return ['comment', 'line', 'marker', 'picture'].includes(f.type);
-        }).map((f: Feature) => {
-            delete f.id;
-            return f;
-        });
+        const featuresCopy: Array<Omit<Feature, 'id'>> = JSON.parse(JSON.stringify(this.features))
+            .filter((f: Feature) => ['comment', 'line', 'marker', 'picture'].includes(f.type))
+            .map((f: Feature) => {
+                delete f.id;
+                return f;
+            });
 
         return JSON.stringify(featuresCopy, undefined, 4);
     }
 }
 </script>
-
-<style lang="scss" scoped>
-button {
-    width: 100%;
-
-    &:not(:last-child) {
-        margin-bottom: .5rem;
-    }
-}
-</style>
