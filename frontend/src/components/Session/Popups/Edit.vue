@@ -10,6 +10,7 @@
     <LineForm v-if="feature.type === 'line'" v-model="featureCopy" />
     <template v-slot:action-btns>
         <grad-icon-btn
+            v-if="canCopy"
             @click="duplicateFeature"
             icon="content_copy"
             tooltip="Duplicate"
@@ -157,6 +158,10 @@ export default class EditPopupVue extends Vue {
     private close() {
         this.feature = null;
         this.pos = null;
+    }
+
+    private get canCopy(): boolean {
+        return (this.feature !== null && this.feature.type !== 'line');
     }
 }
 </script>

@@ -187,7 +187,7 @@ export default class SessionVue extends Vue {
             lineTool.addEventListener('create', (event: Event) => {
                 if (!this.featureService) return;
 
-                this.featureService.addLine((event as LineCreateEvent).coords, 'black');
+                this.featureService.addLine((event as LineCreateEvent).coords, 'ColorBlack');
             });
             this.tool = lineTool;
             break;
