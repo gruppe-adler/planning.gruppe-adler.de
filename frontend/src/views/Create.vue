@@ -1,6 +1,5 @@
 <template>
     <div class="grad-create">
-        <h1 style="margin: 0.75em;">Session erstellen</h1>
         <Loader v-if="loading" />
         <Error
             v-else-if="error"
@@ -9,8 +8,11 @@
             button="Erneut versuchen!"
         />
         <template v-else>
-            <input type="text" v-model="filter" placeholder="Karte suchen..." style="text-align: left; margin-bottom: 1em;" />
-            <div style="display: flex; flex-wrap: wrap;" v-if="filteredMaps.length > 0">
+            <div class="grad-create__filter">
+                <i class="material-icons">search</i>
+                <input type="text" v-model="filter" />
+            </div>
+            <div class="grad-create__maps-wrapper" v-if="filteredMaps.length > 0">
                 <MapItem
                     v-for="m in filteredMaps"
                     :key="m.id"
@@ -21,7 +23,7 @@
             <Error
                 v-else
                 @button="fetchMaps"
-                description="Deine Suche ergab leider keine Treffer"
+                description="No maps found"
             />
         </template>
     </div>
@@ -80,17 +82,68 @@ export default class CreateVue extends Vue {
 
 <style lang="scss" scoped>
 .grad-create {
-    width: 100vw;
-    min-height: 100vh;
+    width: 100%;
     box-sizing: border-box;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0eeec;
 
-    > * {
-        width: 58.5rem;
-        max-width: calc(100% - 2rem);
+    &__filter {
+        position: relative;
+        margin: 1rem;
+        font-size: 24px;
+
+        > i {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            width: 2.1em;
+            height: auto;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+        }
+
+        > input {
+            color: black;
+            background-color: #E3E1DF;
+            border-radius: 2.1em;
+            padding: 1.5em 2em;
+            border: none;
+            font-weight: 600;
+            outline: none;
+            line-height: 1.2em;
+            height: auto;
+            box-sizing: border-box;
+            font-size: 0.75em;
+            width: 100%;
+            padding-left: 4.2em;
+            margin: 0px;
+        }
+    }
+
+    &__maps-wrapper {
+        padding: 1rem;
+        display: grid;
+        align-content: flex-start;
+        justify-items: center;
+        flex-shrink: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+        &::-webkit-scrollbar-thumb
+        {
+            background-color: rgba(black, 0.3);
+            border-radius: 3px;
+        }
+
     }
 }
 </style>

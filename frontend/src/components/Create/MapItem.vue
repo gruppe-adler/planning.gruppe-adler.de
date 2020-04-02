@@ -1,7 +1,8 @@
 <template>
     <div class="grad-map-item">
         <img :src="this.imageUrl" />
-        <h5>{{ model.displayName }}</h5>
+        <span class="grad-map-item__name">{{ model.displayName }}</span>
+        <span class="grad-map-item__author">- {{ model.author }}</span>
     </div>
 </template>
 
@@ -21,13 +22,12 @@ export default class MapItemVue extends Vue {
 
 <style lang="scss" scoped>
 .grad-map-item {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
     display: inline-grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 12em auto;
+    grid-template-rows: 12em auto auto;
     grid-gap: 0.5em;
-    justify-items: center;
     padding: .5em;
     border-radius: 0.25em;
     cursor: pointer;
@@ -39,6 +39,20 @@ export default class MapItemVue extends Vue {
         height: 12em;
         max-width: 12em;
         max-width: 12em;
+    }
+
+    &__author,
+    &__name {
+        margin-left: .5rem;
+    }
+
+    &__name {
+        font-size: 1.5em;
+    }
+
+    &__author {
+        font-size: 0.75em;
+        opacity: 0.75;
     }
 
     &:hover {
