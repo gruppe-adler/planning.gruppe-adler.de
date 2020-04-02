@@ -59,6 +59,7 @@ export default class CreatePopupVue extends Vue {
     private pos: LatLng|null = null;
     private tab: 'marker'|'comment'|'picture' = 'marker';
     private previewFeature: LeafletLayer|null = null;
+    private editing: boolean = false;
 
     private comment: Comment = {
         id: 'temp',
@@ -100,12 +101,17 @@ export default class CreatePopupVue extends Vue {
         if (this.$tstore.state.map === null) return;
 
         this.$tstore.state.map.addEventListener('dblclick', (event: LeafletMouseEvent) => {
+            if (this.editing) return;
             this.pos = event.latlng;
         });
 
         this.$tstore.state.map.addEventListener('click', () => { this.pos = null; });
         this.$tstore.state.map.addEventListener('grad/feature/click', () => { this.pos = null; });
-        this.$tstore.state.map.addEventListener('grad/feature/dblclick', () => { this.pos = null; });
+        this.$tstore.state.map.addEventListener('grad/feature/dblclick', () => {
+            this.editing = true;
+            window.setTimeout(() => { this.editing = false; }, 100);
+            this.pos = null;
+        });
     }
 
     private submit() {
