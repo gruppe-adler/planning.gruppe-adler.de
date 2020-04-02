@@ -69,7 +69,7 @@ export default class ButtonVue extends Vue {
     }
 
     &:hover {
-        background-color: rgba(white, 0.05);
+        background-color: rgba($color-active, 0.05);
     }
 
     &--disabled {

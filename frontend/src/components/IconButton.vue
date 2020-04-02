@@ -67,7 +67,7 @@ export default class IconButtonVue extends Vue {
         padding: 0.75rem;
 
         &:hover {
-            background-color: rgba(white, 0.05);
+            background-color: rgba($color-active, 0.05);
 
             ~ .grad-icon-button__tooltip {
                 display: initial;
@@ -79,7 +79,7 @@ export default class IconButtonVue extends Vue {
         display: none;
         color: white;
         white-space: nowrap;
-        background-color: rgba(black, 0.6);
+        background-color: rgba($color-background, 0.6);
         padding: 8px;
         border-radius: 4px;
         position: absolute;
