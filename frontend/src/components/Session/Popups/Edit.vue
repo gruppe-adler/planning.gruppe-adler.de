@@ -66,7 +66,7 @@ export default class EditPopupVue extends Vue {
     private pos: LatLng|null = null;
 
     private created() {
-        this.createFeatureCopy();
+        this.onFeatureChanged();
         this.setupMap();
     }
 
@@ -93,11 +93,14 @@ export default class EditPopupVue extends Vue {
     }
 
     @Watch('feature', { deep: true })
-    private createFeatureCopy() {
+    private onFeatureChanged() {
+        if (this.featureCopy !== null) this.$store.commit('unhideFeature', this.featureCopy);
+
         if (this.feature === null) {
             this.featureCopy = null;
         } else {
             this.featureCopy = JSON.parse(JSON.stringify(this.feature)) as Feature;
+            this.$store.commit('hideFeature', this.featureCopy);
         }
     }
 

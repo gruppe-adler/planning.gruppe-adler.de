@@ -29,7 +29,8 @@ import { mapState } from 'vuex';
 @Component({
     computed: {
         ...mapState({
-            features: (state: any) => state.features
+            features: (state: any) => state.features,
+            hiddenFeaturesIds: (state: any) => state.hiddenFeaturesIds
         })
     }
 })
@@ -39,6 +40,7 @@ export default class MapVue extends Vue {
     @Prop({ required: true }) private controller!: WebSocketController;
     @Prop({ required: true }) private mapId!: string;
     private features!: Feature[];
+    private hiddenFeaturesIds!: string[];
 
     private hoverFeatures: Map<string, Feature> = new Map();
 
@@ -77,7 +79,8 @@ export default class MapVue extends Vue {
     }
 
     @Watch('popup')
-    @Watch('features')
+    @Watch('features', { deep: true })
+    @Watch('hiddenFeaturesIds', { deep: true })
     private drawFeatures() {
         if (!this.map) return;
 
@@ -86,6 +89,8 @@ export default class MapVue extends Vue {
 
         for (const f of this.features) {
             const id = f.id;
+
+            if (this.hiddenFeaturesIds.includes(id)) continue;
 
             if (!this.featureLayers.has(id)) {
                 // completely new feature

@@ -13,6 +13,7 @@ interface User extends SharedUser {
 export interface RootState {
     sessionId: string|null;
     features: Feature[];
+    hiddenFeaturesIds: string[];
     user: User|null;
     map: LeafletMap|null;
     featureService: FeatureService|null;
@@ -24,11 +25,20 @@ export default new VueX.Store<RootState>({
         user: null,
         map: null,
         featureService: null,
-        features: []
+        features: [],
+        hiddenFeaturesIds: []
     },
     mutations: {
         setSessionId(state, id: string) {
             state.sessionId = id;
+        },
+        hideFeature(state, feature: Feature) {
+            if (state.hiddenFeaturesIds.includes(feature.id)) return;
+            state.hiddenFeaturesIds.push(feature.id);
+        },
+        unhideFeature(state, feature: Feature) {
+            const index = state.hiddenFeaturesIds.indexOf(feature.id);
+            if (index > -1) state.hiddenFeaturesIds.splice(index, 1);
         },
         setUser(state, user: User) {
             state.user = user;
