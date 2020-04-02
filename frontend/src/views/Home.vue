@@ -47,13 +47,13 @@ export default class HomeVue extends Vue {
         border: none;
         font-weight: 600;
         outline: none;
-        user-select: none;
         height: 1.2em;
         box-sizing: content-box;
         font-size: inherit;
     }
 
     button {
+        user-select: none;
         transition: all 0.1s ease-in-out;
         cursor: pointer;
 
@@ -126,6 +126,7 @@ export default class HomeVue extends Vue {
             right: 0;
             text-align: center;
             font-weight: lighter;
+            pointer-events: none;
         }
 
         > button {
