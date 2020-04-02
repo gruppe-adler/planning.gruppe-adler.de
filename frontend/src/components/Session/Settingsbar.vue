@@ -7,11 +7,7 @@
     />
     <Share v-model="extended" />
     <Export v-model="extended" />
-    <grad-icon-btn
-        icon="upload_file"
-        tooltip="Import"
-        :disabled="true"
-    />
+    <Import v-model="extended" />
 </div>
 </template>
 
@@ -19,11 +15,13 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import ShareVue from './Settingsbar/Share.vue';
 import ExportVue from './Settingsbar/Export.vue';
+import ImportVue from './Settingsbar/Import.vue';
 
 @Component({
     components: {
         Share: ShareVue,
-        Export: ExportVue
+        Export: ExportVue,
+        Import: ImportVue
     }
 })
 export default class SettingbarVue extends Vue {
