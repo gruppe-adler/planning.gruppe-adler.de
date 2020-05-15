@@ -28,7 +28,6 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { mapState } from 'vuex';
-import Validator from 'validator';
 import SettingsbarPanelVue from './SettingsbarPanel.vue';
 import { Feature } from '@/services/shared';
 import { validateFeature } from '@/utils/validate';
@@ -103,12 +102,14 @@ export default class ImportVue extends Vue {
         try {
             parsed = JSON.parse(json);
         } catch (err) {
+            // eslint-disable-next-line no-console
             console.log(err);
             // TODO: notify user
             return;
         }
 
         if (!Array.isArray(parsed)) {
+            // eslint-disable-next-line no-console
             console.error('no array');
             // TODO: notify user
             return;
@@ -122,6 +123,7 @@ export default class ImportVue extends Vue {
             try {
                 features.push(validateFeature(element));
             } catch (err) {
+                // eslint-disable-next-line no-console
                 console.error('Feature is no valid feature.');
             }
         }
