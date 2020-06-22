@@ -53,7 +53,7 @@ export default class MapVue extends Vue {
     private set map(val: LeafletMap|null) { this.$emit('input', val); }
 
     private mounted() {
-        this.setupMap();
+        this.initMap();
     }
 
     private beforeDestroy() {
@@ -64,7 +64,7 @@ export default class MapVue extends Vue {
      * This methods sets up the leafelt map.
      */
     @Watch('$store.state.worldName')
-    private async setupMap() {
+    private async initMap() {
         const worldName = this.$tstore.state.worldName;
 
         if (worldName.length === 0) return;
@@ -83,8 +83,6 @@ export default class MapVue extends Vue {
                     doubleClickZoom: false
                 }
             );
-            this.$tstore.commit('setMap', this.map);
-            this.map.setView([0, 0], 0);
         } catch (err) {
             if (err.response && err.response instanceof Response) {
                 if (err.response.status === 404) {
@@ -99,6 +97,14 @@ export default class MapVue extends Vue {
                 console.error(err);
             }
         }
+    }
+
+    @Watch('map')
+    private setupMap() {
+        if (this.map === null) return;
+
+        this.$tstore.commit('setMap', this.map);
+        this.map.setView([0, 0], 0);
     }
 
     @Watch('map')
