@@ -28,7 +28,6 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { createSession } from '@/services';
-import { Map, fetchMaps } from '@/services/maps';
 
 // @ts-ignore
 import ColorPickerVue from '@caohenghu/vue-colorpicker';

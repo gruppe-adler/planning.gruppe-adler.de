@@ -8,14 +8,16 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { getPreviewPicture, Map } from '@/services/maps';
+import { MapMetaData, mapPreviewImgUrl } from '@gruppe-adler/maps-frontend-utils';
+
+type PartialMapMeta = Pick<MapMetaData, 'displayName' | 'worldName' | 'author'>;
 
 @Component
 export default class MapItemVue extends Vue {
-    @Prop({ required: true, type: Map }) private model!: Map;
+    @Prop({ required: true, type: Object }) private model!: PartialMapMeta;
 
     private get imageUrl(): string {
-        return getPreviewPicture(this.model.id);
+        return mapPreviewImgUrl(this.model.worldName);
     }
 }
 </script>

@@ -46,7 +46,8 @@ function handleMessage(
             type: 'init',
             payload: {
                 features: session.features,
-                user: (message as UserJoinMessage).payload
+                user: (message as UserJoinMessage).payload,
+                map: session.map
             }
         };
         clientSocket.send(JSON.stringify(initMsg));

@@ -25,6 +25,7 @@ import MarkerFeature from '@/features/Marker';
 
 import deepEqual from 'deep-equal';
 import { mapState } from 'vuex';
+import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
 @Component({
     computed: {
@@ -52,11 +53,7 @@ export default class MapVue extends Vue {
     private set map(val: LeafletMap|null) { this.$emit('input', val); }
 
     private mounted() {
-        this.map = new LeafletMap(this.$refs.map as HTMLDivElement, {
-            attributionControl: false,
-            zoomControl: false,
-            doubleClickZoom: false
-        });
+        this.setupMap();
     }
 
     private beforeDestroy() {
@@ -66,18 +63,38 @@ export default class MapVue extends Vue {
     /**
      * This methods sets up the leafelt map.
      */
-    @Watch('map')
-    private setupMap() {
-        this.$tstore.commit('setMap', this.map);
+    @Watch('$store.state.worldName')
+    private async setupMap() {
+        const worldName = this.$tstore.state.worldName;
 
-        if (!this.map) return;
+        if (worldName.length === 0) return;
 
-        this.map.setView([0, 0], 0);
+        if (this.map !== null) {
+            this.map.remove();
+        }
 
-        const tl = new TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-        tl.addTo(this.map!);
+        try {
+            this.map = await GradMap.new(
+                worldName,
+                this.$refs.maps as HTMLDivElement,
+                {
+                    attributionControl: false,
+                    zoomControl: false,
+                    doubleClickZoom: false
+                }
+            );
+            this.$tstore.commit('setMap', this.map);
+            this.map.setView([0, 0], 0);
+        } catch (err) {
+            if (err.response && err.response instanceof Response) {
+                if (err.response.status === 404) {
+                    console.error(`Couldn't find map with worldname "${worldName}"`);
+                }
+            }
+        }
     }
 
+    @Watch('map')
     @Watch('popup')
     @Watch('features', { deep: true })
     @Watch('hiddenFeaturesIds', { deep: true })

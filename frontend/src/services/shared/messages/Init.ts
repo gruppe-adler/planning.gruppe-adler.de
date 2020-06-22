@@ -7,5 +7,6 @@ export default interface InitMessage extends Message {
     payload: {
         features: Feature[];
         user: User;
+        map: string;
     };
 }

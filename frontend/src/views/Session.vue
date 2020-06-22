@@ -25,7 +25,7 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as WebSocket from 'ws';
-import { Map, LatLng } from 'leaflet';
+import { LatLng } from 'leaflet';
 
 import { User, Feature, Message, InitMessage, UserJoinMessage, UserLeaveMessage, updateFeatures } from '@/services/shared';
 
@@ -42,6 +42,7 @@ import FeatureService from '@/services/feature';
 import PointingService from '@/services/pointing';
 import CreatePopupVue from '@/components/Session/Popups/Create.vue';
 import EditPopupVue from '@/components/Session/Popups/Edit.vue';
+import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
 @Component({
     components: {
@@ -70,7 +71,7 @@ export default class SessionVue extends Vue {
     private features: Feature[] = [];
     private users: User[] = [];
     private activeTool: string = 'pan';
-    private map: Map|null = null;
+    private map: GradMap|null = null;
 
     private prevTool: string = '';
 
@@ -130,6 +131,7 @@ export default class SessionVue extends Vue {
                 ...this.$tstore.state.user,
                 ...(msg as InitMessage).payload.user
             });
+            this.$tstore.commit('setWorldName', (msg as InitMessage).payload.map);
         }
 
         if (msg.type === 'user_join' || msg.type === 'user_leave') {

@@ -12,8 +12,9 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { WebSocketController } from '@/services/websocket';
 import { Comment } from '@/services/shared';
-import { LatLng, DivOverlay, Map as LeafletMap, DomEvent as LeafletDomEvent } from 'leaflet';
+import { LatLng, DivOverlay, DomEvent as LeafletDomEvent } from 'leaflet';
 import { mapState } from 'vuex';
+import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
 class GradPopup extends DivOverlay {
     private _initLayout() {
@@ -39,7 +40,7 @@ export default class PopupVue extends Vue {
     @Prop({ default: null }) private pos!: LatLng|null;
 
     private overlay: GradPopup|null = null;
-    private map!: null|LeafletMap;
+    private map!: null|GradMap;
 
     private mounted() {
         const el = this.$el as HTMLDivElement;

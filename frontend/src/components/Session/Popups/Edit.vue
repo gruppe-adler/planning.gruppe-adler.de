@@ -39,7 +39,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { WebSocketController } from '@/services/websocket';
 import { Comment, Marker, Picture, Feature, Line } from '@/services/shared';
 import PopupVue from './Popup.vue';
-import { LatLng, Layer as LeafletLayer, Map as LeafletMap, LeafletMouseEvent } from 'leaflet';
+import { LatLng, Layer as LeafletLayer, LeafletMouseEvent } from 'leaflet';
 import MarkerFormVue from './Forms/Marker.vue';
 import CommentFormVue from './Forms/Comment.vue';
 import PictureFormVue from './Forms/Picture.vue';

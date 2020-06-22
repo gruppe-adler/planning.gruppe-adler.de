@@ -32,8 +32,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { createSession } from '@/services';
-import { Map, fetchMaps } from '@/services/maps';
 import MapItemVue from '@/components/Create/MapItem.vue';
+import { fetchMaps, MapMetaData } from '@gruppe-adler/maps-frontend-utils';
+
+type PartialMapMeta = Pick<MapMetaData, 'displayName' | 'worldName' | 'author'>;
 
 @Component({
     components: {
@@ -41,7 +43,7 @@ import MapItemVue from '@/components/Create/MapItem.vue';
     }
 })
 export default class CreateVue extends Vue {
-    private maps: Map[] = [];
+    private maps: PartialMapMeta[] = [];
     private loading: boolean = true;
     private error?: any;
     private filter: string = '';
@@ -66,13 +68,13 @@ export default class CreateVue extends Vue {
         this.loading = false;
     }
 
-    private async create(map: Map) {
-        const id = await createSession(map.id);
+    private async create(map: PartialMapMeta) {
+        const id = await createSession(map.worldName);
 
         this.$router.push(`/join/${id}`);
     }
 
-    private get filteredMaps(): Map[] {
+    private get filteredMaps(): PartialMapMeta[] {
         const filter = this.filter.toLowerCase();
 
         return this.maps.filter(m => m.displayName.toLowerCase().includes(filter));

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueX from 'vuex';
 import { Feature, User as SharedUser } from '@/services/shared';
-import { Map as LeafletMap } from 'leaflet';
 import FeatureService from './services/feature';
+import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
 Vue.use(VueX);
 
@@ -15,7 +15,8 @@ export interface RootState {
     features: Feature[];
     hiddenFeaturesIds: string[];
     user: User|null;
-    map: LeafletMap|null;
+    map: GradMap|null;
+    worldName: string;
     featureService: FeatureService|null;
 }
 
@@ -26,6 +27,7 @@ export default new VueX.Store<RootState>({
         map: null,
         featureService: null,
         features: [],
+        worldName: '',
         hiddenFeaturesIds: []
     },
     mutations: {
@@ -46,8 +48,11 @@ export default new VueX.Store<RootState>({
         setFeatures(state, features: Feature[]) {
             state.features = features;
         },
-        setMap(state, map: LeafletMap) {
+        setMap(state, map: GradMap) {
             state.map = map;
+        },
+        setWorldName(state, worldName: string) {
+            state.worldName = worldName;
         },
         setFeatureService(state, service: FeatureService) {
             state.featureService = service;

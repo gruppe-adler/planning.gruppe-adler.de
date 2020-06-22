@@ -1,9 +1,9 @@
-import { Map as LeafletMap } from 'leaflet';
+import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
 export default abstract class Tool extends EventTarget {
-    protected map: LeafletMap;
+    protected map: GradMap;
 
-    constructor(m: LeafletMap) {
+    constructor(m: GradMap) {
         super();
         this.map = m;
 
