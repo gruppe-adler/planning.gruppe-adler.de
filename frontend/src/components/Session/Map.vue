@@ -88,6 +88,7 @@ export default class MapVue extends Vue {
         } catch (err) {
             if (err.response && err.response instanceof Response) {
                 if (err.response.status === 404) {
+                    // eslint-disable-next-line no-console
                     console.error(`Couldn't find map with worldname "${worldName}"`);
                 }
             }
