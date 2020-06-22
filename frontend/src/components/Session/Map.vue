@@ -76,7 +76,7 @@ export default class MapVue extends Vue {
         try {
             this.map = await GradMap.new(
                 worldName,
-                this.$refs.maps as HTMLDivElement,
+                this.$refs.map as HTMLDivElement,
                 {
                     attributionControl: false,
                     zoomControl: false,
@@ -90,7 +90,13 @@ export default class MapVue extends Vue {
                 if (err.response.status === 404) {
                     // eslint-disable-next-line no-console
                     console.error(`Couldn't find map with worldname "${worldName}"`);
+                } else {
+                    // eslint-disable-next-line no-console
+                    console.error(`Server responded with status ${err.response.status}`);
                 }
+            } else {
+                // eslint-disable-next-line no-console
+                console.error(err);
             }
         }
     }
