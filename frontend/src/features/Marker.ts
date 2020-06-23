@@ -20,13 +20,15 @@ export default class MarkerFeature extends GradFeature {
             opacity: ${options.opacity};
         `;
 
+        const sizeInPx = options.size * 36;
+
         const icon = new DivIcon({
             className: 'grad-marker',
             html: `
-                <img width="36" height="36" style="${style}" src="${url}" />
+                <img width="${sizeInPx}" height="${sizeInPx}" style="${style}" src="${url}" />
                 <span style="color: rgba(${r},${g},${b},${a})">${options.text}</span>
             `,
-            iconSize: [36, 36]
+            iconSize: [sizeInPx, sizeInPx]
         });
 
         this.addLayer(new LeafletMarker(options.pos, { icon }));

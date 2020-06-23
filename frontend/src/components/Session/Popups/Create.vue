@@ -77,7 +77,8 @@ export default class CreatePopupVue extends Vue {
         color: '',
         markerType: 'Dot',
         pos: [0, 0],
-        opacity: 1
+        opacity: 1,
+        size: 1
     };
 
     private picture: Picture = {
@@ -189,7 +190,8 @@ export default class CreatePopupVue extends Vue {
             color: 'GRAD_DEFAULT_COLOR',
             markerType: 'hd_objective',
             pos,
-            opacity: 1
+            opacity: 1,
+            size: 1
         };
 
         this.picture = {
