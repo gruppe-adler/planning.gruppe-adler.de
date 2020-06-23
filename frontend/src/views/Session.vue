@@ -29,7 +29,7 @@ import { LatLng } from 'leaflet';
 
 import { User, Feature, Message, InitMessage, UserJoinMessage, UserLeaveMessage, updateFeatures } from '@/services/shared';
 
-import { WebSocketController } from '@/services/websocket';
+import { WebSocketController, WebSocketControllerMessageEvent } from '@/services/websocket';
 import MapVue from '@/components/Session/Map.vue';
 import ToolbarVue from '@/components/Session/Toolbar.vue';
 import SettingsbarVue from '@/components/Session/Settingsbar.vue';
@@ -57,7 +57,7 @@ import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 export default class SessionVue extends Vue {
     @Prop({ default: '' }) private id!: string;
 
-    private error: Error|null = null;
+    private error: unknown|null = null;
     private controller: WebSocketController|null = null;
     private pointingService: PointingService|null = null;
 
@@ -102,18 +102,18 @@ export default class SessionVue extends Vue {
         if (this.controller) this.controller.close();
 
         this.controller = new WebSocketController(this.id);
-        this.controller.on('error', err => this.onSocketError(err));
-        this.controller.on('message', msg => this.onSocketMessage(msg));
-        this.controller.on('open', () => this.onSocketConnect());
+        this.controller.addEventListener('error', err => this.onSocketError(err));
+        this.controller.addEventListener('message', event => this.onSocketMessage((event as WebSocketControllerMessageEvent).message));
+        this.controller.addEventListener('open', () => this.onSocketConnect());
 
         this.featureService = new FeatureService(this.controller);
         this.pointingService = new PointingService(this.controller);
     }
 
-    private onSocketError(err: Error) {
-        this.error = err;
+    private onSocketError(event: Event) {
+        this.error = event;
         // eslint-disable-next-line no-console
-        console.log('socker error', err);
+        console.log('socker error', event);
     }
 
     private onSocketMessage(msg: Message) {

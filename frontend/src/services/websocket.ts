@@ -1,12 +1,23 @@
 import { Message } from '@/services/shared';
 import { API_DOMAIN, API_SECURE } from '.';
 
-export class WebSocketController {
+export class WebSocketControllerMessageEvent extends Event {
+    public message: Message;
+
+    constructor(msg: Message) {
+        super('message');
+
+        this.message = msg;
+    }
+}
+
+export class WebSocketController extends EventTarget {
     private socket: WebSocket;
-    private eventHandler: Map<string, Function[]> = new Map<string, Function[]>();
     private id: string;
 
     constructor(id: string) {
+        super();
+
         this.id = id;
 
         this.socket = this.setupSocket();
@@ -15,17 +26,17 @@ export class WebSocketController {
     private setupSocket(): WebSocket {
         const socket = new WebSocket(`ws${API_SECURE ? 's' : ''}://${API_DOMAIN}/api/join/${this.id}`);
 
-        socket.onopen = () => this.emit('open');
-        socket.onclose = (ev: CloseEvent) => this.onClose(ev);
-        socket.onerror = (err) => this.emit('error', err);
-        socket.onmessage = (ev: MessageEvent) => this.onMessage(ev);
+        socket.onopen = () => this.dispatchEvent(new Event('open'));
+        socket.onclose = (event: CloseEvent) => this.onClose(event);
+        socket.onerror = (error) => this.dispatchEvent(new ErrorEvent('error', { error }));
+        socket.onmessage = (event: MessageEvent) => this.onMessage(event);
 
         return socket;
     }
 
     private onClose(ev: CloseEvent) {
         // reconnect
-        this.emit('close');
+        this.dispatchEvent(new Event('close'));
         this.socket = this.setupSocket();
     }
 
@@ -41,25 +52,7 @@ export class WebSocketController {
             return;
         }
 
-        this.emit('message', message);
-    }
-
-    private emit(type: string, ...args: any) {
-        if (!this.eventHandler.has(type)) return;
-
-        this.eventHandler.get(type)!.forEach(handler => {
-            handler(...args);
-        });
-    }
-
-    public on(type: 'message', handler: (msg: Message) => any): void;
-    public on(type: 'open', handler: () => any): void;
-    public on(type: 'close', handler: () => any): void;
-    public on(type: 'error', handler: (err: Error) => any): void;
-    public on(type: string, handler: Function) {
-        if (!this.eventHandler.has(type)) this.eventHandler.set(type, []);
-
-        this.eventHandler.get(type)!.push(handler);
+        this.dispatchEvent(new WebSocketControllerMessageEvent(message));
     }
 
     public close() {

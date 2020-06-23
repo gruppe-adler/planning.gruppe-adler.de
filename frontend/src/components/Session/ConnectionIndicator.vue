@@ -38,9 +38,9 @@ export default class ConnectionIndicatorVue extends Vue {
     private onControllerChanged() {
         if (this.controller === null) return;
 
-        this.controller.on('open', () => this.updateStatus());
-        this.controller.on('close', () => this.updateStatus());
-        this.controller.on('error', () => this.updateStatus());
+        this.controller.addEventListener('open', () => this.updateStatus());
+        this.controller.addEventListener('close', () => this.updateStatus());
+        this.controller.addEventListener('error', () => this.updateStatus());
 
         this.updateStatus();
     }
