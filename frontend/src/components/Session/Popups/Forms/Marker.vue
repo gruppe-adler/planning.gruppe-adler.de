@@ -83,6 +83,8 @@ export default class MarkerFormVue extends Vue {
         if (marker === undefined) return;
         this.type = marker;
 
+        this.$tstore.commit('setLastMarker', this.value);
+
         this.updateCategory();
     }
 

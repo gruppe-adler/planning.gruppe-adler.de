@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueX from 'vuex';
-import { Feature, User as SharedUser } from '@/services/shared';
+import { Feature, User as SharedUser, Marker } from '@/services/shared';
 import FeatureService from './services/feature';
 import { GradMap } from '@gruppe-adler/maps-frontend-utils';
 
@@ -18,6 +18,7 @@ export interface RootState {
     map: GradMap|null;
     worldName: string;
     featureService: FeatureService|null;
+    lastMarker: Marker|null;
 }
 
 export default new VueX.Store<RootState>({
@@ -28,7 +29,8 @@ export default new VueX.Store<RootState>({
         featureService: null,
         features: [],
         worldName: '',
-        hiddenFeaturesIds: []
+        hiddenFeaturesIds: [],
+        lastMarker: null
     },
     mutations: {
         setSessionId(state, id: string) {
@@ -56,6 +58,9 @@ export default new VueX.Store<RootState>({
         },
         setFeatureService(state, service: FeatureService) {
             state.featureService = service;
+        },
+        setLastMarker(state, marker: Marker) {
+            state.lastMarker = marker;
         }
     }
 });

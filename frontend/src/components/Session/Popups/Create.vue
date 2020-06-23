@@ -182,7 +182,7 @@ export default class CreatePopupVue extends Vue {
             pos
         };
 
-        this.marker = {
+        this.marker = this.$tstore.state.lastMarker !== null ? { ...this.$tstore.state.lastMarker, id: 'temp', pos } : {
             id: 'temp',
             type: 'marker',
             text: '',
