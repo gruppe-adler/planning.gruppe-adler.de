@@ -26,6 +26,7 @@
                 description="No maps found"
             />
         </template>
+        <grad-back-btn destination="/"></grad-back-btn>
     </div>
 </template>
 

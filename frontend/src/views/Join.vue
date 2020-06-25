@@ -18,10 +18,11 @@
             </div>
         </div>
         <div>
-            <input type="checkbox" v-model="remember" />
-            <label>Remember this</label>
+            <input id="remember" type="checkbox" v-model="remember" class="grad-join__checkbox" />
+            <label for="remember">Remember this</label>
         </div>
-        <button @click="join" :disabled="nick.length === 0">Join</button>
+        <button @click="join" :disabled="nick.length === 0" class="grad-join__button">Join</button>
+        <grad-back-btn destination="/create"></grad-back-btn>
     </div>
 </template>
 
@@ -125,5 +126,15 @@ export default class JoinVue extends Vue {
             height: 100vh;
         }
     }
+
+    &__checkbox{
+      margin-right: 0.5em;
+    }
+
+    &__button{
+      margin-top: 1em;
+      font-weight: bold;
+    }
 }
+
 </style>

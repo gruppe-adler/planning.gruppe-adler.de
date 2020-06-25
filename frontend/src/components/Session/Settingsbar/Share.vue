@@ -48,6 +48,7 @@ div {
         font-size: 1rem;
         min-width: 300px;
         padding-right: 2.6rem;
+        color: $color-active;
     }
 
     > i {
@@ -59,6 +60,9 @@ div {
         color: $color-inactive;
         user-select: none;
         transition: all 0.1s ease-in-out;
+        &:hover{
+          color: $color-active;
+        }
     }
 
     &:focus-within {

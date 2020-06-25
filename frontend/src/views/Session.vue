@@ -19,6 +19,7 @@
         <Settingsbar />
         <ConnectionIndicator :controller="controller" />
     </template>
+  <grad-back-btn destination="/create"></grad-back-btn>
 </div>
 </template>
 
