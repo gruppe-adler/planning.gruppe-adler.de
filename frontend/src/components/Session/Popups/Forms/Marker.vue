@@ -16,9 +16,19 @@
     </grad-select>
     <input type="text" placeholder="Description" v-model="value.text" />
     <Colors v-model="value.color" :default="type ? type.defaultColor : undefined" />
-    <div class="grad-marker-form__direction">
-        <grad-slider v-model="value.direction" :min="-180" :max="180" />
-        <span>{{ value.direction }}°</span>
+    <div class="grad-marker-form__sliders">
+        <span>Direction</span>
+        <grad-slider v-model="value.direction" :min="-180" :max="180">
+            {{ value.direction }}°
+        </grad-slider>
+        <span>Opacity</span>
+        <grad-slider v-model="value.opacity" :min="0" :max="1" :steps="0.01">
+            {{ (value.opacity * 100).toFixed(0) }}%
+        </grad-slider>
+        <span>Size</span>
+        <grad-slider v-model="value.size" :min="0" :max="5" :steps="0.1">
+            {{ value.size.toFixed(1) }}
+        </grad-slider>
     </div>
 </div>
 </template>
@@ -73,6 +83,8 @@ export default class MarkerFormVue extends Vue {
         if (marker === undefined) return;
         this.type = marker;
 
+        this.$tstore.commit('setLastMarker', this.value);
+
         this.updateCategory();
     }
 
@@ -122,9 +134,9 @@ export default class MarkerFormVue extends Vue {
         margin-right: 0.75rem;
     }
 
-    &__direction {
+    &__sliders {
         display: grid;
-        grid-template-columns: 1fr 3em;
+        grid-template-columns: auto 1fr;
         grid-gap: .75rem;
         align-items: center;
 

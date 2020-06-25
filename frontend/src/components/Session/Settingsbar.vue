@@ -1,10 +1,6 @@
 <template>
 <div class="grad-settigs-bar grad-group">
-    <grad-icon-btn
-        icon="settings"
-        tooltip="Settings"
-        :disabled="true"
-    />
+    <Settings v-model="extended" />
     <Share v-model="extended" />
     <Export v-model="extended" />
     <Import v-model="extended" />
@@ -13,6 +9,7 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import SettingsVue from './Settingsbar/Settings.vue';
 import ShareVue from './Settingsbar/Share.vue';
 import ExportVue from './Settingsbar/Export.vue';
 import ImportVue from './Settingsbar/Import.vue';
@@ -21,7 +18,8 @@ import ImportVue from './Settingsbar/Import.vue';
     components: {
         Share: ShareVue,
         Export: ExportVue,
-        Import: ImportVue
+        Import: ImportVue,
+        Settings: SettingsVue
     }
 })
 export default class SettingbarVue extends Vue {

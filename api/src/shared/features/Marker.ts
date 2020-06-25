@@ -20,4 +20,7 @@ export default interface Marker extends Feature {
 
     /** opacity from 0 to 1 */
     opacity: number;
+
+    /** size in percent */
+    size: number;
 };

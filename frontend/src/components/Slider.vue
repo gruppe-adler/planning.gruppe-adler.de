@@ -1,6 +1,11 @@
 <template>
     <div :class="['grad-slider', active ? 'grad-slider--active' : '']" @mousedown="onMouseDown">
         <div :key="percent" class="grad-slider__thumb" :style="`width: ${percent}%`"></div>
+        <span class="grad-slider__text">
+            <slot>
+                {{ value.toFixed(2) }}
+            </slot>
+        </span>
     </div>
 </template>
 
@@ -84,8 +89,26 @@ export default class SliderVue extends Vue {
         transition: all 0.05s ease-in-out;
     }
 
+    &__text {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        color: $color-active;
+        font-size: 1rem;
+    }
+
     &--active #{&}__thumb {
         background-color: $color-active;
+    }
+
+    &--active #{&}__text {
+        color: $color-inactive;
     }
 }
 </style>

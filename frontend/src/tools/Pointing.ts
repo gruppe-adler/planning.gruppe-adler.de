@@ -42,10 +42,16 @@ class PointingTool extends Tool {
         this.mouseDownListener = (ev: LeafletMouseEvent) => this.onMouseDown(ev);
 
         this.map.addEventListener('mousedown', this.mouseDownListener);
+
+        // @ts-ignore
+        (this.map._container as HTMLElement).style.cursor = 'pointer';
     }
 
     public destroy() {
         this.map.removeEventListener('mousedown', this.mouseDownListener);
+
+        // @ts-ignore
+        (this.map._container as HTMLElement).style.cursor = '';
     }
 
     private onMouseDown(event: LeafletMouseEvent) {

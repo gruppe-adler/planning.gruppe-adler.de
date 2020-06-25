@@ -44,6 +44,7 @@ const validateMarker = (feature: any): Marker => {
     if (!isLatLng(feature.pos)) throw new Error();
     if (typeof feature.color !== 'string') throw new Error();
     if (typeof feature.opacity !== 'number') throw new Error();
+    if (typeof feature.size !== 'number') throw new Error();
 
     return {
         id: 'temp',
@@ -53,7 +54,8 @@ const validateMarker = (feature: any): Marker => {
         markerType: feature.markerType,
         pos: feature.pos,
         color: feature.color,
-        opacity: feature.opacity
+        opacity: feature.opacity,
+        size: feature.size
     };
 };
 
