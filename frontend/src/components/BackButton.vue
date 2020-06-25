@@ -4,7 +4,6 @@
       <i class="material-icons">arrow_back</i>
     </router-link>
   </div>
-
 </template>
 
 <script lang='ts'>
