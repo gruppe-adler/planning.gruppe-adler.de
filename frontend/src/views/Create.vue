@@ -8,6 +8,9 @@
             button="Erneut versuchen!"
         />
         <template v-else>
+            <router-link class="grad-create__back" tag="div" to="/">
+                <i class="material-icons">arrow_back</i>
+            </router-link>
             <div class="grad-create__filter">
                 <i class="material-icons">search</i>
                 <input type="text" v-model="filter" />
@@ -22,11 +25,11 @@
             </div>
             <Error
                 v-else
+                style="grid-area: maps;"
                 @button="fetchMaps"
                 description="No maps found"
             />
         </template>
-        <grad-back-btn destination="/"></grad-back-btn>
     </div>
 </template>
 
@@ -88,16 +91,34 @@ export default class CreateVue extends Vue {
     width: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template:
+        "back filter" auto
+        "maps maps" 1fr / auto 1fr;
     height: 100vh;
     overflow: hidden;
     background-color: #f0eeec;
 
+    &__back {
+        grid-area: back;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        width: 3em;
+
+        > i {
+            opacity: 0.5;
+            font-size: 1.5em;
+        }
+    }
+
     &__filter {
         position: relative;
         margin: 1rem;
-        font-size: 24px;
+        font-size: 1.5rem;
+        grid-area: filter;
 
         > i {
             position: absolute;
@@ -140,6 +161,7 @@ export default class CreateVue extends Vue {
         overflow-y: auto;
         overflow-x: hidden;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-area: maps;
 
         &::-webkit-scrollbar-thumb
         {
