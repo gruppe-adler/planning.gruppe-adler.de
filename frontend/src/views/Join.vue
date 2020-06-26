@@ -87,6 +87,7 @@ export default class JoinVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  @import '~@/colors.scss';
 .grad-join {
     width: 100vw;
     min-height: 100vh;
@@ -99,6 +100,7 @@ export default class JoinVue extends Vue {
     > * {
         width: 61rem;
         max-width: calc(100% - 2rem);
+        color: $color-text;
     }
 
     &__color {
