@@ -4,6 +4,7 @@
     <Share v-model="extended" />
     <Export v-model="extended" />
     <Import v-model="extended" />
+    <Exit v-model="extended" />
 </div>
 </template>
 
@@ -13,13 +14,15 @@ import SettingsVue from './Settingsbar/Settings.vue';
 import ShareVue from './Settingsbar/Share.vue';
 import ExportVue from './Settingsbar/Export.vue';
 import ImportVue from './Settingsbar/Import.vue';
+import ExitVue from './Settingsbar/Exit.vue';
 
 @Component({
     components: {
         Share: ShareVue,
         Export: ExportVue,
         Import: ImportVue,
-        Settings: SettingsVue
+        Settings: SettingsVue,
+        Exit: ExitVue
     }
 })
 export default class SettingbarVue extends Vue {

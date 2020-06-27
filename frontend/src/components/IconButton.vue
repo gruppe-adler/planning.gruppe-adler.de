@@ -126,5 +126,9 @@ export default class IconButtonVue extends Vue {
     &--active {
         color: $color-active;
     }
+
+    &:not(#{&}--active):hover {
+        color: rgba($color-active, 0.7);
+    }
 }
 </style>
