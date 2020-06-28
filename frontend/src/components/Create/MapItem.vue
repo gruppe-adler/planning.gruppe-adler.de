@@ -23,6 +23,7 @@ export default class MapItemVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  @import '~@/colors.scss';
 .grad-map-item {
     font-size: 1.2rem;
 
@@ -58,7 +59,7 @@ export default class MapItemVue extends Vue {
     }
 
     &:hover {
-        background-color: rgba(black, 0.05);
+        background-color: $color-inactive;
     }
 }
 </style>

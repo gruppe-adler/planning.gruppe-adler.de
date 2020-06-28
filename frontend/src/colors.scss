@@ -1,6 +1,33 @@
-$color-background: #222222;
-$color-active: #FFFFFF;
-$color-inactive: #666666;
-$color-divider: #333333;
-$color-text: #2d2d2d;
-$color-primary: #2F80ED;
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: rgba(#222222, .5);
+    --active: #FFFFFF;
+    --inactive: #b1aeae;
+    --divider: #4c4b4b;
+    --text: #000000;
+    --primary: #2F80ED;
+    --group-background: #404040;
+    --background-alt: #e3e1df;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #404040;
+    --active: #FFFFFF;
+    --inactive: #666666;
+    --divider: #333333;
+    --text: #f2f5f4;
+    --primary: #ee4d2e;
+    --background-alt: #e3e1df;
+    --group-background: #404040;
+  }
+}
+
+$color-background: var(--background);
+$color-background-alt: var(--background-alt);
+$color-active: var(--active);
+$color-inactive: var(--inactive);
+$color-divider: var(--divider);
+$color-text: var(--text);
+$color-primary: var(--primary);
+$color-group-background: var(--group-background);

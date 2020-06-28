@@ -43,92 +43,92 @@ export default class IconButtonVue extends Vue {
 @import '~@/colors.scss';
 
 .grad-icon-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-    color: $color-inactive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  color: $color-inactive;
 
-    &:not(:last-child)::before {
-        content: '';
-        position: absolute;
-        width: 1px;
-        right: 0px;
-        bottom: .5rem;
-        top: .5rem;
-        background-color: $color-divider;
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    right: 0px;
+    bottom: .5rem;
+    top: .5rem;
+    background-color: $color-divider;
+  }
+
+  > i {
+    color: inherit;
+    user-select: none;
+    padding: 0.75rem;
+
+    &:hover {
+      background-color: rgba($color-active, 0.05);
+
+      ~ .grad-icon-button__tooltip {
+        display: initial;
+      }
     }
+  }
+
+  &__tooltip {
+    display: none;
+    color: $color-text;
+    white-space: nowrap;
+    background-color: rgba($color-background, 0.6);
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    top: calc(100% + 4px);
+    letter-spacing: 0.08em;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &--no-seperator::before {
+    background-color: transparent !important;
+  }
+
+  &--tooltip-top > #{&}__tooltip {
+    top: 0px;
+    transform: translateY(calc(-100% - 4px));
+  }
+
+  &--tooltip-left > #{&}__tooltip {
+    top: initial;
+    left: 0px;
+    transform: translateX(calc(-100% - 4px));
+  }
+
+  &--dense > i {
+    padding: .5rem;
+  }
+
+  &--disabled {
+    cursor: default;
 
     > i {
-        color: inherit;
-        user-select: none;
-        padding: 0.75rem;
+      opacity: 0.4;
 
-        &:hover {
-            background-color: rgba($color-active, 0.05);
-
-            ~ .grad-icon-button__tooltip {
-                display: initial;
-            }
-        }
+      &:hover {
+        background-color: transparent;
+      }
     }
+  }
 
-    &__tooltip {
-        display: none;
-        color: white;
-        white-space: nowrap;
-        background-color: rgba($color-background, 0.6);
-        padding: 8px;
-        border-radius: 4px;
-        position: absolute;
-        font-size: 14px;
-        font-weight: bold;
-        top: calc(100% + 4px);
-        letter-spacing: 0.08em;
-        z-index: 2;
-        pointer-events: none;
-        user-select: none;
-    }
+  &--active {
+    color: $color-active;
+  }
 
-    &--no-seperator::before {
-        background-color: transparent !important;
-    }
-
-    &--tooltip-top > #{&}__tooltip {
-        top: 0px;
-        transform: translateY(calc(-100% - 4px));
-    }
-
-    &--tooltip-left > #{&}__tooltip {
-        top: initial;
-        left: 0px;
-        transform: translateX(calc(-100% - 4px));
-    }
-
-    &--dense > i {
-        padding: .5rem;
-    }
-
-    &--disabled {
-        cursor: default;
-
-        > i {
-            opacity: 0.4;
-
-            &:hover {
-                background-color: transparent;
-            }
-        }
-    }
-
-    &--active {
-        color: $color-active;
-    }
-
-    &:not(#{&}--active):hover {
-        color: rgba($color-active, 0.7);
-    }
+  &:not(#{&}--active):hover {
+    color: $color-active;
+  }
 }
 </style>

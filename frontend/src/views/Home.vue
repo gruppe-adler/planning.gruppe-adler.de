@@ -31,6 +31,7 @@ export default class HomeVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  @import '~@/colors.scss';
 .grad-home {
     display: flex;
     height: 100vh;
@@ -40,8 +41,8 @@ export default class HomeVue extends Vue {
     font-size: 1.25rem;
 
     input[type=text], button {
-        color: #2F80ED;
-        background-color: #E3E1DF;
+        color: $color-primary;
+        background-color: $color-background-alt;
         border-radius: 1.35em;
         padding: 0.75em 1em;
         border: none;
@@ -58,12 +59,12 @@ export default class HomeVue extends Vue {
         cursor: pointer;
 
         &:hover {
-            background-color: #2F80ED;
+            background-color: $color-primary;
             color: white;
         }
 
         &[disabled] {
-            color: #777;
+            color: $color-inactive;
             background-color: rgba(#E3E1DF, 0.5);
             pointer-events: none;
         }
@@ -152,7 +153,7 @@ export default class HomeVue extends Vue {
             &:last-of-type {
                 right: .25rem;
                 color: white;
-                background-color: #2F80ED;
+                background-color: $color-primary;
 
                 &:disabled {
                     background-color: #BBBBBB;

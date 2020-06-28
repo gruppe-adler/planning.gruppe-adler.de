@@ -134,9 +134,10 @@ export default class JoinVue extends Vue {
     }
 
     &__button{
-      margin-top: 1em;
-      font-weight: bold;
-    }
+        margin-top: 1em;
+        font-weight: bold;
+        color: $color-divider;
+      }
 }
 
 </style>

@@ -101,16 +101,16 @@ export default class SelectVue extends Vue {
         box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.6), 0px 8px 10px 1px rgba(0, 0, 0, 0.42), 0px 3px 14px 2px rgba(0, 0, 0, 0.36);
 
         > * {
-            height: 2.5rem;
-            padding-left: 1rem;
-            display: flex;
-            align-items: center;
-            color: darken($color-active, 40%);
-            cursor: pointer;
+          height: 2.5rem;
+          padding-left: 1rem;
+          display: flex;
+          align-items: center;
+          color: $color-active;
+          cursor: pointer;
 
-            &:hover {
-                color: $color-active;
-            }
+          &:hover {
+            color: $color-active;
+          }
         }
     }
 }
