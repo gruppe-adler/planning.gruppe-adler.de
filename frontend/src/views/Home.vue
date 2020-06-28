@@ -41,8 +41,8 @@ export default class HomeVue extends Vue {
     font-size: 1.25rem;
 
     input[type=text], button {
-        color: $color-primary;
-        background-color: $color-background-alt;
+        color: rgb($color-primary);
+        background-color: rgb($color-divider);
         border-radius: 1.35em;
         padding: 0.75em 1em;
         border: none;
@@ -59,13 +59,13 @@ export default class HomeVue extends Vue {
         cursor: pointer;
 
         &:hover {
-            background-color: $color-primary;
+            background-color: rgb($color-primary);
             color: white;
         }
 
         &[disabled] {
-            color: $color-inactive;
-            background-color: rgba(#E3E1DF, 0.5);
+            color: rgb($color-inactive);
+            background-color: rgba($color-background, 0.5);
             pointer-events: none;
         }
     }
@@ -73,7 +73,7 @@ export default class HomeVue extends Vue {
     input[type=text] {
         padding-top: 1.25em;
         padding-bottom: 0.25em;
-        color: black;
+        color: rgb($color-text);
     }
 
     &__wrapper {
@@ -134,7 +134,6 @@ export default class HomeVue extends Vue {
             top: .25rem;
             bottom: .25rem;
             position: absolute;
-            background-color: white;
             padding: 0;
             border-radius: 50%;
             height: calc(2.7em - 0.5rem);
@@ -146,17 +145,17 @@ export default class HomeVue extends Vue {
 
             &:first-of-type {
                 left: .25rem;
-                color: black;
-                background-color: white;
+                color: rgb($color-text);
+                background-color: rgb($color-background);
             }
 
             &:last-of-type {
                 right: .25rem;
                 color: white;
-                background-color: $color-primary;
+                background-color: rgb($color-primary);
 
                 &:disabled {
-                    background-color: #BBBBBB;
+                    background-color: rgba(black, 0.2);
                 }
             }
 

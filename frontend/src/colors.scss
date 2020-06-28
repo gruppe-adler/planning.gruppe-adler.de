@@ -1,33 +1,17 @@
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: rgba(#222222, .5);
-    --active: #FFFFFF;
-    --inactive: #b1aeae;
-    --divider: #4c4b4b;
-    --text: #000000;
-    --primary: #2F80ED;
-    --group-background: #404040;
-    --background-alt: #e3e1df;
-  }
-}
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #404040;
-    --active: #FFFFFF;
-    --inactive: #666666;
-    --divider: #333333;
-    --text: #f2f5f4;
-    --primary: #ee4d2e;
-    --background-alt: #e3e1df;
-    --group-background: #404040;
-  }
+    :root {
+        --background: 34, 34, 34;
+        --active: 255, 255, 255;
+        --inactive: 102, 102, 102;
+        --divider: 51, 51, 51;
+        --text: 240, 238, 236;
+        --primary: 47, 128, 237;
+    }
 }
 
-$color-background: var(--background);
-$color-background-alt: var(--background-alt);
-$color-active: var(--active);
-$color-inactive: var(--inactive);
-$color-divider: var(--divider);
-$color-text: var(--text);
-$color-primary: var(--primary);
-$color-group-background: var(--group-background);
+$color-background: var(--background, 240, 238, 236);
+$color-active: var(--active, 0,0,0);
+$color-inactive: var(--inactive, 153, 153, 153);
+$color-divider: var(--divider, 221, 221, 221);
+$color-text: var(--text, 45, 45, 45);
+$color-primary: var(--primary, 47, 128, 237);

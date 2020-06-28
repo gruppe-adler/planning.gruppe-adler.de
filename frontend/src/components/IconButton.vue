@@ -49,7 +49,7 @@ export default class IconButtonVue extends Vue {
   position: relative;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
-  color: $color-inactive;
+  color: rgb($color-inactive);
 
   &:not(:last-child)::before {
     content: '';
@@ -58,7 +58,7 @@ export default class IconButtonVue extends Vue {
     right: 0px;
     bottom: .5rem;
     top: .5rem;
-    background-color: $color-divider;
+    background-color: rgb($color-divider);
   }
 
   > i {
@@ -77,9 +77,9 @@ export default class IconButtonVue extends Vue {
 
   &__tooltip {
     display: none;
-    color: $color-text;
+    color: white;
     white-space: nowrap;
-    background-color: rgba($color-background, 0.6);
+    background-color: rgba(#222222, 0.6);
     padding: 8px;
     border-radius: 4px;
     position: absolute;
@@ -124,11 +124,11 @@ export default class IconButtonVue extends Vue {
   }
 
   &--active {
-    color: $color-active;
+    color: rgb($color-primary);
   }
 
   &:not(#{&}--active):hover {
-    color: $color-active;
+    color: rgb($color-active);
   }
 }
 </style>

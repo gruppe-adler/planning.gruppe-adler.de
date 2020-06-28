@@ -97,7 +97,7 @@ export default class CreateVue extends Vue {
         "maps maps" 1fr / auto 1fr;
     height: 100vh;
     overflow: hidden;
-    background-color: $color-background;
+    background-color: rgb($color-background);
 
     &__back {
         grid-area: back;
@@ -133,12 +133,11 @@ export default class CreateVue extends Vue {
             justify-content: center;
             align-items: center;
             opacity: 0.5;
-            color: $color-divider;
         }
 
         > input {
-            color: black;
-            background-color: $color-background-alt;
+            color: rgb($color-text);
+            background-color: rgb($color-divider);
             border-radius: 2.1em;
             padding: 1.5em 2em;
             border: none;

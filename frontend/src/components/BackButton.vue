@@ -26,6 +26,6 @@ export default class ButtonVue extends Vue {
   left: 4vw;
   bottom: 2em;
   cursor: pointer;
-  background-color: $color-active;
+  background-color: rgb($color-active);
 }
 </style>

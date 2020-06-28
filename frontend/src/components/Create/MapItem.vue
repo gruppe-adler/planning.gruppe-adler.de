@@ -59,7 +59,7 @@ export default class MapItemVue extends Vue {
     }
 
     &:hover {
-        background-color: $color-inactive;
+        background-color: rgba($color-inactive, 0.25);
     }
 }
 </style>

@@ -40,7 +40,7 @@ export default class ButtonVue extends Vue {
     justify-content: flex-start;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
-    color: $color-inactive;
+    color: rgb($color-inactive);
     position: relative;
     width: auto;
     box-sizing: content-box;
@@ -52,7 +52,7 @@ export default class ButtonVue extends Vue {
         right: .5rem;
         left: .5rem;
         bottom: 0;
-        background-color: $color-divider;
+        background-color: rgb($color-divider);
     }
 
     > i {
@@ -85,7 +85,7 @@ export default class ButtonVue extends Vue {
     }
 
     &--active {
-        color: $color-active;
+        color: rgb($color-active);
     }
 }
 </style>

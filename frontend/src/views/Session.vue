@@ -220,7 +220,7 @@ export default class SessionVue extends Vue {
 @import '~@/colors.scss';
 
 .grad-group {
-    background-color: $color-group-background;
+    background-color: rgb($color-background);
     box-shadow: 0px 0.25rem .5rem rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
 }

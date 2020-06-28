@@ -71,12 +71,12 @@ export default class SelectVue extends Vue {
 @import '~@/colors.scss';
 
 .grad-select {
-    color: $color-active;
+    color: rgb($color-active);
     display: grid;
     grid-template-columns: 1fr auto;
     grid-column-gap: .5rem;
     align-items: center;
-    border-bottom: 1px solid $color-inactive;
+    border-bottom: 1px solid rgb($color-inactive);
     height: 2.5rem;
     font-size: 1rem;
     position: relative;
@@ -84,7 +84,7 @@ export default class SelectVue extends Vue {
     user-select: none;
 
     &--expanded {
-        border-color: $color-active;
+        border-color: rgb($color-active);
     }
 
     &__items {
@@ -92,24 +92,24 @@ export default class SelectVue extends Vue {
         top: calc(100% + 1px);
         left: 0px;
         right: 0px;
-        background-color: $color-background;
+        background-color: rgb($color-background);
         border-bottom-left-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
         z-index: 100;
         height: 200px;
         overflow-y: scroll;
-        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.6), 0px 8px 10px 1px rgba(0, 0, 0, 0.42), 0px 3px 14px 2px rgba(0, 0, 0, 0.36);
+        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.15), 0px 8px 10px 1px rgba(0, 0, 0, 0.105), 0px 3px 14px 2px rgba(0, 0, 0, 0.09);
 
         > * {
           height: 2.5rem;
           padding-left: 1rem;
           display: flex;
           align-items: center;
-          color: $color-active;
+          color: rgb($color-active);
           cursor: pointer;
 
           &:hover {
-            color: $color-active;
+            color: rgb($color-active);
           }
         }
     }

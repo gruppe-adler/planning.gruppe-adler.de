@@ -100,7 +100,7 @@ export default class JoinVue extends Vue {
     > * {
         width: 61rem;
         max-width: calc(100% - 2rem);
-        color: $color-text;
+        color: rgb($color-text);
     }
 
     &__color {
@@ -136,7 +136,7 @@ export default class JoinVue extends Vue {
     &__button{
         margin-top: 1em;
         font-weight: bold;
-        color: $color-divider;
+        color: rgb($color-divider);
       }
 }
 

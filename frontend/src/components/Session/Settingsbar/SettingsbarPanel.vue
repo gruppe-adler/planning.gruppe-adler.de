@@ -42,6 +42,8 @@ export default class SettingsbarPanelVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/colors.scss';
+
 .grad-settings-bar-panel__dialog {
     position: absolute;
     padding: 0.75rem;
@@ -49,5 +51,6 @@ export default class SettingsbarPanelVue extends Vue {
     right: 0px;
     cursor: default;
     min-width: 250px;
+    color: rgb($color-text);
 }
 </style>

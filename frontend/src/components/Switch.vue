@@ -26,7 +26,7 @@ export default class SwitchVue extends Vue {
     height: 1.5rem;
     width: 3rem;
     cursor: pointer;
-    color: $color-active;
+    color: rgb($color-active);
 
     & , > * {
         transition: all 0.1s ease-in-out;
@@ -55,7 +55,7 @@ export default class SwitchVue extends Vue {
     }
 
     &#{&}--checked {
-        color: $color-primary;
+        color: rgb($color-primary);
     }
 
     &--checked #{&}__thumb {
@@ -64,7 +64,7 @@ export default class SwitchVue extends Vue {
     }
 
     &#{&}--disabled {
-        color: $color-inactive;
+        color: rgb($color-inactive);
         pointer-events: none;
     }
 }

@@ -123,7 +123,7 @@ export default class MarkerFormVue extends Vue {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    color: $color-inactive;
+    color: rgb($color-inactive);
 
     > *:not(:last-child) {
         margin-bottom: 1rem;
@@ -142,7 +142,7 @@ export default class MarkerFormVue extends Vue {
 
         > span {
             font-size: 1rem;
-            color: $color-active;
+            color: rgb($color-active);
         }
     }
 }
