@@ -225,7 +225,7 @@ export default class CreatePopupVue extends Vue {
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 1rem;
         cursor: pointer;
-        color: $color-inactive;
+        color: rgb($color-inactive);
 
         > div {
             color: inherit;
@@ -244,7 +244,7 @@ export default class CreatePopupVue extends Vue {
     }
 
     &--active-tab {
-        color: $color-active !important;
+        color: rgb($color-active) !important;
     }
 }
 </style>

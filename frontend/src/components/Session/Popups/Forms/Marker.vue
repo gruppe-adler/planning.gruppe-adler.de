@@ -10,7 +10,7 @@
         :items="categoryMarkers"
     >
         <template v-slot:item="{ item }">
-            <img class="grad-marker-form__marker" :src="`/markers/${item.id}.png`" />
+            <MarkerImg class="grad-marker-form__marker" :type="item.id" />
             <span>{{item.name}}</span>
         </template>
     </grad-select>
@@ -38,6 +38,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Marker } from '@/services/shared';
 import ColorsVue from './Marker/Colors.vue';
 import { PropType } from 'vue';
+import MarkerImgVue from './Marker/MarkerImg.vue';
 interface ArmaMarker {
     id: string;
     defaultColor: [number, number, number, number];
@@ -58,7 +59,8 @@ const markerClasses: ArmaMarkerClass[] = require('@/assets/marker-classes.json')
 
 @Component({
     components: {
-        Colors: ColorsVue
+        Colors: ColorsVue,
+        MarkerImg: MarkerImgVue
     }
 })
 export default class MarkerFormVue extends Vue {
@@ -123,7 +125,7 @@ export default class MarkerFormVue extends Vue {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    color: $color-inactive;
+    color: rgb($color-inactive);
 
     > *:not(:last-child) {
         margin-bottom: 1rem;
@@ -142,7 +144,7 @@ export default class MarkerFormVue extends Vue {
 
         > span {
             font-size: 1rem;
-            color: $color-active;
+            color: rgb($color-active);
         }
     }
 }

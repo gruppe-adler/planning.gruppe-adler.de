@@ -76,12 +76,12 @@ export default class SliderVue extends Vue {
     border-radius: .5rem;
     height: 1.75rem;
     width: 100%;
-    background-color: $color-divider;
+    background-color: rgb($color-divider);
     position: relative;
     // transition: all 0.05s ease-in-out;
 
     &__thumb {
-        background-color: $color-inactive;
+        background-color: rgb($color-inactive);
         position: absolute;
         top: 0px;
         left: 0px;
@@ -99,16 +99,16 @@ export default class SliderVue extends Vue {
         justify-content: center;
         align-items: center;
         user-select: none;
-        color: $color-active;
+        color: rgb($color-active);
         font-size: 1rem;
     }
 
     &--active #{&}__thumb {
-        background-color: $color-active;
+        background-color: rgb($color-active);
     }
 
     &--active #{&}__text {
-        color: $color-inactive;
+        color: rgb($color-inactive);
     }
 }
 </style>

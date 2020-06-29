@@ -95,7 +95,7 @@ export default class PopupVue extends Vue {
     position: relative;
 
     &__tri {
-        background-color: $color-background;
+        background-color: rgb($color-background);
         border-radius: .25rem;
         transform: translate(-50%, 0) rotate(45deg);
         height: 1.5rem;

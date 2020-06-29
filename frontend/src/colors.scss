@@ -1,6 +1,17 @@
-$color-background: #222222;
-$color-active: #FFFFFF;
-$color-inactive: #666666;
-$color-divider: #333333;
-$color-text: #2d2d2d;
-$color-primary: #2F80ED;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: 34, 34, 34;
+        --active: 255, 255, 255;
+        --inactive: 102, 102, 102;
+        --divider: 51, 51, 51;
+        --text: 240, 238, 236;
+        --primary: 47, 128, 237;
+    }
+}
+
+$color-background: var(--background, 240, 238, 236);
+$color-active: var(--active, 0,0,0);
+$color-inactive: var(--inactive, 153, 153, 153);
+$color-divider: var(--divider, 221, 221, 221);
+$color-text: var(--text, 45, 45, 45);
+$color-primary: var(--primary, 47, 128, 237);

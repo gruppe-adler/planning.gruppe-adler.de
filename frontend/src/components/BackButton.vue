@@ -16,7 +16,8 @@ export default class ButtonVue extends Vue {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  @import '~@/colors.scss';
 .grad_back_btn {
   width: 3rem;
   height: 3rem;
@@ -25,5 +26,6 @@ export default class ButtonVue extends Vue {
   left: 4vw;
   bottom: 2em;
   cursor: pointer;
+  background-color: rgb($color-active);
 }
 </style>

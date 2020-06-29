@@ -56,14 +56,14 @@ div {
         right: 0px;
         padding: 0.5rem;
         position: absolute;
-        color: $color-inactive;
+        color: rgb($color-inactive);
         user-select: none;
         transition: all 0.1s ease-in-out;
     }
 
     &:focus-within {
         > i {
-            color: $color-active;
+            color: rgb($color-active);
         }
     }
 

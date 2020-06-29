@@ -21,6 +21,8 @@ export default class ErrorVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/colors.scss';
+
 .grad-error {
     display: flex;
     flex-direction: column;
@@ -28,7 +30,7 @@ export default class ErrorVue extends Vue {
     margin: 4rem;
 
     > h2 {
-        color: #666;
+        color: $color-text;
         text-transform: none;
         font-weight: normal;
     }

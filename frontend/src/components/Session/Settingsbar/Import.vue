@@ -154,7 +154,7 @@ export default class ImportVue extends Vue {
 .grad-import {
     width: 12rem;
     height: 6rem;
-    color: $color-inactive;
+    color: rgb($color-inactive);
     border: 2px dashed currentColor;
     border-radius: 1rem;
     cursor: pointer;
@@ -166,7 +166,7 @@ export default class ImportVue extends Vue {
     text-align: center;
 
     &--active, &:hover {
-        color: $color-active;
+        color: rgb($color-active);
     }
 }
 </style>
