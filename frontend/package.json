@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@caohenghu/vue-colorpicker": "^1.2.2",
-    "@gruppe-adler/maps-frontend-utils": "^1.0.3",
+    "@gruppe-adler/maps-frontend-utils": "^1.0.7",
     "@types/deep-equal": "^1.0.1",
     "deep-equal": "^2.0.1",
     "leaflet": "^1.6.0",
