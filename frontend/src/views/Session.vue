@@ -3,8 +3,8 @@
     <Error
         v-if="error"
         @button="setupSocket"
-        description="Konnte nicht zu Session verbinden. Vielleicht exsistiert die Session nicht?"
-        button="Erneut versuchen!"
+        description="Could not connect to Session. Maybe it already expired?"
+        button="Try again!"
     />
     <template v-else-if="controller !== null">
         <Map

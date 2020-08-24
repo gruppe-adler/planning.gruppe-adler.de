@@ -36,7 +36,33 @@ export default class ErrorVue extends Vue {
     }
 
     > button {
-        margin: 1rem;
+        border: none;
+        font-weight: 600;
+        outline: none;
+        box-sizing: content-box;
+        font-size: inherit;
+        text-align: center;
+        background-color: rgb($color-divider);
+        color: rgb($color-primary);
+        border-radius: 1.35em;
+        height: 1.2em;
+        padding: 0.75em 1em;
+        margin-top: 1rem;
+        user-select: none;
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+        min-width: 10rem;
+
+        &:hover {
+            background-color: rgb($color-primary);
+            color: white;
+        }
+
+        &[disabled] {
+            color: rgb($color-inactive);
+            background-color: rgba($color-divider, 0.5);
+            pointer-events: none;
+        }
     }
 }
 </style>
