@@ -87,7 +87,7 @@ export default class CreateVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '~@/colors.scss';
+@import '~@/colors.scss';
 .grad-create {
     width: 100%;
     box-sizing: border-box;
@@ -112,6 +112,11 @@ export default class CreateVue extends Vue {
         > i {
             opacity: 0.5;
             font-size: 1.5em;
+            transition: opacity 0.1s ease-in-out;
+        }
+
+        &:hover > i {
+            opacity: 1;
         }
     }
 

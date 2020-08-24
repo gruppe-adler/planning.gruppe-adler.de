@@ -128,6 +128,7 @@ export default class HomeVue extends Vue {
             text-align: center;
             font-weight: lighter;
             pointer-events: none;
+            opacity: 0.75;
         }
 
         > button {
