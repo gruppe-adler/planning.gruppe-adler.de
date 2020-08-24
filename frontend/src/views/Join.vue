@@ -1,10 +1,18 @@
 <template>
     <div class="grad-join">
-        <h1 style="margin: 0.75em;">Join Session</h1>
-        <input type="text" v-model="nick" placeholder="Nickname" />
-        <div style="display: flex; align-items: center; margin: 1rem 0px;">
-            <label style="margin-right: 1rem;">Color:</label>
+        <router-link class="grad-join__back" tag="div" to="/">
+            <i class="material-icons">arrow_back</i>
+        </router-link>
+        <h1 style="justify-self: center;">
+            Join Session
+        </h1>
+        <div class="grad-join__form">
+            <div class="grad-join__nickname">
+                <input type="text" v-model="nick" autofocus="true" />
+                <label>Nickname</label>
+            </div>
             <div class="grad-join__color" :style="`color: ${color}`" @click.self="pickerShown=true">
+                <label>Color</label>
                 <div class="grad-join__color-picker-mask" v-if="pickerShown" @click="pickerShown=false"></div>
                 <ColorPicker
                     @click.stop="true;"
@@ -16,13 +24,12 @@
                     @changeColor="changeColor"
                 />
             </div>
+            <div style="display: grid; align-items: center; justify-content: center; grid-template-columns: auto auto; grid-column-gap: .5rem;">
+                <grad-switch v-model="remember" />
+                <label>Remember me</label>
+            </div>
+            <button class="grad-join__button" :disabled="nick.length === 0" @click="join">Join</button>
         </div>
-        <div>
-            <input id="remember" type="checkbox" v-model="remember" class="grad-join__checkbox" />
-            <label for="remember">Remember this</label>
-        </div>
-        <button @click="join" :disabled="nick.length === 0" class="grad-join__button">Join</button>
-        <grad-back-btn destination="/create"></grad-back-btn>
     </div>
 </template>
 
@@ -87,57 +94,126 @@ export default class JoinVue extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '~@/colors.scss';
+@import '~@/colors.scss';
 .grad-join {
-    width: 100vw;
-    min-height: 100vh;
+    width: 100%;
     box-sizing: border-box;
-    padding: 1rem;
-    display: flex;
+    display: grid;
+    grid-template:
+        "back heading" auto
+        "form form" 1fr / auto 1fr;
+    height: 100vh;
+    overflow: hidden;
     align-items: center;
-    flex-direction: column;
 
-    > * {
-        width: 61rem;
-        max-width: calc(100% - 2rem);
-        color: rgb($color-text);
-    }
-
-    &__color {
-        height: 3.75rem;
-        width: 3.75rem;
-        flex-shrink: 0;
-        position: relative;
-        display: inline-flex;
-        border-radius: 50%;
-        background-color: currentColor;
+    &__back {
+        grid-area: back;
         cursor: pointer;
-        user-select: none;
-    }
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        width: 3em;
 
-    &__color-picker {
-        position: absolute;
-        top: 0;
-        left: calc(70%);
+        > i {
+            opacity: 0.5;
+            font-size: 1.5em;
+            transition: opacity 0.1s ease-in-out;
+        }
 
-        &-mask {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            width: 100vw;
-            height: 100vh;
+        &:hover > i {
+            opacity: 1;
         }
     }
 
-    &__checkbox{
-      margin-right: 0.5em;
+    &__form {
+        grid-area: form;
+        justify-self: center;
+        display: grid;
+        grid-row-gap: 1rem;
+        font-size: 1.25rem;
+
+        input, button {
+            border: none;
+            font-weight: 600;
+            outline: none;
+            box-sizing: content-box;
+            font-size: inherit;
+            text-align: center;
+            background-color: rgb($color-divider);
+            border-radius: 1.35em;
+            height: 1.2em;
+        }
     }
 
-    &__button{
-        margin-top: 1em;
-        font-weight: bold;
-        color: rgb($color-divider);
-      }
+    &__nickname {
+        position: relative;
+        > input {
+            color: rgb($color-text);
+            padding: 1.25em 1em 0.25em 1em;
+        }
+
+        > label {
+            position: absolute;
+            top: 0.25rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: lighter;
+            pointer-events: none;
+            opacity: 0.75;
+        }
+    }
+
+    &__color {
+        border-radius: 1.35em;
+        padding: 0.75em 1em;
+        height: 1.2em;
+        font-size: inherit;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: currentColor;
+        cursor: pointer;
+        user-select: none;
+        &-picker {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &-mask {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    }
+
+    &__button {
+        color: rgb($color-primary);
+        padding: 0.75em 1em;
+        margin-top: 1rem;
+
+        user-select: none;
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb($color-primary);
+            color: white;
+        }
+
+        &[disabled] {
+            color: rgb($color-inactive);
+            background-color: rgba($color-divider, 0.5);
+            pointer-events: none;
+        }
+    }
 }
 
 </style>
